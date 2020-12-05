@@ -13,7 +13,6 @@ class Search extends CI_Controller{
 	{
 		if (empty($userId)) {
 			echo 'not found id';
-			return false;
 		}
 		$api_url = $this->base_url . '/summoner/v4/summoners/by-name/?api_key' . $this->api_key;
 
@@ -32,7 +31,7 @@ class Search extends CI_Controller{
 		$response = curl_exec($ch);
 		curl_close($ch);
 
-		return json_encode($response);
+		var_dump($response);
 	}
 
 }
