@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Search extends CI_Controller{
-	private $base_url = 'https://kr.api.riotgames.com/lol/';
+	private $base_url = 'https://kr.api.riotgames.com/lol';
 	private $api_key = 'RGAPI-9f2cc058-bc56-4a84-9774-2255676d79da';
 
 	public function index(){
@@ -15,7 +15,7 @@ class Search extends CI_Controller{
 			echo 'not found id';
 			exit();
 		}
-		$api_url = $this->base_url . '/summoner/v4/summoners/by-name/'. $userId . '?api_key' . $this->api_key;
+		$api_url = $this->base_url . '/summoner/v4/summoners/by-name/'. $userId . '?api_key=' . $this->api_key;
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $api_url);
