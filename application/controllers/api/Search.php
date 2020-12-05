@@ -13,20 +13,17 @@ class Search extends CI_Controller{
 	{
 		if (empty($userId)) {
 			echo 'not found id';
+			exit();
 		}
-		$api_url = $this->base_url . '/summoner/v4/summoners/by-name/?api_key' . $this->api_key;
-
-		$data = [
-			'summonerName' => $userId
-		];
+		$api_url = $this->base_url . '/summoner/v4/summoners/by-name/'. $userId . '?api_key' . $this->api_key;
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $api_url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-		curl_setopt($ch, CURLOPT_POST, true);
+		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		//curl_setopt($ch, CURLOPT_POST, true);
 
 		$response = curl_exec($ch);
 		curl_close($ch);
