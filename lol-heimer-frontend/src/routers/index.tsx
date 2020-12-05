@@ -1,16 +1,16 @@
 import Switch from 'react-bootstrap/esm/Switch';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Pages from '@pages/index';
+import User from '../pages/User';
 
 const Routers: React.FC = (
 ): JSX.Element => {
 
 	return (
-		<BrowserRouter>
-			<Switch>
-				<Route exact path='/' component={Pages} />
-			</Switch>
-		</BrowserRouter>
+		<Switch>
+			<Route exact path='/' component={Pages} />
+			<Route exact path='/user/:username' component={User} />
+		</Switch>
 	)
 }
 
