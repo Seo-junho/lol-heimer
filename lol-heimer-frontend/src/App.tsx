@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Routers from './routers';
 
-function App() {
+const App: React.FC = (
+): JSX.Element => {
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +21,9 @@ function App() {
           Learn React
         </a>
       </header>
+			<div>
+				<Routers />
+			</div>
     </div>
   );
 }
