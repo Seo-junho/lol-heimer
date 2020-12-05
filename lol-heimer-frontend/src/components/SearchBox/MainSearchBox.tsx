@@ -21,7 +21,7 @@ const MainSearchBox: React.FC<Props> = (
 
 	const searchSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
-		// 유효성검사
+		// TODO: 유효성검사
 		onSubmit();
 	}
 
