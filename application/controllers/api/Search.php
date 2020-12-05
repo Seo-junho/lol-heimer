@@ -9,11 +9,6 @@ class Search extends CI_Controller{
 		echo 'index_page';
 	}
 
-	/**
-	 * 유저의 기본 정보를 가져옴
-	 * @param $userName
-	 * @return false|string
-	 */
 	public function getUserInfo($userName)
 	{
 		$response['code'] = 200;
@@ -26,13 +21,9 @@ class Search extends CI_Controller{
 		$response['data']['solo_league_info'] = $league_info[0];
 		$response['data']['team_league_info'] = $league_info[1];
 
-		return json_encode($response);
+		echo json_encode($response);
 	}
 
-	/**
-	 * 현재 서버 상태를 가져옴
-	 * @return mixed
-	 */
 	public function getServerStatus()
 	{
 		$response['code'] = 200;
@@ -53,9 +44,9 @@ class Search extends CI_Controller{
 
 		$response['data'] = $result;
 
-		return json_encode($response);
+		echo json_encode($response);
 	}
-	
+
 	/**
 	 * 유저의 리그 정보를 가져옴
 	 * @param string $encryptedSummonerId 유저 고유 id
