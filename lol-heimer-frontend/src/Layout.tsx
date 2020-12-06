@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const Layout: React.FC = (
-	{ children }
-): JSX.Element => {
+const mapStateToProps = (state: boolean, ownProps: {}) => {
+  return { loadingState: state };
+};
+
+const Layout: React.FC = ({
+	children,
+	loadingState,
+}: any): JSX.Element => {
 
 	return (
 		<>
@@ -19,8 +26,11 @@ const Layout: React.FC = (
 			<div className="container">
 				{ children }
 			</div>
+			{ loadingState.isLoading && (
+				<div>Loading</div>
+			)}
 		</>
 	)
 }
 
-export default Layout;
+export default connect(mapStateToProps)(Layout);
