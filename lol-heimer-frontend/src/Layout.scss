@@ -1,0 +1,62 @@
+@import './style/mixin.scss';
+// 노란계열
+// fefe78
+// fea52d
+
+// 강조색
+// 중 - ff8e2e
+// 강 - f44412
+// ca360e
+
+header {
+	height: 50px;
+	background-color: #ff8e2e;
+}
+
+nav {
+	width: 100%;
+	height: 100%;
+	margin: auto !important;
+	@include XS {
+		max-width: 300px;
+	}
+	@include S {
+		max-width: 500px;
+	}
+	@include M {
+		max-width: 700px;
+	}
+	@include L {
+		max-width: 900px;
+	}
+	@include XL {
+		max-width: 1000px;
+	}
+}
+
+ul {
+	height: 100%;
+	list-style:none;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+  align-items: center;
+
+	li {
+		flex: 0 1 0;
+		// flex-grow: 0;
+		// flex-shrink: 1;
+		// flex-basis: 0;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		padding: 0 20px;
+
+		& > a:hover {
+			color: white;
+		}
+	}
+}

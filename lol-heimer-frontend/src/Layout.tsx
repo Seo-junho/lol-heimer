@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import './Layout.scss'
 
 const mapStateToProps = (state: boolean, ownProps: {}) => {
   return { loadingState: state };
@@ -19,6 +19,12 @@ const Layout: React.FC = ({
 					<ul>
 						<li>
 							<Link to='/'>Home</Link>
+						</li>
+						<li>
+							<Link to='/'>Home2</Link>
+						</li>
+						<li>
+							<Link to='/'>Home3</Link>
 						</li>
 					</ul>
 				</nav>

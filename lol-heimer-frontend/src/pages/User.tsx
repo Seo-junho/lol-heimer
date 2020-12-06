@@ -55,6 +55,8 @@ const User: React.FC = ({
 		}
 	}, []);
 
+
+	// TODO: skeleton css ADD
 	return (
 		<>
 			<UserCard

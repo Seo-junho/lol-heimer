@@ -40,7 +40,7 @@ const MainSearchBox: React.FC<Props> = (
 					/>
 				</Col>
 				<Col xs="auto" className="my-1">
-					<Button type="submit">Submit</Button>
+					<Button type="submit">검색</Button>
 				</Col>
 			</Form.Row>
 		</Form>
