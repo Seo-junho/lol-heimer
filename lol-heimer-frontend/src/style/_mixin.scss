@@ -1,0 +1,29 @@
+// Breakpoints (bootstrap)
+$XS: 576px;
+$S: 768px;
+$M: 992px;
+$L: 1200px;
+
+@mixin XS {
+  @media (min-width: #{$XS}) and (max-width: #{$XS - 1px}) {
+    @content;
+  }
+}
+
+@mixin S {
+  @media (min-width: #{$S}) and (max-width: #{$M - 1px}) {
+    @content;
+  }
+}
+
+@mixin M {
+  @media (min-width: #{$M}) and (max-width: #{$L - 1px}) {
+    @content;
+  }
+}
+
+@mixin L {
+  @media (min-width: #{$L}) {
+    @content;
+  }
+}

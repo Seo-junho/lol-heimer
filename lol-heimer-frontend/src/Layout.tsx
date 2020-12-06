@@ -16,7 +16,7 @@ const Layout: React.FC = (
 					</ul>
 				</nav>
 			</header>
-			<div>
+			<div className="container">
 				{ children }
 			</div>
 		</>

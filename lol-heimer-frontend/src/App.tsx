@@ -7,13 +7,11 @@ import { BrowserRouter } from 'react-router-dom';
 const App: React.FC = (
 ): JSX.Element => {
   return (
-    <div className="App">
-			<BrowserRouter>
-				<Layout>
-					<Routers />
-				</Layout>
-			</BrowserRouter>
-    </div>
+		<BrowserRouter>
+			<Layout>
+				<Routers />
+			</Layout>
+		</BrowserRouter>
   );
 }
 

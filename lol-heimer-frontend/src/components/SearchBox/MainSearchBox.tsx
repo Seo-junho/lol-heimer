@@ -28,14 +28,14 @@ const MainSearchBox: React.FC<Props> = (
 	return (
 		<Form onSubmit={searchSubmit}>
 			<Form.Row className="align-items-center">
-				<Col sm={6} className="my-1">
+				<Col className="my-1">
 					<Form.Label htmlFor="inlineFormInputName" srOnly>
 						Name
 					</Form.Label>
 					<Form.Control
 						id="inlineFormInputName"
 						name="name"
-						placeholder="Jane Doe"
+						placeholder="소환사 명"
 						onChange={onChange}
 					/>
 				</Col>
