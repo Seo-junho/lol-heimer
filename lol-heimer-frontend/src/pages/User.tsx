@@ -19,14 +19,16 @@ const User: React.FC = (
 		try {
 			axios.get(`${API_SEARCH_USER}/${username}`)
 				.then((response: any) => {
-					const { data: {
+					const { data: { data : {
 						user_info,
 						solo_league_info,
 						team_league_info,
-					} } = response;
-					setUserInfo(JSON.parse(user_info));
-					setSoloLeague(solo_league_info);
-					setTeamLeague(team_league_info);
+					} } } = response;
+					if (user_info && solo_league_info && team_league_info) {
+						setUserInfo(JSON.parse(user_info));
+						setSoloLeague(solo_league_info);
+						setTeamLeague(team_league_info);
+					}
 				})
 				.catch((error: any) => {
 					console.log('error', error);

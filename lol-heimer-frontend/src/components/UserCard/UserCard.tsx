@@ -28,8 +28,14 @@ const UserCard: React.FC<Props> = (
 		<>
 			<Card style={{ width: '18rem' }}>
 				<Card.Body>
-					<Card.Title>{ name }</Card.Title>
-					<Card.Subtitle className="mb-2 text-muted">{ summonerLevel }</Card.Subtitle>
+					<Card.Title>
+						{ name }
+					</Card.Title>
+					<Card.Subtitle
+						className="mb-2 text-muted"
+					>
+						{ summonerLevel }
+					</Card.Subtitle>
 					<Card.Text>
 						아이콘
 						{ profileIconId }
