@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 
 interface Props {
 	leagueInfo: {
@@ -39,29 +38,13 @@ const LeagueCard: React.FC<Props> = (
 	}
 ): JSX.Element => {
 	return (
-		<>
-			<Card style={{ width: '18rem' }}>
-				<Card.Body>
-					<Card.Title>
-						{ queueType === 'RANKED_SOLO_5x5' ? '솔로' : '팀랭' }
-					</Card.Title>
-					<Card.Title>
-						{ tier }
-					</Card.Title>
-					<Card.Subtitle
-						className="mb-2 text-muted"
-					>
-						{ rank }
-					</Card.Subtitle>
-					<Card.Text>
-						포인트 { leaguePoints }
-					</Card.Text>
-					<Card.Text>
-						{ wins }승 { losses }패
-					</Card.Text>
-				</Card.Body>
-			</Card>
-		</>
+		<div className="border-gray-300 border">
+			{ queueType === 'RANKED_SOLO_5x5' ? '솔로' : '팀랭' }
+			{ tier }
+			{ rank }
+			포인트 { leaguePoints }
+			{ wins }승 { losses }패
+		</div>
 	)
 }
 

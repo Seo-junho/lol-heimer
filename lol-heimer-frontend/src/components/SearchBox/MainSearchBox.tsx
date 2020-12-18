@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Col, Form } from 'react-bootstrap';
 
 interface Props {
 	onSubmit: any;
@@ -26,24 +25,18 @@ const MainSearchBox: React.FC<Props> = (
 	}
 
 	return (
-		<Form onSubmit={searchSubmit}>
-			<Form.Row className="align-items-center">
-				<Col className="my-1">
-					<Form.Label htmlFor="inlineFormInputName" srOnly>
-						Name
-					</Form.Label>
-					<Form.Control
-						id="inlineFormInputName"
-						name="name"
-						placeholder="소환사 명"
-						onChange={onChange}
-					/>
-				</Col>
-				<Col xs="auto" className="my-1">
-					<Button type="submit">검색</Button>
-				</Col>
-			</Form.Row>
-		</Form>
+		<form>
+			<div>
+				Name
+			</div>
+			<input
+				type="text"
+				placeholder="소환사 명"
+			/>
+			<button>
+				검색
+			</button>
+		</form>
 	)
 }
 

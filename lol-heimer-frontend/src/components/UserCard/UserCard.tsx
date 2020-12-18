@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 
 interface Props {
 	userInfo: {
@@ -25,24 +24,11 @@ const UserCard: React.FC<Props> = (
 	} }
 ): JSX.Element => {
 	return (
-		<>
-			<Card style={{ width: '18rem' }}>
-				<Card.Body>
-					<Card.Title>
-						{ name }
-					</Card.Title>
-					<Card.Subtitle
-						className="mb-2 text-muted"
-					>
-						{ summonerLevel }
-					</Card.Subtitle>
-					<Card.Text>
-						아이콘
-						{ profileIconId }
-					</Card.Text>
-				</Card.Body>
-			</Card>
-		</>
+		<div className="shadow-sm">
+			{ name }
+			{ summonerLevel }
+			{ profileIconId }
+		</div>
 	)
 }
 

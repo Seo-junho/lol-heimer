@@ -20,8 +20,7 @@ const Pages: React.FC = (
 	}
 	const onSubmit = async (): Promise<void> => {
 		try {
-			// const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
-			// console.log('data', data)
+			const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
 			history.push(`/user/${user.username}`);
 		} catch {
 			// TODO: Error handling
