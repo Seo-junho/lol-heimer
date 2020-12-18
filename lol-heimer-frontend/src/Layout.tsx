@@ -29,7 +29,7 @@ const Layout: React.FC = ({
 					</ul>
 				</nav>
 			</header>
-			<div className="container">
+			<div>
 				{ children }
 			</div>
 			{ loadingState.isLoading && (

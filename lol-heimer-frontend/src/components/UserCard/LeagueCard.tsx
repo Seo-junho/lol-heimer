@@ -38,7 +38,7 @@ const LeagueCard: React.FC<Props> = (
 	}
 ): JSX.Element => {
 	return (
-		<div className="border-gray-300 border">
+		<div className="card">
 			{ queueType === 'RANKED_SOLO_5x5' ? '솔로' : '팀랭' }
 			{ tier }
 			{ rank }

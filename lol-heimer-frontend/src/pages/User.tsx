@@ -58,7 +58,7 @@ const User: React.FC = ({
 
 	// TODO: skeleton css ADD
 	return (
-		<>
+		<div className="flex flex-col sm:flex-row p-5 items-center justify-center">
 			<UserCard
 				userInfo={userInfo}
 			/>
@@ -68,7 +68,7 @@ const User: React.FC = ({
 			<LeagueCard
 				leagueInfo={teamLeague}
 			/>
-		</>
+		</div>
 	)
 }
 

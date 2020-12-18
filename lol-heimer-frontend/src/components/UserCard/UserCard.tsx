@@ -14,20 +14,22 @@ interface Props {
 
 const UserCard: React.FC<Props> = (
 	{ userInfo: {
-		name = '',
+		name = 'unknown',
 		summonerLevel = 0,
 		profileIconId = 0,
-		id = '',
-		accountId = '',
-		puuid = '',
+		id = 'unknown',
+		accountId = 'unknown',
+		puuid = 'unknown',
 		revisionDate = 0,
 	} }
 ): JSX.Element => {
 	return (
-		<div className="shadow-sm">
-			{ name }
-			{ summonerLevel }
-			{ profileIconId }
+		<div className="card">
+			<h3 className="text-4xl">{ name }</h3>
+			{/* <img
+				src={`https://opgg-static.akamaized.net/images/profile_icons/profileIcon4631.jpg?image=q_auto:best&v=${profileIconId}`}
+			/> */}
+			<h4 className="text-xl">{ summonerLevel }</h4>
 		</div>
 	)
 }
