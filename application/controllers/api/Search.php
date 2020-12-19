@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Search extends CI_Controller{
 	private $base_url = 'https://kr.api.riotgames.com/lol';
-	private $api_key = 'RGAPI-9f2cc058-bc56-4a84-9774-2255676d79da';
+	private $api_key = 'RGAPI-e558b511-f66c-4414-8764-5dee490915a3';
 
 	public function index(){
 		echo 'index_page';
