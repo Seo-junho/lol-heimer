@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import MainSearchBox from '@components/SearchBox/MainSearchBox';
 import { API_SEARCH_USER } from '@end-point/index';
 import { useHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { setLoading } from '@store/loading';
+import { connect } from 'react-redux';
 
-const Pages: React.FC = (
-): JSX.Element => {
-  const history = useHistory();
+const mapDispatchToProps = (dispatch: any) => {
+  return bindActionCreators({
+    setLoading
+  }, dispatch);
+};
+
+interface IProps {
+	setLoading: Function;
+};
+
+const Pages: React.FC<IProps> = ({
+	setLoading
+}): JSX.Element => {
+	const history = useHistory();
+
+	useEffect(() => {
+		setLoading(false);
+	}, [])
 
 	const [user, setUser] = useState({
 		username: '',
@@ -36,4 +54,4 @@ const Pages: React.FC = (
 	)
 }
 
-export default Pages;
+export default connect(null, mapDispatchToProps)(Pages);
