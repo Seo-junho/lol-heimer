@@ -108,10 +108,10 @@ class Search extends CI_Controller{
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 		//curl_setopt($ch, CURLOPT_POST, true);
 
-		$result = json_decode(curl_exec($ch));
+		$result = curl_exec($ch);
 		curl_close($ch);
 		print_r($result);
-		return $result[0]->id;
+		return $result['id'];
 	}
 }
 
