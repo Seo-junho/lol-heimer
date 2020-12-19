@@ -47,21 +47,21 @@ const User: React.FC<IProps> = ({
 						setSoloLeague(solo_league_info);
 						setTeamLeague(team_league_info);
 					}
-					// setLoading(false);
+					setLoading(false);
 				})
 				.catch((error: any) => {
 					console.log('error', error);
-					// setLoading(false);
+					setLoading(false);
 				});
 		} catch (e) {
 			console.log('axios catch', e);
-			// setLoading(false);
+			setLoading(false);
 		}
 	}, []);
 
 	// TODO: skeleton css ADD
 	return (
-		<div className="flex flex-col sm:flex-row p-5 items-center justify-center">
+		<div className="flex flex-col sm:flex-row p-5 items-start justify-center">
 			<UserCard
 				userInfo={userInfo}
 			/>

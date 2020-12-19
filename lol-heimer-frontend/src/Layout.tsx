@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Layout.scss'
 import Loading from '@components/Loading';
+import { LoadingType } from './store/index';
 
-const mapStateToProps = (state: boolean, ownProps: {}) => {
-  return { loadingState: state };
+const mapStateToProps = ({ isLoading }: LoadingType, ownProps: {}) => {
+  return { isLoading };
 };
 
-const Layout: React.FC = ({
-	children,
-	loadingState,
-}: any): JSX.Element => {
+interface IProps extends LoadingType {};
 
+const Layout: React.FC<IProps> = ({
+	children,
+	isLoading,
+}): JSX.Element => {
 	return (
 		<>
 			<header>
@@ -30,13 +32,12 @@ const Layout: React.FC = ({
 					</ul>
 				</nav>
 			</header>
-			{ loadingState.isLoading ? (
+			{ isLoading && (
 				<Loading />
-			) : (
-				<div>
-					{ children }
-				</div>
 			)}
+			<div>
+				{ children }
+			</div>
 		</>
 	)
 }

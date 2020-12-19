@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .card {
-	@apply shadow-lg m-5 w-full p-5;
+	@apply shadow-lg mb-5 sm:m-5 w-full p-5;
 }
 
 .common-article {
@@ -11,5 +11,7 @@
 }
 
 .h-loading {
+	position: absolute;
+	width: 100%;
 	height: calc(100vh - 50px);
 }

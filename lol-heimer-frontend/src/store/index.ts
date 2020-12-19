@@ -1,6 +1,9 @@
 import loadingReducer from './loading';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+export interface LoadingType {
+	isLoading: boolean;
+};
 
 const reducers = combineReducers({
   isLoading: loadingReducer,
