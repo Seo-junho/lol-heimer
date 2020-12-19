@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+	@apply shadow-lg m-5 w-full p-5;
+}
+
+.common-article {
+	@apply w-full px-5 xl:px-0 mt-10 max-w-screen-xl mx-auto
+}

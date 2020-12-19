@@ -1,7 +1,7 @@
-import Switch from 'react-bootstrap/esm/Switch';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Pages from '@pages/index';
 import User from '../pages/User';
+import './index.scss'
 
 const Routers: React.FC = (
 ): JSX.Element => {
