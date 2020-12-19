@@ -110,7 +110,7 @@ class Search extends CI_Controller{
 
 		$result = json_decode(curl_exec($ch));
 		curl_close($ch);
-
+		print_r($result);
 		return $result[0]->id;
 	}
 }
