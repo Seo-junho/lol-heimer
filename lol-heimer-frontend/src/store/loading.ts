@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const loading = createSlice({
   name: 'loading',
-  initialState: false,
+  initialState: true,
   reducers: {
     setLoading: (state, action: PayloadAction) => {
       return action.payload;

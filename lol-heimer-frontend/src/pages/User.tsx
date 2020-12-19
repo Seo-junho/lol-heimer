@@ -13,16 +13,20 @@ import { connect } from 'react-redux';
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
     setLoading
-  }, dispatch)
+  }, dispatch);
 };
 
 interface Params {
 	username: string;
 };
 
-const User: React.FC = ({
+interface IProps {
+	setLoading: Function;
+}
+
+const User: React.FC<IProps> = ({
 	setLoading,
-}: any): JSX.Element => {
+}) => {
 	const { username }: Params = useParams();
 	const [userInfo, setUserInfo] = useState<any>({});
 	const [soloLeague, setSoloLeague] = useState<any>({});
@@ -43,18 +47,17 @@ const User: React.FC = ({
 						setSoloLeague(solo_league_info);
 						setTeamLeague(team_league_info);
 					}
-					setLoading(false);
+					// setLoading(false);
 				})
 				.catch((error: any) => {
 					console.log('error', error);
-					setLoading(false);
+					// setLoading(false);
 				});
 		} catch (e) {
 			console.log('axios catch', e);
-			setLoading(false);
+			// setLoading(false);
 		}
 	}, []);
-
 
 	// TODO: skeleton css ADD
 	return (

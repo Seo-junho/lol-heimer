@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Layout.scss'
+import Loading from '@components/Loading';
 
 const mapStateToProps = (state: boolean, ownProps: {}) => {
   return { loadingState: state };
@@ -29,11 +30,12 @@ const Layout: React.FC = ({
 					</ul>
 				</nav>
 			</header>
-			<div>
-				{ children }
-			</div>
-			{ loadingState.isLoading && (
-				<div>Loading</div>
+			{ loadingState.isLoading ? (
+				<Loading />
+			) : (
+				<div>
+					{ children }
+				</div>
 			)}
 		</>
 	)
