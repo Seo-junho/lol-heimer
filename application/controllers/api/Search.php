@@ -24,9 +24,10 @@ class Search extends CI_Controller{
 		$response['code'] = 200;
 		$response['message'] = 'Success';
 		$response['data']['user_info'] = $this->getUser($userName);
-		$response['data']['solo_league_info'] = $league_info[0];
-		$response['data']['team_league_info'] = $league_info[1];
-
+		if (!empty($league_info)) {
+			$response['data']['solo_league_info'] = $league_info[0];
+			$response['data']['team_league_info'] = $league_info[1];
+		}
 		echo json_encode($response);
 	}
 
