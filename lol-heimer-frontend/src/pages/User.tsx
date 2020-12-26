@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import { API_SEARCH_USER } from '@end-point/index';
+import { API_SEARCH_GET_MATCH_LIST, API_SEARCH_USER } from '@end-point/index';
 import UserCard from '@components/UserCard/UserCard';
 import LeagueCard from '@components/UserCard/LeagueCard';
 import { setLoading } from '@store/loading';
@@ -32,6 +32,8 @@ const User: React.FC<IProps> = ({
 	const [soloLeague, setSoloLeague] = useState<any>({});
 	const [teamLeague, setTeamLeague] = useState<any>({});
 
+	const [matches, setMatches] = useState<any[]>([]);
+
 	useEffect(() => {
 		setLoading(true);
 		try {
@@ -59,18 +61,46 @@ const User: React.FC<IProps> = ({
 		}
 	}, []);
 
+	useEffect(() => {
+		setLoading(true);
+		try {
+			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/5/0`)
+				.then((response: any) => {
+					const { data: { data : {
+						matches,
+					} } } = response;
+					if (matches) {
+						setMatches(matches);
+					}
+					setLoading(false);
+				})
+				.catch((error: any) => {
+					console.log('error', error);
+					setLoading(false);
+				});
+		} catch (e) {
+			console.log('axios catch', e);
+			setLoading(false);
+		}
+	}, []);
+
 	// TODO: skeleton css ADD
 	return (
-		<div className="flex flex-col sm:flex-row p-5 items-start justify-center">
-			<UserCard
-				userInfo={userInfo}
-			/>
-			<LeagueCard
-				leagueInfo={soloLeague}
-			/>
-			<LeagueCard
-				leagueInfo={teamLeague}
-			/>
+		<div>
+			<div className="flex flex-col sm:flex-row p-5 items-start justify-center">
+				<UserCard
+					userInfo={userInfo}
+				/>
+				<LeagueCard
+					leagueInfo={soloLeague}
+				/>
+				<LeagueCard
+					leagueInfo={teamLeague}
+				/>
+			</div>
+			<div className="flex flex-row p-5 items-center justify-center">
+
+			</div>
 		</div>
 	)
 }
