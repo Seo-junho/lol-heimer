@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
 
 class Search extends CI_Controller{
 	private $base_url = 'https://kr.api.riotgames.com/lol';
