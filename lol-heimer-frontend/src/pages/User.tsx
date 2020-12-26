@@ -8,6 +8,7 @@ import { setLoading } from '@store/loading';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
+import Article from '@components/Article';
 
 
 // TODO: typescript type 정의하기
@@ -88,7 +89,7 @@ const User: React.FC<IProps> = ({
 
 	// TODO: skeleton css ADD
 	return (
-		<div>
+		<Article>
 			<div className="flex flex-col sm:flex-row p-5 items-start justify-center">
 				<UserCard
 					userInfo={userInfo}
@@ -105,7 +106,7 @@ const User: React.FC<IProps> = ({
 					<MatchCard key={index} match={item} />
 				)) }
 			</div>
-		</div>
+		</Article>
 	)
 }
 
