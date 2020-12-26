@@ -23,8 +23,8 @@ const LeagueCard: React.FC<Props> = (
 		leagueInfo: {
 			leagueId = '',
 			queueType = '',
-			tier = '',
-			rank = '',
+			tier = 'UnRanked',
+			rank = '-',
 			summonerId = '',
 			summonerName = '',
 			leaguePoints = 0,
@@ -39,11 +39,13 @@ const LeagueCard: React.FC<Props> = (
 ): JSX.Element => {
 	return (
 		<div className="card">
-			{ queueType === 'RANKED_SOLO_5x5' ? '솔로' : '팀랭' }
-			{ tier }
-			{ rank }
-			포인트 { leaguePoints }
-			{ wins }승 { losses }패
+			<h3 className="text-2xl">{ queueType === 'RANKED_SOLO_5x5' ? '솔로' : '팀랭' }</h3>
+			<h4 className="text-xl">{ tier } { rank }</h4>
+			<h4 className="text-md">포인트 { leaguePoints }</h4>
+			<div>
+				<span className="font-bold text-blue-600">{ wins }</span>승&nbsp;
+				<span className="font-bold text-red-500">{ losses }</span>패
+			</div>
 		</div>
 	)
 }
