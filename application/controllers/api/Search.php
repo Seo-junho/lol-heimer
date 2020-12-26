@@ -50,8 +50,9 @@ class Search extends CI_Controller{
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_close($ch);
 		$matchList = json_decode(curl_exec($ch));
+		curl_close($ch);
+
 
 		$matchDetail = [];
 
