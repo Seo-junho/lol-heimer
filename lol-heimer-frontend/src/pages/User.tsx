@@ -7,6 +7,7 @@ import LeagueCard from '@components/UserCard/LeagueCard';
 import { setLoading } from '@store/loading';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import MatchCard from '@components/MatchCard/MatchCard';
 
 
 // TODO: typescript type 정의하기
@@ -32,7 +33,7 @@ const User: React.FC<IProps> = ({
 	const [soloLeague, setSoloLeague] = useState<any>({});
 	const [teamLeague, setTeamLeague] = useState<any>({});
 
-	const [matches, setMatches] = useState<any[]>([]);
+	const [matchList, setMatches] = useState<any[]>([]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -70,6 +71,7 @@ const User: React.FC<IProps> = ({
 						matches,
 					} } } = response;
 					if (matches) {
+						console.log('matches', matches)
 						setMatches(matches);
 					}
 					setLoading(false);
@@ -98,8 +100,10 @@ const User: React.FC<IProps> = ({
 					leagueInfo={teamLeague}
 				/>
 			</div>
-			<div className="flex flex-row p-5 items-center justify-center">
-
+			<div className="flex flex-col p-5 items-start justify-center">
+				{ matchList.map((item, index) => (
+					<MatchCard key={index} match={item} />
+				)) }
 			</div>
 		</div>
 	)
