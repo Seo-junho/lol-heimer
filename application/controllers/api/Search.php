@@ -43,9 +43,6 @@ class Search extends CI_Controller{
 		}
 
 		$AccountId = $this->getUserAccountId($userName);
-		$limit = 10;
-		$offset = 0;
-
 		$apiUrl = $this->base_url . '/match/v4/matchlists/by-account/' . $AccountId .'?api_key=' . RIOT_API_KEY . '&startIndex='.$offset.'&endIndex='.$limit;
 
 		$ch = curl_init();
@@ -70,29 +67,6 @@ class Search extends CI_Controller{
 			$value->matchDetail = $matchInfo;
 		}
 		$this->return('200', 'Success!', $matchList);
-	}
-
-	public function getServerStatus()
-	{
-		$response['code'] = 200;
-		$response['message'] = 'Success';
-		$response['data'] = [];
-
-
-		$api_url = $this->base_url . '/status/v4/platform-data?api_key=' . RIOT_API_KEY;
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $api_url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
-		$result = curl_exec($ch);
-		curl_close($ch);
-
-		$response['data'] = $result;
-
-		echo json_encode($response);
 	}
 
 	/**
@@ -193,7 +167,6 @@ class Search extends CI_Controller{
 
 		echo json_encode($response);
 		return;
-
 	}
 
 }
