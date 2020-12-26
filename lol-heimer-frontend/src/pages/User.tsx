@@ -103,7 +103,11 @@ const User: React.FC<IProps> = ({
 			</div>
 			<div className="flex flex-col p-5 items-start justify-center">
 				{ matchList.map((item, index) => (
-					<MatchCard key={index} match={item} />
+					<MatchCard
+						key={index}
+						match={item}
+						username={username}
+					/>
 				)) }
 			</div>
 		</Article>
