@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+define("RIOT_API_KEY",'RGAPI-d45aa2a7-05ab-45e5-a5d9-2a6155fbf3d6');
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
