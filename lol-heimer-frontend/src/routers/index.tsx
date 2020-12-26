@@ -9,7 +9,7 @@ const Routers: React.FC = (
 	return (
 		<Switch>
 			<Route exact path='/' component={Pages} />
-			<Route exact path='/user/:username' component={User} />
+			<Route exact path='/home/user/:username' component={User} />
 		</Switch>
 	)
 }

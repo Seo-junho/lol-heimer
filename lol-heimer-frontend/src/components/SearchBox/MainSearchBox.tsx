@@ -30,7 +30,7 @@ const MainSearchBox: React.FC<Props> = (
 
 	const formSubmit = () => {
 		const { username } = getValues();
-		history.push(`/user/${username}`);
+		history.push(`/home/user/${username}`);
   }
 
 	return (
