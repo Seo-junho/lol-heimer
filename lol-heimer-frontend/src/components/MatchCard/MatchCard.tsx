@@ -40,6 +40,7 @@ const MatchCard: React.FC<IProps> = ({
 	const playTime = `${playMinute}분 ${game_duration % 60}초`;
 	const kda = deaths === 0 ? 'Prefect' : `${((kills + assists) / deaths).toFixed(2)}:1 평점`;
 	const csPerMinute = (total_minions_killed / playMinute).toFixed(2);
+	const cardBgColor = playMinute > 5 ? (isWin ? 'bg-blue-200' : 'bg-red-200') : ('bg-gray-300');
 
 	let killType = '';
 	if (is_penta_kill) {
@@ -51,7 +52,6 @@ const MatchCard: React.FC<IProps> = ({
 	} else if (is_double_kill) {
 		killType = '더블킬';
 	}
-
 
 	const parseTime = (timestemp: number): string => {
 		const curDate = new Date();
@@ -75,18 +75,18 @@ const MatchCard: React.FC<IProps> = ({
 
 	return (
 		<div
-			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${isWin ? 'bg-blue-200' : 'bg-red-200'} border border-white rounded-xl`}
+			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
 		>
-			<div className="flex-grow-0 flex flex-col divide-y-2 divide-white divide-solid justify-center items-center">
-				<div className="pb-2">
+			<div className="flex-grow-0 flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
+				<div className="sm:pb-2">
 					<span className="font-light">{`${parseTime(timestamp)}`}</span>
 				</div>
-				<div className="flex flex-col justify-center items-center pt-2">
-					<div className={`font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+				<div className="flex sm:flex-col justify-center items-center sm:pt-2">
+					<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
 					<div className="font-light">{`${playTime}`}</div>
 				</div>
 			</div>
-			<div className="flex-grow-0 w-40 flex flex-col justify-center items-center">
+			<div className="p-3 flex-grow-0 w-40 flex flex-col justify-center items-center">
 				<div
 					className="border border-white rounded-full bg-cover bg-no-repeat"
 					style={{
