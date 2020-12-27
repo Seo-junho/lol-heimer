@@ -227,15 +227,15 @@ function get_game_type()
 {
 	return [
 		[
-			"gametype" => "CUSTOM_GAME",
+			"id" => "CUSTOM_GAME",
         	"description" => "사용자 설정 게임"
 		],
 		[
-			"gametype" => "TUTORIAL_GAME",
+			"id" => "TUTORIAL_GAME",
        		"description" => "튜토리얼 게임"
 		],
 		[
-			"gametype" => "MATCHED_GAME",
+			"id" => "MATCHED_GAME",
         	"description" => "기타 게임"
 		]
 	];
@@ -770,6 +770,8 @@ function get_property($type = '', $id = 0 ) {
 				return $item['mapName'];
 			} elseif ($type == 'queues') {
 				return $item['map'];
+			} elseif ($type == 'game_type') {
+				return $item['description'];
 			}
 		}
 	}

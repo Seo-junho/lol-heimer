@@ -32,13 +32,11 @@ function getSpell($id = 0)
 	$url = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json';
 	$json_string = file_get_contents($url);
 	$data = json_decode($json_string, true);
-	$key = array_search($id, array_column($data['data'], 'id'));
-
+	$key = array_search($id, array_column($data['data'], 'key'));
 	$data = $data['data'];
 	$list = array_keys($data);
-	$id = $list[$key];
-
-	$data = $data[$id];
+	$k = $list[$key];
+	$data = $data[$k];
 
 	$reponseData = [];
 
@@ -47,7 +45,7 @@ function getSpell($id = 0)
 	$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/'	.$data['id']. '.png';
 	$reponseData['desc'] = $data['description'];
 
-	return $reponse_data;
+	return $reponseData;
 }
 
 /**

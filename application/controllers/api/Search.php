@@ -73,9 +73,52 @@ class Search extends CI_Controller{
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$matchInfo = json_decode(curl_exec($ch));
 			curl_close($ch);
-			$value->matchDetail = $matchInfo;
+
+			$matchDetail[$key]['play_champion'] = getChampionData($value->champion);
+			$matchDetail[$key]['timestamp'] = $value->timestamp;
+			$matchDetail[$key]['role'] = $value->role;
+			$matchDetail[$key]['lane'] = $value->lane;
+			$matchDetail[$key]['queue'] = get_property('queues',$value->queue);
+
+			$matchDetail[$key]['gameCreation'] = $matchInfo->gameCreation;
+			$matchDetail[$key]['gameDuration'] = $matchInfo->gameDuration;
+			$matchDetail[$key]['gameMode'] = get_property('game_mode', $matchInfo->gameMode);
+			$matchDetail[$key]['gameType'] = get_property('game_type', $matchInfo->gameType);
+			$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
+
+			foreach ( $matchInfo->participantIdentities as $k=>$player){
+				if ($player->player->currentAccountId == $AccountId) {
+					$playerParticipantId = $player->participantId;
+					break;
+				}
+			}
+
+			$teams = [];
+			foreach ($matchInfo->teams as $team) {
+				$teams[$team->teamId] = $team;
+			}
+
+			foreach ($matchInfo->participants as $k=>$participants) {
+				if ($participants->participantId == $playerParticipantId) {
+					$matchDetail[$key]['kills'] = $participants->stats->kills;
+					$matchDetail[$key]['deaths'] = $participants->stats->deaths;
+					$matchDetail[$key]['assists'] = $participants->stats->assists;
+					$matchDetail[$key]['champ_level'] = $participants->stats->champLevel;
+					$matchDetail[$key]['total_minions_killed'] = $participants->stats->champLevel;
+
+					$matchDetail[$key]['is_double_kill'] = $participants->stats->doubleKills > 0;
+					$matchDetail[$key]['is_triple_kill'] = $participants->stats->tripleKills > 0;
+					$matchDetail[$key]['is_quadra_kill'] = $participants->stats->quadraKills > 0;
+					$matchDetail[$key]['is_penta_kill'] = $participants->stats->pentaKills > 0;
+
+					$matchDetail[$key]['game_stat'] = ($teams[$participants->teamId]->win == 'Fail') ? '패배' : '승리';
+					$matchDetail[$key]['spell_1'] = getSpell($participants->spell1Id);
+					$matchDetail[$key]['spell_2'] = getSpell($participants->spell2Id);
+					break;
+				}
+			}
 		}
-		$this->return('200', 'Success!', $matchList);
+		$this->return('200', 'Success!', $matchDetail);
 	}
 
 	/**
