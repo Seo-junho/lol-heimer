@@ -79,7 +79,7 @@ const MatchCard: React.FC<IProps> = ({
 					</div>
 				</div>
 			</div>
-			<div className="flex-1 flex flex-row items-center justify-between px-10">
+			<div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
 						<PlayerTitle
