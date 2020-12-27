@@ -24,7 +24,7 @@ const MatchCard: React.FC<IProps> = ({
 
 	const blueTeam = participantIdentities.filter(blueFilter).map(participantsMerge);
 	const redTeam = participantIdentities.filter(redFilter).map(participantsMerge);
-	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username)
+	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username.replace(/ /g, ''));
 	const [searchUserInfo] = participants.filter((identity: any) => identity.participantId === searchUser.participantId);
 	// console.log('searchUserInfo', searchUserInfo)
 
@@ -56,7 +56,7 @@ const MatchCard: React.FC<IProps> = ({
 		return `${betweenTimeDay}일전`;
 	}
 
-	// console.log('match', match)
+	console.log('match', match)
 
 	return (
 		<div className="shadow-lg mb-5 w-full p-5 flex flex-row items-center justify-center">
