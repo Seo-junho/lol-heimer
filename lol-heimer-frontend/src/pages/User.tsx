@@ -72,12 +72,11 @@ const User: React.FC<IProps> = ({
 		try {
 			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/5/0`)
 				.then((response: any) => {
-					const { data: { data : {
-						matches,
-					} } } = response;
-					if (matches) {
-						console.log('matches', matches)
-						setMatches(matches);
+					const { data: { data } } = response;
+					console.log('data', data)
+					if (data) {
+						console.log('matches', data)
+						setMatches(data);
 					}
 					setLoading(false);
 				})
