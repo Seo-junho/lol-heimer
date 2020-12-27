@@ -37,13 +37,15 @@ const UserCard: React.FC<Props> = (
 			>
 			</div>
 			<div
-				className="w-10 h-6 bg-cover bg-no-repeat"
+				className="bg-cover bg-no-repeat flex justify-center items-center"
 				style={{
-					backgroundImage: `url('${LevelBox}')`
+					width: '44px',
+					height: '24px',
+					backgroundImage: `url('${LevelBox}')`,
 				}}
 			>
+				<h4 className="text-sm font-light text-white">{ summonerLevel }</h4>
 			</div>
-			<h4 className="text-xl">{ summonerLevel }</h4>
 		</div>
 	)
 }
