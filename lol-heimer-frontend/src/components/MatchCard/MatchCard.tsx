@@ -63,7 +63,7 @@ const MatchCard: React.FC<IProps> = ({
 
 	return (
 		<div className="shadow-lg mb-5 w-full p-5 flex flex-row items-center justify-center">
-			<div className="flex-grow-0 w-40">
+			<div className="flex-grow-0 w-40 hidden sm:inline">
 				<h1>라인: { match.lane }</h1>
 				<h2>Rold: { match.role }</h2>
 			</div>
