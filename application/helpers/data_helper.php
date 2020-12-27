@@ -1,6 +1,5 @@
 <?php
-
-
+@ini_set("allow_url_fopen", "1");
 function getUserIcon($id = 0)
 {
 	$url = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json';
