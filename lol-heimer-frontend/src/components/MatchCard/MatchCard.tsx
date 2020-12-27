@@ -75,7 +75,7 @@ const MatchCard: React.FC<IProps> = ({
 
 	return (
 		<div
-			className={`shadow-lg mb-5 w-full p-5 flex flex-row items-center justify-center ${isWin ? 'bg-blue-200' : 'bg-red-200'} border border-white rounded-xl`}
+			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${isWin ? 'bg-blue-200' : 'bg-red-200'} border border-white rounded-xl`}
 		>
 			<div className="flex-grow-0 flex flex-col divide-y-2 divide-white divide-solid justify-center items-center">
 				<div className="pb-2">
@@ -97,25 +97,23 @@ const MatchCard: React.FC<IProps> = ({
 				/>
 				<div className="mt-1 text-lg">{ championName } </div>
 			</div>
-			<div className="flex flex-row justify-center items-center">
-				<div>
-					<div
-						className="bg-cover bg-no-repeat mb-1"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `url(${spellIconImg1})`,
-						}}
-					/>
-					<div
-						className="bg-cover bg-no-repeat"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `url(${spellIconImg2})`,
-						}}
-					/>
-				</div>
+			<div className="flex flex-row sm:flex-col justify-center items-center my-2">
+				<div
+					className="bg-cover bg-no-repeat mr-1 mb-0 sm:mr-0 sm:mb-1"
+					style={{
+						width: '40px',
+						height: '40px',
+						backgroundImage: `url(${spellIconImg1})`,
+					}}
+				/>
+				<div
+					className="bg-cover bg-no-repeat"
+					style={{
+						width: '40px',
+						height: '40px',
+						backgroundImage: `url(${spellIconImg2})`,
+					}}
+				/>
 			</div>
 			<div className="px-3 flex flex-col justify-center items-center">
 				<div>
