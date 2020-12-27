@@ -1,5 +1,11 @@
 <?php
 @ini_set("allow_url_fopen", "1");
+
+/**
+ * 유저 아이콘을 가져 옵니다.
+ * @param int $id
+ * @return string
+ */
 function getUserIcon($id = 0)
 {
 	$url = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json';
@@ -16,7 +22,39 @@ function getUserIcon($id = 0)
 	return 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/' . $userIconData['image']['full'];
 }
 
+/**
+ * 스펠 정보를 가져 옵니다.
+ * @param int $id
+ * @return array
+ */
+function getSpell($id = 0)
+{
+	$url = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json';
+	$json_string = file_get_contents($url);
+	$data = json_decode($json_string, true);
+	$key = array_search($id, array_column($data['data'], 'id'));
 
+	$data = $data['data'];
+	$list = array_keys($data);
+	$id = $list[$key];
+
+	$data = $data[$id];
+
+	$reponseData = [];
+
+	$reponseData['id'] = $data['id'];
+	$reponseData['name'] = $data['name'];
+	$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/'	.$data['id']. '.png';
+	$reponseData['desc'] = $data['description'];
+
+	return $reponse_data;
+}
+
+/**
+ * 챔피언 정보를 가져옵니다
+ * @param int $id
+ * @return array
+ */
 function getChampionData($id = 0)
 {
 	if ($id == 0) {
