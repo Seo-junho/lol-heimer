@@ -104,7 +104,7 @@ class Search extends CI_Controller{
 					$matchDetail[$key]['deaths'] = $participants->stats->deaths;
 					$matchDetail[$key]['assists'] = $participants->stats->assists;
 					$matchDetail[$key]['champ_level'] = $participants->stats->champLevel;
-					$matchDetail[$key]['total_minions_killed'] = $participants->stats->champLevel;
+					$matchDetail[$key]['total_minions_killed'] = $participants->stats->totalMinionsKilled;
 
 					$matchDetail[$key]['is_double_kill'] = $participants->stats->doubleKills > 0;
 					$matchDetail[$key]['is_triple_kill'] = $participants->stats->tripleKills > 0;
