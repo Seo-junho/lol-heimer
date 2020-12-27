@@ -17,8 +17,8 @@ const MatchCard: React.FC<IProps> = ({
 	const redFilter = (_: any, idx: number) => idx >= 5;
 	const blueFilter = (_: any, idx: number) => idx < 5;
 
-	const participantsMerge = (item: any, index: number) => ({
-		...participants[index],
+	const participantsMerge = (item: any) => ({
+		...participants[item.participantId - 1],
 		...item,
 	});
 
@@ -27,6 +27,9 @@ const MatchCard: React.FC<IProps> = ({
 	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username.replace(/ /g, ''));
 	const [searchUserInfo] = participants.filter((identity: any) => identity.participantId === searchUser.participantId);
 	// console.log('searchUserInfo', searchUserInfo)
+
+	console.log('blueTeam', blueTeam);
+	console.log('redTeam', redTeam)
 
 	const roleType = (role: string) => {
 		// TODO Type
@@ -78,18 +81,18 @@ const MatchCard: React.FC<IProps> = ({
 			</div>
 			<div className="flex-1 flex flex-row items-center justify-between px-10">
 				<div className="flex flex-col">
-					{ blueTeam.map((identitiy: any, idx: number) => (
+					{ blueTeam.map((identitiy: any) => (
 						<PlayerTitle
-							key={idx}
+							key={identitiy.participantId}
 							championId={identitiy.championId}
 							summonerName={identitiy.player.summonerName}
 						/>
 					))}
 				</div>
 				<div className="flex flex-col">
-					{ redTeam.map((identitiy: any, idx: number) => (
+					{ redTeam.map((identitiy: any) => (
 						<PlayerTitle
-							key={idx}
+							key={identitiy.participantId}
 							championId={identitiy.championId}
 							summonerName={identitiy.player.summonerName}
 						/>
