@@ -94,7 +94,7 @@ const User: React.FC<IProps> = ({
 	// TODO: skeleton css ADD
 	return (
 		<Article>
-			<div className="flex flex-col sm:flex-row p-5 items-start justify-center">
+			<div className="flex flex-col sm:flex-row p-5 items-center justify-center">
 				<UserCard
 					userInfo={userInfo}
 				/>
