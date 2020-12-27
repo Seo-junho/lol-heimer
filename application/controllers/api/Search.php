@@ -32,8 +32,8 @@ class Search extends CI_Controller{
 			$response['data']['team_league_info'] = $league_info[0];
 			$response['data']['solo_league_info'] = $league_info[1];
 
-			$response['data']['team_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[0]->tier);
-			$response['data']['solo_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[1]->tier);
+			$response['data']['team_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[0]->tier). '.png';
+			$response['data']['solo_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[1]->tier) . '.png';
 		}
 		echo json_encode($response);
 	}
