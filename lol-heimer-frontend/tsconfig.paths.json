@@ -6,7 +6,8 @@
       "@components/*": ["src/components/*"],
 			"@routers/*": ["src/routers/*"],
 			"@end-point/*": ["src/end-point/*"],
-			"@store/*": ["src/store/*"]
+			"@store/*": ["src/store/*"],
+			"@images/*": ["src/images/*"]
     }
   }
 }

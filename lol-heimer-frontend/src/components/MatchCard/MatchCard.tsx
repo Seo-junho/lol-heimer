@@ -11,32 +11,29 @@ const MatchCard: React.FC<IProps> = ({
 	username,
 }) => {
 	const {
-		matchDetail: { participantIdentities, participants },
+		matchDetail: {
+			participantIdentities,
+			participants,
+			gameCreation,
+			gameDuration,
+		},
 		champion,
 	} = match;
+
 	const redFilter = (_: any, idx: number) => idx >= 5;
 	const blueFilter = (_: any, idx: number) => idx < 5;
 
-	const participantsMerge = (item: any, index: number) => ({
-		...participants[index],
+	const participantsMerge = (item: any) => ({
+		...participants[item.participantId - 1],
 		...item,
 	});
 
 	const blueTeam = participantIdentities.filter(blueFilter).map(participantsMerge);
 	const redTeam = participantIdentities.filter(redFilter).map(participantsMerge);
-	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username)
+	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username.replace(/ /g, ''));
 	const [searchUserInfo] = participants.filter((identity: any) => identity.participantId === searchUser.participantId);
-	// console.log('searchUserInfo', searchUserInfo)
 
-	const roleType = (role: string) => {
-		// TODO Type
-		if (role === 'NONE') {
-			return '일반';
-		}
-		if (role === 'DUO' || role === 'SOLO' || role === 'DUO_CARRY') {
-			return ''
-		}
-	}
+	const playTime = `${Math.floor(gameDuration / 60)}분 ${gameDuration % 60}초`;
 
 	const parseTime = (timestemp: number): string => {
 		const curDate = new Date();
@@ -56,17 +53,20 @@ const MatchCard: React.FC<IProps> = ({
 		return `${betweenTimeDay}일전`;
 	}
 
-	// console.log('match', match)
+	console.log('match', match)
 
 	return (
 		<div className="shadow-lg mb-5 w-full p-5 flex flex-row items-center justify-center">
-			<div className="flex-grow-0 w-40">
+			<div className="flex-grow-0 w-40 hidden sm:inline">
 				<h1>라인: { match.lane }</h1>
 				<h2>Rold: { match.role }</h2>
 			</div>
 			<div className="flex-grow-0 flex flex-col justify-center items-center">
 				<div>
 					<span className="font-light">{`${parseTime(match.timestamp)}`}</span>
+				</div>
+				<div>
+					<span className="font-light">{`${playTime}`}</span>
 				</div>
 				<div className="flex flex-row justify-center items-center">
 					<div>Champion: { searchUserInfo.championId } </div>
@@ -76,20 +76,20 @@ const MatchCard: React.FC<IProps> = ({
 					</div>
 				</div>
 			</div>
-			<div className="flex-1 flex flex-row items-center justify-between px-10">
+			<div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
-					{ blueTeam.map((identitiy: any, idx: number) => (
+					{ blueTeam.map((identitiy: any) => (
 						<PlayerTitle
-							key={idx}
+							key={identitiy.participantId}
 							championId={identitiy.championId}
 							summonerName={identitiy.player.summonerName}
 						/>
 					))}
 				</div>
 				<div className="flex flex-col">
-					{ redTeam.map((identitiy: any, idx: number) => (
+					{ redTeam.map((identitiy: any) => (
 						<PlayerTitle
-							key={idx}
+							key={identitiy.participantId}
 							championId={identitiy.championId}
 							summonerName={identitiy.player.summonerName}
 						/>
