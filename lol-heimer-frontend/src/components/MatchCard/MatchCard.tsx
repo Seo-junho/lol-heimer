@@ -38,6 +38,24 @@ const MatchCard: React.FC<IProps> = ({
 		}
 	}
 
+	const parseTime = (timestemp: number): string => {
+		const curDate = new Date();
+		const playDate = new Date(timestemp);
+
+		const betweenTime = Math.floor((curDate.getTime() - playDate.getTime()) / 1000 / 60);
+		if (betweenTime < 60) {
+			return `${betweenTime}분전`;
+		}
+
+		const betweenTimeHour = Math.floor(betweenTime / 60);
+		if (betweenTimeHour < 24) {
+			return `${betweenTimeHour}시간전`;
+		}
+
+		const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+		return `${betweenTimeDay}일전`;
+	}
+
 	// console.log('match', match)
 
 	return (
@@ -46,14 +64,18 @@ const MatchCard: React.FC<IProps> = ({
 				<h1>라인: { match.lane }</h1>
 				<h2>Rold: { match.role }</h2>
 			</div>
-			<div className="flex-grow-0 flex flex-row justify-center items-center">
-				<div>Champion: { searchUserInfo.championId } </div>
+			<div className="flex-grow-0 flex flex-col justify-center items-center">
 				<div>
-					<div>spell1: { searchUserInfo.spell1Id }</div>
-					<div>spell2: { searchUserInfo.spell2Id }</div>
+					<span className="font-light">{`${parseTime(match.timestamp)}`}</span>
+				</div>
+				<div className="flex flex-row justify-center items-center">
+					<div>Champion: { searchUserInfo.championId } </div>
+					<div>
+						<div>spell1: { searchUserInfo.spell1Id }</div>
+						<div>spell2: { searchUserInfo.spell2Id }</div>
+					</div>
 				</div>
 			</div>
-			{/* <h1>시간: {`${new Date(match.timestamp)}`}</h1> */}
 			<div className="flex-1 flex flex-row items-center justify-between px-10">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any, idx: number) => (
