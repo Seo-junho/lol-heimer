@@ -11,9 +11,15 @@ const MatchCard: React.FC<IProps> = ({
 	username,
 }) => {
 	const {
-		matchDetail: { participantIdentities, participants },
+		matchDetail: {
+			participantIdentities,
+			participants,
+			gameCreation,
+			gameDuration,
+		},
 		champion,
 	} = match;
+
 	const redFilter = (_: any, idx: number) => idx >= 5;
 	const blueFilter = (_: any, idx: number) => idx < 5;
 
@@ -26,20 +32,8 @@ const MatchCard: React.FC<IProps> = ({
 	const redTeam = participantIdentities.filter(redFilter).map(participantsMerge);
 	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username.replace(/ /g, ''));
 	const [searchUserInfo] = participants.filter((identity: any) => identity.participantId === searchUser.participantId);
-	// console.log('searchUserInfo', searchUserInfo)
 
-	console.log('blueTeam', blueTeam);
-	console.log('redTeam', redTeam)
-
-	const roleType = (role: string) => {
-		// TODO Type
-		if (role === 'NONE') {
-			return '일반';
-		}
-		if (role === 'DUO' || role === 'SOLO' || role === 'DUO_CARRY') {
-			return ''
-		}
-	}
+	const playTime = `${Math.floor(gameDuration / 60)}분 ${gameDuration % 60}초`;
 
 	const parseTime = (timestemp: number): string => {
 		const curDate = new Date();
@@ -70,6 +64,9 @@ const MatchCard: React.FC<IProps> = ({
 			<div className="flex-grow-0 flex flex-col justify-center items-center">
 				<div>
 					<span className="font-light">{`${parseTime(match.timestamp)}`}</span>
+				</div>
+				<div>
+					<span className="font-light">{`${playTime}`}</span>
 				</div>
 				<div className="flex flex-row justify-center items-center">
 					<div>Champion: { searchUserInfo.championId } </div>
