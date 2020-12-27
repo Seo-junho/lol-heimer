@@ -80,10 +80,10 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['lane'] = $value->lane;
 			$matchDetail[$key]['queue'] = get_property('queues',$value->queue);
 
-			$matchDetail[$key]['gameCreation'] = $matchInfo->gameCreation;
-			$matchDetail[$key]['gameDuration'] = $matchInfo->gameDuration;
-			$matchDetail[$key]['gameMode'] = get_property('game_mode', $matchInfo->gameMode);
-			$matchDetail[$key]['gameType'] = get_property('game_type', $matchInfo->gameType);
+			$matchDetail[$key]['game_creation'] = $matchInfo->gameCreation;
+			$matchDetail[$key]['game_duration'] = $matchInfo->gameDuration;
+			$matchDetail[$key]['game_mode'] = get_property('game_mode', $matchInfo->gameMode);
+			$matchDetail[$key]['game_type'] = get_property('game_type', $matchInfo->gameType);
 			$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
 
 			foreach ( $matchInfo->participantIdentities as $k=>$player){
