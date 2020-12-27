@@ -49,7 +49,7 @@ const LeagueCard: React.FC<Props> = (
 					}}
 				/>
 			</div>
-			<div className="flex-1 pl-5">
+			<div className="flex-1 lg:pl-5 flex flex-col items-center justify-center lg:items-start">
 				<h3 className="text-xl lg:text-2xl">{ queueType === 'RANKED_SOLO_5x5' ? '솔로랭크' : '자유 5:5 랭크' }</h3>
 				<h4 className="text-md lg:text-xl">{ tier } { rank }</h4>
 				<h4 className="text-sm lg:text-md">포인트 { leaguePoints }</h4>
