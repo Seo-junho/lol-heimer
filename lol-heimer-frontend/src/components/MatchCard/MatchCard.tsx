@@ -11,29 +11,47 @@ const MatchCard: React.FC<IProps> = ({
 	username,
 }) => {
 	const {
-		matchDetail: {
-			participantIdentities,
-			participants,
-			gameCreation,
-			gameDuration,
+		timestamp,
+		play_champion: {
+			name: championName,
+			image: championIcon,
 		},
-		champion,
+		spell_1: {
+			icon_img: spellIconImg1,
+		},
+		spell_2: {
+			icon_img: spellIconImg2,
+		},
+		game_duration,
+		game_stat,
+		kills,
+		deaths,
+		assists,
+		champ_level,
+		total_minions_killed,
+		is_double_kill,
+		is_triple_kill,
+		is_quadra_kill,
+		is_penta_kill,
 	} = match;
 
-	const redFilter = (_: any, idx: number) => idx >= 5;
-	const blueFilter = (_: any, idx: number) => idx < 5;
+	const isWin = game_stat === '승리';
+	const playMinute = Math.floor(game_duration / 60);
+	const playTime = `${playMinute}분 ${game_duration % 60}초`;
+	const kda = deaths === 0 ? 'Prefect' : `${((kills + assists) / deaths).toFixed(2)}:1 평점`;
+	const csPerMinute = (total_minions_killed / playMinute).toFixed(2);
+	const cardBgColor = playMinute > 5 ? (isWin ? 'bg-blue-200' : 'bg-red-200') : ('bg-gray-300');
 
-	const participantsMerge = (item: any) => ({
-		...participants[item.participantId - 1],
-		...item,
-	});
-
-	const blueTeam = participantIdentities.filter(blueFilter).map(participantsMerge);
-	const redTeam = participantIdentities.filter(redFilter).map(participantsMerge);
-	const [searchUser] = participantIdentities.filter((identity: any) => identity.player.summonerName.replace(/ /g, '') === username.replace(/ /g, ''));
-	const [searchUserInfo] = participants.filter((identity: any) => identity.participantId === searchUser.participantId);
-
-	const playTime = `${Math.floor(gameDuration / 60)}분 ${gameDuration % 60}초`;
+	let killType = '';
+	if (is_penta_kill) {
+		killType = '펜타킬';
+	} else if (is_quadra_kill) {
+		killType = '쿼드라킬';
+	} else if (is_triple_kill) {
+		killType = '트리플킬';
+	} else if (is_double_kill) {
+		killType = '더블킬';
+	}
 
 	const parseTime = (timestemp: number): string => {
 		const curDate = new Date();
@@ -56,27 +74,69 @@ const MatchCard: React.FC<IProps> = ({
 	console.log('match', match)
 
 	return (
-		<div className="shadow-lg mb-5 w-full p-5 flex flex-row items-center justify-center">
-			<div className="flex-grow-0 w-40 hidden sm:inline">
-				<h1>라인: { match.lane }</h1>
-				<h2>Rold: { match.role }</h2>
+		<div
+			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
+		>
+			<div className="flex-grow-0 flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
+				<div className="sm:pb-2">
+					<span className="font-light">{`${parseTime(timestamp)}`}</span>
+				</div>
+				<div className="flex sm:flex-col justify-center items-center sm:pt-2">
+					<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+					<div className="font-light">{`${playTime}`}</div>
+				</div>
 			</div>
-			<div className="flex-grow-0 flex flex-col justify-center items-center">
+			<div className="p-3 flex-grow-0 w-40 flex flex-col justify-center items-center">
+				<div
+					className="border border-white rounded-full bg-cover bg-no-repeat"
+					style={{
+						width: '100px',
+						height: '100px',
+						backgroundImage: `url(${championIcon})`,
+					}}
+				/>
+				<div className="mt-1 text-lg">{ championName } </div>
+			</div>
+			<div className="flex flex-row sm:flex-col justify-center items-center my-2">
+				<div
+					className="bg-cover bg-no-repeat mr-1 mb-0 sm:mr-0 sm:mb-1"
+					style={{
+						width: '40px',
+						height: '40px',
+						backgroundImage: `url(${spellIconImg1})`,
+					}}
+				/>
+				<div
+					className="bg-cover bg-no-repeat"
+					style={{
+						width: '40px',
+						height: '40px',
+						backgroundImage: `url(${spellIconImg2})`,
+					}}
+				/>
+			</div>
+			<div className="px-3 flex flex-col justify-center items-center">
 				<div>
-					<span className="font-light">{`${parseTime(match.timestamp)}`}</span>
+					<span className="text-xl">{ kills }</span>
+					<span className="text-xl text-gray-500 mx-1">/</span>
+					<span className={`text-xl ${deaths !== 0 && ('text-red-500')}`}>{ deaths }</span>
+					<span className="text-xl text-gray-500 mx-1">/</span>
+					<span className="text-xl">{ assists }</span>
 				</div>
-				<div>
-					<span className="font-light">{`${playTime}`}</span>
+				<div className={`text-xl py-1 ${deaths === 0 && 'text-orange-600'}`}>
+					{ kda }
 				</div>
-				<div className="flex flex-row justify-center items-center">
-					<div>Champion: { searchUserInfo.championId } </div>
-					<div>
-						<div>spell1: { searchUserInfo.spell1Id }</div>
-						<div>spell2: { searchUserInfo.spell2Id }</div>
+				{ killType && (
+					<div className="px-2 py-0.5 text-white bg-red-500 border border-red-500 rounded-2xl">
+						{ killType }
 					</div>
-				</div>
+				)}
 			</div>
-			<div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
+			<div className="flex flex-col justify-center items-center">
+				<span className="text-sm text-gray-500">레벨: { champ_level }</span>
+				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
+			</div>
+			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
 						<PlayerTitle
@@ -95,7 +155,7 @@ const MatchCard: React.FC<IProps> = ({
 						/>
 					))}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }
