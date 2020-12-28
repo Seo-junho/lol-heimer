@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define("RIOT_API_KEY",'RGAPI-a22ddf8f-b492-448a-a5f3-0eb1ef13c84c');
+define("RIOT_API_KEY",'RGAPI-69dce3e6-b2bc-4a52-874a-4d4ebef41e93');
 
 /*
 |--------------------------------------------------------------------------
