@@ -15,7 +15,7 @@ function getItem($id = 0)
 	$reponseData = [];
 	$reponseData['name'] = '';
 	$reponseData['icon_img'] = '';
-	$reponseData['desc'] = '';
+	//$reponseData['desc'] = '';
 	$reponseData['plain_text'] = '';
 	$reponseData['item_price'] = '';
 
@@ -23,7 +23,7 @@ function getItem($id = 0)
 		$userIconData = $userIconData['data'][$id];
 		$reponseData['name'] = $userIconData['name'];
 		$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/item/' .$userIconData['image']['full'];
-		$reponseData['desc'] = $userIconData['description'];
+		//$reponseData['desc'] = $userIconData['description'];
 		$reponseData['plain_text'] = $userIconData['plaintext'];
 		$reponseData['item_price'] = $userIconData['gold']['total'];
 	}
@@ -73,7 +73,7 @@ function getSpell($id = 0)
 	$reponseData['id'] = $data['id'];
 	$reponseData['name'] = $data['name'];
 	$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/'	.$data['id']. '.png';
-	$reponseData['desc'] = $data['description'];
+	//$reponseData['desc'] = $data['description'];
 
 	return $reponseData;
 }
@@ -106,7 +106,7 @@ function getChampionData($id = 0)
 	$champion['key'] = $champion_data['key'];
 	$champion['name'] = $champion_data['name'];
 	$champion['title'] = $champion_data['title'];
-	$champion['desc'] = $champion_data['blurb'];
+	//$champion['desc'] = $champion_data['blurb'];
 	$champion['image'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/' . $champion_data['image']['full'];
 
 	return $champion;

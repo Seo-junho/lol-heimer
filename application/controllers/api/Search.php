@@ -66,6 +66,7 @@ class Search extends CI_Controller{
 
 		foreach($matchList->matches as $key=>$value){
 			$apiUrl = $this->base_url . '/match/v4/matches/' . $value->gameId .'?api_key=' . RIOT_API_KEY;
+
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $apiUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -166,14 +167,13 @@ class Search extends CI_Controller{
 							$blue_team[$j]['spell_info']['spell_1'] = $spell_1;
 							$blue_team[$j]['spell_info']['spell_2'] = $spell_2;
 
-							$blue_team[$j]['item_info']['item'] = [];
-							$blue_team[$j]['item_info']['item'][0] = $item0;
-							$blue_team[$j]['item_info']['item'][1] = $item1;
-							$blue_team[$j]['item_info']['item'][2] = $item2;
-							$blue_team[$j]['item_info']['item'][3] = $item3;
-							$blue_team[$j]['item_info']['item'][4] = $item4;
-							$blue_team[$j]['item_info']['item'][5] = $item5;
-							$blue_team[$j]['item_info']['item'][6] = $item6;
+							$blue_team[$j]['item'][0] = $item0;
+							$blue_team[$j]['item'][1] = $item1;
+							$blue_team[$j]['item'][2] = $item2;
+							$blue_team[$j]['item'][3] = $item3;
+							$blue_team[$j]['item'][4] = $item4;
+							$blue_team[$j]['item'][5] = $item5;
+							$blue_team[$j]['item'][6] = $item6;
 						} else {
 							$red_team[$j]['game_stat'] = $game_stat;
 							$red_team[$j]['player_info']['player_name'] = $player_name;
@@ -202,14 +202,13 @@ class Search extends CI_Controller{
 							$red_team[$j]['spell_info']['spell_1'] = $spell_1;
 							$red_team[$j]['spell_info']['spell_2'] = $spell_2;
 
-							$red_team[$j]['item_info']['item'] = [];
-							$red_team[$j]['item_info']['item'][0] = $item0;
-							$red_team[$j]['item_info']['item'][1] = $item1;
-							$red_team[$j]['item_info']['item'][2] = $item2;
-							$red_team[$j]['item_info']['item'][3] = $item3;
-							$red_team[$j]['item_info']['item'][4] = $item4;
-							$red_team[$j]['item_info']['item'][5] = $item5;
-							$red_team[$j]['item_info']['item'][6] = $item6;
+							$red_team[$j]['item'][0] = $item0;
+							$red_team[$j]['item'][1] = $item1;
+							$red_team[$j]['item'][2] = $item2;
+							$red_team[$j]['item'][3] = $item3;
+							$red_team[$j]['item'][4] = $item4;
+							$red_team[$j]['item'][5] = $item5;
+							$red_team[$j]['item'][6] = $item6;
 						}
 
 						// 내 데이터 넣기
@@ -241,14 +240,13 @@ class Search extends CI_Controller{
 							$matchDetail[$key]['spell_1'] = $spell_1;
 							$matchDetail[$key]['spell_2'] = $spell_2;
 
-							$matchDetail[$key]['item_info']['item'] = [];
-							$matchDetail[$key]['item_info']['item'][0] = $item0;
-							$matchDetail[$key]['item_info']['item'][1] = $item1;
-							$matchDetail[$key]['item_info']['item'][2] = $item2;
-							$matchDetail[$key]['item_info']['item'][3] = $item3;
-							$matchDetail[$key]['item_info']['item'][4] = $item4;
-							$matchDetail[$key]['item_info']['item'][5] = $item5;
-							$matchDetail[$key]['item_info']['item'][6] = $item6;
+							$matchDetail[$key]['item'][0] = $item0;
+							$matchDetail[$key]['item'][1] = $item1;
+							$matchDetail[$key]['item'][2] = $item2;
+							$matchDetail[$key]['item'][3] = $item3;
+							$matchDetail[$key]['item'][4] = $item4;
+							$matchDetail[$key]['item'][5] = $item5;
+							$matchDetail[$key]['item'][6] = $item6;
 						}
 					}
 				}
