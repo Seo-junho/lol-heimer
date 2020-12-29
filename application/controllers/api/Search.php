@@ -38,6 +38,10 @@ class Search extends CI_Controller{
 		echo json_encode($response);
 	}
 
+	public function getMatchListDetail($game_id)
+	{
+		//@TODO 게임 아이디 기준으로 게임 상세 정보를 가져옴
+	}
 	/**
 	 * 게임 매칭 리스트를 가져옴
 	 * @param string $userName 유저 닉네임

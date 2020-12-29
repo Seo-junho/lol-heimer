@@ -31,7 +31,7 @@ function getItem($id = 0)
  */
 function getUserIcon($id = 0)
 {
-	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.jso');
+	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json');
 	$key = array_search($id, array_column($userIconData['data'], 'id'));
 
 	$userIconData = $userIconData['data'];
