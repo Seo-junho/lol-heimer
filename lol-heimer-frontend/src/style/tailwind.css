@@ -11,7 +11,8 @@
 }
 
 .h-loading {
-	position: absolute;
+	position: fixed;
 	width: 100%;
-	height: calc(100vh - 50px);
+	height: 100vh;
+	z-index: 999;
 }

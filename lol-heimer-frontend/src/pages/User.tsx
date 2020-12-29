@@ -9,9 +9,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
+import SkeletonMatchCard from '@components/MatchCard/SkeletonMatchCard';
 
 
-// TODO: typescript type 정의하기
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
     setLoading
@@ -35,6 +35,8 @@ const User: React.FC<IProps> = ({
 	const [teamLeague, setTeamLeague] = useState<any>({});
 
 	const [matchList, setMatches] = useState<any[]>([]);
+
+	const [matchLoading, setMatchLoading] = useState(true);
 
 	useEffect(() => {
 		setLoading(true);
@@ -68,7 +70,7 @@ const User: React.FC<IProps> = ({
 	}, []);
 
 	useEffect(() => {
-		setLoading(true);
+		setMatchLoading(true);
 		try {
 			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/10/0`)
 				.then((response: any) => {
@@ -78,19 +80,18 @@ const User: React.FC<IProps> = ({
 						console.log('matches', data)
 						setMatches(data);
 					}
-					setLoading(false);
+					setMatchLoading(false);
 				})
 				.catch((error: any) => {
 					console.log('error', error);
-					setLoading(false);
+					setMatchLoading(false);
 				});
 		} catch (e) {
 			console.log('axios catch', e);
-			setLoading(false);
+			setMatchLoading(false);
 		}
 	}, []);
 
-	// TODO: skeleton css ADD
 	return (
 		<Article>
 			<div className="flex flex-col sm:flex-row p-5 items-center justify-center">
@@ -104,15 +105,23 @@ const User: React.FC<IProps> = ({
 					leagueInfo={teamLeague}
 				/>
 			</div>
-			<div className="flex flex-col p-5 items-start justify-center">
-				{ matchList.map((item, index) => (
-					<MatchCard
-						key={index}
-						match={item}
-						username={username}
-					/>
-				)) }
-			</div>
+			{ matchLoading ? (
+				<>
+					<SkeletonMatchCard />
+					<SkeletonMatchCard />
+					<SkeletonMatchCard />
+				</>
+			) : (
+				<div className="flex flex-col p-5 items-start justify-center">
+					{ matchList.map((item, index) => (
+						<MatchCard
+							key={index}
+							match={item}
+							username={username}
+						/>
+					)) }
+				</div>
+			)}
 		</Article>
 	)
 }
