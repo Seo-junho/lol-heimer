@@ -110,6 +110,8 @@ const User: React.FC<IProps> = ({
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
+					<SkeletonMatchCard />
+					<SkeletonMatchCard />
 				</>
 			) : (
 				<div className="flex flex-col p-5 items-start justify-center">
