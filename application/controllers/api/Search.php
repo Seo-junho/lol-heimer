@@ -65,7 +65,6 @@ class Search extends CI_Controller{
 
 		foreach($matchList->matches as $key=>$value){
 			$apiUrl = $this->base_url . '/match/v4/matches/' . $value->gameId .'?api_key=' . RIOT_API_KEY;
-
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $apiUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -80,24 +79,20 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['role'] = $value->role;
 			$matchDetail[$key]['lane'] = $value->lane;
 			$matchDetail[$key]['queue'] = get_property('queues',$value->queue);
-
 			$matchDetail[$key]['game_creation'] = $matchInfo->gameCreation;
 			$matchDetail[$key]['game_duration'] = $matchInfo->gameDuration;
 			$matchDetail[$key]['game_mode'] = get_property('game_mode', $matchInfo->gameMode);
 			$matchDetail[$key]['game_type'] = get_property('game_type', $matchInfo->gameType);
 			$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
 
-			$blue_team = [];
-			$red_team = [];
+			$teams = []; // 팀 리스트
+			$players = []; // 게임 플레이어 리스트
+			$my_participant_id = ''; // 내 고유 아이디
 
-			$teams = [];
 			foreach ($matchInfo->teams as $team) {
 				$teams[$team->teamId] = $team;
 			}
-
-			$players = [];
-			$my_participant_id = '';
-
+			
 			$match_participants = $matchInfo->participants;
 
 			foreach ($matchInfo->participantIdentities as $player) {
