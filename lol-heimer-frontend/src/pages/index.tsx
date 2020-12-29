@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
 import { connect } from 'react-redux';
+import Heimer from '../images/heimer.png';
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
@@ -46,6 +47,9 @@ const Pages: React.FC<IProps> = ({
 	}
 	return (
 		<>
+			<div className="pt-12">
+				<img src={Heimer} className="mx-auto" />
+			</div>
 			<MainSearchBox
 				onSubmit={onSubmit}
 				nameChange={nameChange}

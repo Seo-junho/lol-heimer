@@ -17,7 +17,7 @@ const Layout: React.FC<IProps> = ({
 }): JSX.Element => {
 	return (
 		<>
-			<header>
+			{/* <header>
 				<nav>
 					<ul>
 						<li>
@@ -31,7 +31,7 @@ const Layout: React.FC<IProps> = ({
 						</li>
 					</ul>
 				</nav>
-			</header>
+			</header> */}
 			{ isLoading && (
 				<Loading />
 			)}
