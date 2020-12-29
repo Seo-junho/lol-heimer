@@ -39,6 +39,9 @@ const LeagueCard: React.FC<Props> = (
 		}
 	}
 ): JSX.Element => {
+	const totalPlay = wins + losses;
+	const winsLate = +(((wins / totalPlay) * 100).toFixed(2));
+
 	return (
 		<div className="card flex flex-col lg:flex-row items-center">
 			<div className="flex-grow-0">
@@ -56,6 +59,7 @@ const LeagueCard: React.FC<Props> = (
 				<div>
 					<span className="font-bold text-blue-600">{ wins }</span>승&nbsp;
 					<span className="font-bold text-red-500">{ losses }</span>패
+					<div className="text-center lg:text-left">(<span className={`font-bold ${winsLate >= 50 ? 'text-green-600' : 'text-gray-600'}`}>{ winsLate }%</span>)</div>
 				</div>
 			</div>
 		</div>
