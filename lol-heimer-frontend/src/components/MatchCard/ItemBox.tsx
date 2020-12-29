@@ -36,6 +36,7 @@ const ItemBox: React.FC<IProps> = ({
 				<Item item={items[0]} />
 				<Item item={items[1]} />
 				<Item item={items[2]} />
+				<Item item={items[6]} />
 			</div>
 			<div className="flex flex-row">
 				<Item item={items[3]} />
