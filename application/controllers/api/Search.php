@@ -98,7 +98,6 @@ class Search extends CI_Controller{
 			}
 			
 			$match_participants = $matchInfo->participants;
-
 			foreach ($matchInfo->participantIdentities as $player) {
 				$players[$player->participantId]['participantId'] = $player->participantId;
 				$players[$player->participantId]['summonerName'] = $player->player->summonerName;
@@ -113,6 +112,8 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['player_name'] = $players[$my_participant_id]['summonerName'];
 			$matchDetail[$key]['player_level'] = $player_info['level'];
 			$matchDetail[$key]['player_tier'] = $player_info['tier'];
+
+			$my_participant_id = $my_participant_id - 1;
 
 			$matchDetail[$key]['kills'] = $match_participants[$my_participant_id]->stats->kills;
 			$matchDetail[$key]['deaths'] = $match_participants[$my_participant_id]->stats->deaths;
