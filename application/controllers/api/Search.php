@@ -56,7 +56,7 @@ class Search extends CI_Controller{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apiUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$matchList = json_decode(curl_exec($ch));
 		curl_close($ch);
@@ -70,7 +70,7 @@ class Search extends CI_Controller{
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $apiUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$matchInfo = json_decode(curl_exec($ch));
 			curl_close($ch);
