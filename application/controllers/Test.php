@@ -6,10 +6,18 @@ class Test extends CI_Controller {
 
 
 	public function index(){
-		$id = 0;
+
 		$url = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json';
-		$json_string = file_get_contents($url);
-		$data = json_decode($json_string, true);
+		$ci = curl_init();
+		curl_setopt($ci, CURLOPT_URL, $url);
+		curl_setopt($ci, CURLOPT_RETURNTRANSFER, 1);
+		$cont = curl_exec($ci);
+		curl_close($ci);
+
+		$id = 0;
+
+		//$json_string = file_get_contents();
+		$data = json_decode($cont, true);
 		$key = array_search($id, array_column($data['data'], 'id'));
 
 		$data = $data['data'];
