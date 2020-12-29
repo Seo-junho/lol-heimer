@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemBox from './ItemBox';
 import PlayerTitle from './PlayerTitle';
 
 interface IProps {
@@ -33,6 +34,7 @@ const MatchCard: React.FC<IProps> = ({
 		is_triple_kill,
 		is_quadra_kill,
 		is_penta_kill,
+		item,
 	} = match;
 
 	const isWin = game_stat === '승리';
@@ -86,36 +88,38 @@ const MatchCard: React.FC<IProps> = ({
 					<div className="font-light">{`${playTime}`}</div>
 				</div>
 			</div>
-			<div className="p-3 flex-grow-0 w-40 flex flex-col justify-center items-center">
-				<div
-					className="border border-white rounded-full bg-cover bg-no-repeat"
-					style={{
-						width: '100px',
-						height: '100px',
-						backgroundImage: `url(${championIcon})`,
-					}}
-				/>
-				<div className="mt-1 text-lg">{ championName } </div>
+			<div className="flex-grow-0 w-40 flex flex-row">
+				<div className="flex flex-col justify-center items-center p-3">
+					<div
+						className="border border-white rounded-full bg-cover bg-no-repeat"
+						style={{
+							width: '100px',
+							height: '100px',
+							backgroundImage: `url(${championIcon})`,
+						}}
+					/>
+					<div className="mt-1 text-lg">{ championName } </div>
+				</div>
+				<div className="flex flex-col justify-center items-center my-2 pb-8 sm:pb-0">
+					<div
+						className="bg-cover bg-no-repeat mb-1"
+						style={{
+							width: '40px',
+							height: '40px',
+							backgroundImage: `url(${spellIconImg1})`,
+						}}
+					/>
+					<div
+						className="bg-cover bg-no-repeat"
+						style={{
+							width: '40px',
+							height: '40px',
+							backgroundImage: `url(${spellIconImg2})`,
+						}}
+					/>
+				</div>
 			</div>
-			<div className="flex flex-row sm:flex-col justify-center items-center my-2">
-				<div
-					className="bg-cover bg-no-repeat mr-1 mb-0 sm:mr-0 sm:mb-1"
-					style={{
-						width: '40px',
-						height: '40px',
-						backgroundImage: `url(${spellIconImg1})`,
-					}}
-				/>
-				<div
-					className="bg-cover bg-no-repeat"
-					style={{
-						width: '40px',
-						height: '40px',
-						backgroundImage: `url(${spellIconImg2})`,
-					}}
-				/>
-			</div>
-			<div className="px-3 flex flex-col justify-center items-center">
+			<div className="px-5 flex flex-col justify-center items-center">
 				<div>
 					<span className="text-xl">{ kills }</span>
 					<span className="text-xl text-gray-500 mx-1">/</span>
@@ -132,10 +136,11 @@ const MatchCard: React.FC<IProps> = ({
 					</div>
 				)}
 			</div>
-			<div className="flex flex-col justify-center items-center">
+			<div className="flex flex-col justify-center items-center py-3">
 				<span className="text-sm text-gray-500">레벨: { champ_level }</span>
 				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
 			</div>
+			<ItemBox items={item} className="mx-3"/>
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (

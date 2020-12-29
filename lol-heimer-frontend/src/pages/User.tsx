@@ -70,7 +70,7 @@ const User: React.FC<IProps> = ({
 	useEffect(() => {
 		setLoading(true);
 		try {
-			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/5/0`)
+			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/10/0`)
 				.then((response: any) => {
 					const { data: { data } } = response;
 					console.log('data', data)
