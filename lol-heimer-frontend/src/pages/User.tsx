@@ -72,7 +72,7 @@ const User: React.FC<IProps> = ({
 	useEffect(() => {
 		setMatchLoading(true);
 		try {
-			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/10/0`)
+			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/5/0`)
 				.then((response: any) => {
 					const { data: { data } } = response;
 					console.log('data', data)
@@ -106,13 +106,13 @@ const User: React.FC<IProps> = ({
 				/>
 			</div>
 			{ matchLoading ? (
-				<>
+				<div className="p-5">
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
 					<SkeletonMatchCard />
-				</>
+				</div>
 			) : (
 				<div className="flex flex-col p-5 items-start justify-center">
 					{ matchList.map((item, index) => (
