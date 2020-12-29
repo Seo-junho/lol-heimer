@@ -74,6 +74,7 @@ class Search extends CI_Controller{
 			$matchInfo = json_decode(curl_exec($ch));
 			curl_close($ch);
 
+			$matchDetail[$key]['game_id'] = $value->gameId;
 			$matchDetail[$key]['play_champion'] = getChampionData($value->champion);
 			$matchDetail[$key]['timestamp'] = $value->timestamp;
 			$matchDetail[$key]['role'] = $value->role;
