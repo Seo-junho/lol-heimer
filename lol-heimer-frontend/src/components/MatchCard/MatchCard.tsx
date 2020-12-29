@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemBox from './ItemBox';
 import PlayerTitle from './PlayerTitle';
 
 interface IProps {
@@ -33,6 +34,7 @@ const MatchCard: React.FC<IProps> = ({
 		is_triple_kill,
 		is_quadra_kill,
 		is_penta_kill,
+		item,
 	} = match;
 
 	const isWin = game_stat === '승리';
@@ -132,10 +134,11 @@ const MatchCard: React.FC<IProps> = ({
 					</div>
 				)}
 			</div>
-			<div className="flex flex-col justify-center items-center">
+			<div className="flex flex-col justify-center items-center py-3">
 				<span className="text-sm text-gray-500">레벨: { champ_level }</span>
 				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
 			</div>
+			<ItemBox items={item} className="mx-3"/>
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
