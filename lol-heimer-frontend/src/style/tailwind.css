@@ -16,3 +16,7 @@
 	height: 100vh;
 	z-index: 999;
 }
+
+.base-btn {
+	@apply bg-blue-500 hover:bg-blue-400 text-white p-3 rounded-xl;
+}

@@ -33,10 +33,11 @@ const User: React.FC<IProps> = ({
 	const [userInfo, setUserInfo] = useState<any>({});
 	const [soloLeague, setSoloLeague] = useState<any>({});
 	const [teamLeague, setTeamLeague] = useState<any>({});
-
 	const [matchList, setMatches] = useState<any[]>([]);
+	const [matchLoading, setMatchLoading] = useState<boolean>(false);
 
-	const [matchLoading, setMatchLoading] = useState(true);
+	const limit = 5; // limit 개수 만큼 가져옵니다
+	const [offset, setOffset] = useState<number>(limit);
 
 	useEffect(() => {
 		setLoading(true);
@@ -70,15 +71,19 @@ const User: React.FC<IProps> = ({
 	}, []);
 
 	useEffect(() => {
+		if (matchLoading) {
+			return;
+		}
 		setMatchLoading(true);
 		try {
-			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/5/0`)
+			axios.get(`${API_SEARCH_GET_MATCH_LIST}/${username}/${offset - limit}/${offset}`)
 				.then((response: any) => {
 					const { data: { data } } = response;
-					console.log('data', data)
 					if (data) {
-						console.log('matches', data)
-						setMatches(data);
+						setMatches(current => [
+							...current,
+							...data,
+						]);
 					}
 					setMatchLoading(false);
 				})
@@ -87,14 +92,13 @@ const User: React.FC<IProps> = ({
 					setMatchLoading(false);
 				});
 		} catch (e) {
-			console.log('axios catch', e);
 			setMatchLoading(false);
 		}
-	}, []);
+	}, [offset]);
 
 	return (
 		<Article>
-			<div className="flex flex-col sm:flex-row p-5 items-center justify-center">
+			<div className="flex flex-col sm:flex-row items-center justify-center">
 				<UserCard
 					userInfo={userInfo}
 				/>
@@ -105,16 +109,8 @@ const User: React.FC<IProps> = ({
 					leagueInfo={teamLeague}
 				/>
 			</div>
-			{ matchLoading ? (
-				<div className="p-5">
-					<SkeletonMatchCard />
-					<SkeletonMatchCard />
-					<SkeletonMatchCard />
-					<SkeletonMatchCard />
-					<SkeletonMatchCard />
-				</div>
-			) : (
-				<div className="flex flex-col p-5 items-start justify-center">
+			{ matchList.length !== 0 && (
+				<div className="flex flex-col items-start justify-center">
 					{ matchList.map((item, index) => (
 						<MatchCard
 							key={index}
@@ -122,6 +118,22 @@ const User: React.FC<IProps> = ({
 							username={username}
 						/>
 					)) }
+				</div>
+			)}
+			{ matchLoading ? (
+				<div>
+					{[...Array(limit)].map((_, index) => (
+						<SkeletonMatchCard key={index} />
+					))}
+				</div>
+			) : (
+				<div>
+					<button
+						className="base-btn w-full text-cente text-2xl"
+						onClick={() => { setOffset(current => current += limit) }}
+					>
+						더보기
+					</button>
 				</div>
 			)}
 		</Article>

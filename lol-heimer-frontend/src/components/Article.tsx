@@ -4,7 +4,7 @@ const Article: React.FC = ({
 	children
 }) => {
 	return (
-		<article className="max-w-7xl mx-auto">
+		<article className="max-w-7xl mx-auto p-5">
 			{ children }
 		</article>
 	);
