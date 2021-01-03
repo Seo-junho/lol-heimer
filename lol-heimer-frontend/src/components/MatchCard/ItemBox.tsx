@@ -1,5 +1,6 @@
-import React from 'react';
-
+import ToolTip from '@components/ToolTip';
+import React, { useState } from 'react';
+import './ItemBox.scss'
 
 interface IItemProps {
 	item: any;
@@ -14,15 +15,24 @@ const Item: React.FC<IItemProps> = ({
 	item,
 }) => {
 	const isItem = item.name ? true : false;
+
 	return (
-		<div
-			className={`rounded-md m-0.5 bg-cover bg-no-repeat bg-gray-500 ${!isItem && ' opacity-30'}`}
-			style={{
-				width: '40px',
-				height: '40px',
-				backgroundImage: `url(${item.icon_img})`,
-			}}
-		/>
+		<>
+			<div
+				className={`tooltip-box rounded-md m-0.5 bg-cover bg-no-repeat bg-gray-500 ${!isItem && ' opacity-30'}`}
+				style={{
+					width: '40px',
+					height: '40px',
+					backgroundImage: `url(${item.icon_img})`,
+				}}
+			>
+				{ isItem && (
+					<ToolTip>
+						툴팁
+					</ToolTip>
+				)}
+			</div>
+		</>
 	);
 }
 
@@ -30,6 +40,7 @@ const ItemBox: React.FC<IProps> = ({
 	items,
 	className,
 }) => {
+
 	return (
 		<div className={`${className} flex flex-col`}>
 			<div className="flex flex-row">
