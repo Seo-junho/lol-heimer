@@ -38,24 +38,36 @@ class Search extends CI_Controller{
 		echo json_encode($response);
 	}
 
-	public function getMatchListDetail($game_id)
+	public function getMatchListDetail(string $game_id)
 	{
+		if ($game_id == '') {
+			$this->return('400', 'not found gameid', []);
+		}
+		$apiUrl = $this->base_url . '/match/v4/matches/' . $game_id .'?api_key=' . RIOT_API_KEY;
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $apiUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$matchInfo = json_decode(curl_exec($ch));
+		curl_close($ch);
 		//@TODO 게임 아이디 기준으로 게임 상세 정보를 가져옴
 	}
 	/**
-	 * 게임 매칭 리스트를 가져옴
+	 * 유저 이름 기준으로 게임 매칭 리스트를 가져옴
 	 * @param string $userName 유저 닉네임
 	 * @param int $limit
 	 * @param int $offset
 	 */
-	public function getMatchList(string $userName = '', int $limit = 10, int $offset = 0)
+	public function getMatchList(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
 	{
 		if (empty($userName)) {
 			$this->return('400', 'not found username', []);
 		}
 
 		$AccountId = $this->getUserAccountId($userName);
-		$apiUrl = $this->base_url . '/match/v4/matchlists/by-account/' . $AccountId .'?api_key=' . RIOT_API_KEY . '&startIndex='.$offset.'&endIndex='.$limit;
+		$apiUrl = $this->base_url . '/match/v4/matchlists/by-account/' . $AccountId .'?api_key=' . RIOT_API_KEY . '&beginIndex='.$beginIndex.'&endIndex='.$endIndex;
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apiUrl);
