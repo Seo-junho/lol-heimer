@@ -263,21 +263,20 @@ class Search extends CI_Controller{
 	 */
 	private function getUserTierAndLevel(string $userName)
 	{
-//		$userInfo = $this->getUser($userName);
-//		$userId = $this->getUserId($userName);
-//		$league_info = $this->getUserLeagueInfo($userId);
-//
-//		$userInfo = json_decode($userInfo);
+		$userInfo = $this->getUser($userName);
+		$userInfo = json_decode($userInfo);
 
 		$response = [];
 
 		$response['level'] = '-';
 		$response['tier'] = '-';
-
-//		$response['level'] = $userInfo->summonerLevel;
-//		if (!empty($league_info)) {
-//			$response['tier'] = $league_info[1]->tier . ' ' . $league_info[1]->rank;
-//		}
+		if (!empty($userInfo)) {
+			$response['level'] = $userInfo->summonerLevel;
+			$league_info = $this->getUserLeagueInfo($userInfo->id);
+		}
+		if (!empty($league_info[1])) {
+			$response['tier'] = $league_info[1]->tier . ' ' . $league_info[1]->rank;
+		}
 		return $response;
 	}
 
@@ -317,7 +316,7 @@ class Search extends CI_Controller{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $api_url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 		//curl_setopt($ch, CURLOPT_POST, true);
