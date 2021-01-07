@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lol-herimer",
   "scripts": {
-    "start": "./heroku.sh"
+    "start": "cd lol-heimer-frontend && npm run build && ./heroku.sh"
   },
   "repository": {
     "type": "git",
