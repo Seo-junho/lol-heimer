@@ -1,2 +1,2 @@
-mv ./lol-heimer-frontend/build/index.html ./application/views/home.html ;\
-mv ./lol-heimer-frontend/build/* ./ ;\
+mv ./build/index.html ../application/views/home.html ;\
+mv ./build/* ../ ;\
