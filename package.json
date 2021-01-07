@@ -2,9 +2,9 @@
   "name": "lol-heimer",
   "version": "1.0.0",
   "description": "lol-herimer",
-	"scripts": {
-		"start": "cd lol-heimer-frontend && npm run install && npm run build"
-	},
+  "scripts": {
+    "start": "cd lol-heimer-frontend && npm install && npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Seo-junho/lol-heimer.git"
