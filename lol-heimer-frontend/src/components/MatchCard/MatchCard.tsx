@@ -141,6 +141,9 @@ const MatchCard: React.FC<IProps> = ({
 				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
 			</div>
 			<ItemBox items={item} className="mx-3"/>
+			<button className="base-btn">
+				상세보기
+			</button>
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
