@@ -34,3 +34,5 @@ build.sh
 distribution.tar.gz
 distribution
 application/config/config.php
+
+node_modules

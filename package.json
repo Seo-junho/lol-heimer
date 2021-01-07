@@ -14,5 +14,9 @@
   "bugs": {
     "url": "https://github.com/Seo-junho/lol-heimer/issues"
   },
-  "homepage": "https://github.com/Seo-junho/lol-heimer#readme"
+  "homepage": "https://github.com/Seo-junho/lol-heimer#readme",
+  "heroku-run-build-script": true,
+  "dependencies": {
+    "@heroku/update-node-build-script": "^1.0.3"
+  }
 }
