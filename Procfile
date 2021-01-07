@@ -1,2 +1,2 @@
-front-script: chmod u+x ./heroku.sh && npm run start
 web: heroku-php-apache2
+web: npm run start
