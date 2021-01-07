@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lol-herimer",
   "scripts": {
-    "start": "./heroku.sh"
+    "start": ""
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
 	},
 	"engine": {
     "node": "14.15.0",
-		"npm": "6.14.9",
-		"front-end": "./lol-heimer-frontend"
+		"npm": "6.14.9"
   }
 }
