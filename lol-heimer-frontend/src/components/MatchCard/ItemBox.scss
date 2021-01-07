@@ -1,5 +1,9 @@
 .tooltip-box {
 	position: relative;
+	background-position: 0px 0px;
+	&:hover {
+		background-position: 0px 0px;
+	}
 	&:hover > .tooltip,
 	&:active > .tooltip {
 		visibility: visible;
