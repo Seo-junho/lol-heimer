@@ -14,7 +14,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.11",
     "autoprefixer": "^9.8.6",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "craco": "0.0.3",
     "craco-alias": "^2.1.1",
     "install": "^0.13.0",
@@ -35,10 +35,10 @@
   },
   "scripts": {
     "start": "npm run tailwind:build && craco start",
-		"build": "npm run tailwind:devbuild && CI=false craco build",
-		"build:prod": "npm run tailwind:prodbuild && CI=false craco build",
+    "build": "npm run tailwind:devbuild && CI=false craco build",
+    "build:prod": "npm run tailwind:prodbuild && CI=false craco build",
     "test": "craco test",
-		"eject": "react-scripts eject",
+    "eject": "react-scripts eject",
     "tailwind:prodbuild": "NODE_ENV=production npm run tailwind:build",
     "tailwind:devbuild": "cross-eNODE_ENV=production npm run tailwind:build",
     "tailwind:build": "tailwind build ./src/style/tailwind.css -o ./src/style/styles.css"
