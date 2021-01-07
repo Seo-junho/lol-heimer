@@ -1,7 +1,18 @@
 {
-	"name": "lol-heimer",
-  "version": "0.1.0",
+  "name": "lol-heimer",
+  "version": "1.0.0",
+  "description": "lol-herimer",
 	"scripts": {
 		"start:prod": "cd lol-heimer-frontend && npm run build"
-	}
+	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seo-junho/lol-heimer.git"
+  },
+  "author": "Seo-junho & AJu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seo-junho/lol-heimer/issues"
+  },
+  "homepage": "https://github.com/Seo-junho/lol-heimer#readme"
 }
