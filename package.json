@@ -1,0 +1,7 @@
+{
+	"name": "lol-heimer",
+  "version": "0.1.0",
+	"scripts": {
+		"start:prod": "cd lol-heimer-frontend && npm run build"
+	}
+}
