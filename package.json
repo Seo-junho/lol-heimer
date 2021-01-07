@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lol-herimer",
   "scripts": {
-    "start": "cd lol-heimer-frontend && npm install && npm run build"
+    "start": "cd lol-heimer-frontend && npm run build"
   },
   "repository": {
     "type": "git",
