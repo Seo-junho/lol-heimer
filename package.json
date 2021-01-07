@@ -18,5 +18,9 @@
   "heroku-run-build-script": true,
   "dependencies": {
     "@heroku/update-node-build-script": "^1.0.3"
+	},
+	"engine": {
+    "node": "14.15.0",
+    "npm": "6.14.9"
   }
 }
