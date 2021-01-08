@@ -29,11 +29,17 @@ class Search extends CI_Controller{
 		$response['data']['profile_icon'] = getUserIcon($profileIconId);
 
 		if (!empty($league_info)) {
-			$response['data']['team_league_info'] = $league_info[0];
-			$response['data']['solo_league_info'] = $league_info[1];
+			$response['data']['team_league_info'] = [];
+			$response['data']['solo_league_info'] = [];
 
-			$response['data']['team_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[0]->tier). '.png';
-			$response['data']['solo_league_info']->tier_img = 'http://junho98.cdn3.cafe24.com/tier_emblem/' . mb_strtolower($league_info[1]->tier). '.png';
+			if (!empty($league_info[0])) {
+				$response['data']['team_league_info'] = $league_info[0];
+				$response['data']['team_league_info']->tier_img = '//junho98.cdn3.cafe24.com/img/2020/' . mb_strtolower($league_info[0]->tier). '_'. $league_info[0]->rank .'.png';
+			}
+			if (!empty($league_info[1])) {
+				$response['data']['solo_league_info'] = $league_info[1];
+				$response['data']['solo_league_info']->tier_img = '//junho98.cdn3.cafe24.com/img/2020/' . mb_strtolower($league_info[1]->tier). '_'. $league_info[1]->rank .'.png';
+			}
 		}
 		echo json_encode($response);
 	}
