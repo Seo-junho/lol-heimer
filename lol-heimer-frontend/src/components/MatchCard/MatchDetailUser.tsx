@@ -29,20 +29,18 @@ const MatchDetailUser: React.FC<IProps> = ({
 	const dmgPer = (total_damage / maxDamage) * 100;
 
 	return (
-		<div className="flex justify-start flex-row items-center my-1">
-			<div className="w-10">
+		<div className="flex justify-start flex-row items-center my-0.5 mb:my-1">
+			<div>
 				<div
-					className="bg-cover bg-no-repeat rounded-full"
+					className="w-8 h-8 md:w-10 md:h-10 bg-cover bg-no-repeat rounded-full"
 					style={{
-						width: '40px',
-						height: '40px',
 						backgroundImage: `url(${play_champion.image})`,
 					}}
 				/>
 			</div>
 			<div className="flex flex-col mx-2">
 				<div
-					className="bg-cover bg-no-repeat mb-0.5"
+					className="w-20 h-20 bg-cover bg-no-repeat mb-0.5"
 					style={{
 						width: '20px',
 						height: '20px',
@@ -58,31 +56,37 @@ const MatchDetailUser: React.FC<IProps> = ({
 					}}
 				/>
 			</div>
-			<div className="w-40">{ player_name }</div>
-			<div className="w-20 flex flex-col items-center justify-center mx-2">
-				<span className="text-sm">Level { player_level }</span>
-				<span className="text-sm">{ player_tier }</span>
+			<div className="flex flex-col md:flex-row items-start md:items-center">
+				<div className="w-20 md:w-40 text-xs md:text-base">{ player_name }</div>
+				<div className="w-10 md:w-20 hidden md:flex flex-col items-center justify-center mx-2">
+					<span className="text-sm">Level { player_level }</span>
+					<span className="text-sm">{ player_tier }</span>
+				</div>
+				<KdaBox
+					className="w-20 flex flex-row items-center justify-start md:justify-center text-xs md:text-base"
+					type={'md'}
+					kills={kills}
+					deaths={deaths}
+					assists={assists}
+				/>
 			</div>
-			<KdaBox
-				className="w-20 flex flex-row"
-				type={'md'}
-				kills={kills}
-				deaths={deaths}
-				assists={assists}
-			/>
-			<div className="w-16 text-center">CS { total_minions_killed }</div>
-			<div className="w-28 mx-2">
-				<span className="text-sm">{ total_damage }</span>
-				<div className="w-full h-3 bg-gray-300">
-					<div
-						className="bg-red-500 h-3"
-						style={{
-							width: `${dmgPer}%`
-						}}>
+			<div className="flex flex-col md:flex-row items-start md:items-center justify-center">
+				<div className="flex flex-row items-start md:items-center justify-center mb-1 md:mb-0">
+					<div className="w-16 text-center">CS { total_minions_killed }</div>
+					<div className="w-28 mx-2">
+						<div className="w-full h-6 bg-gray-400 relative">
+							<span className="text-sm absolute t-0 w-full text-center text-white font-bold h-full">{ total_damage }</span>
+							<div
+								className="bg-red-500 h-6"
+								style={{
+									width: `${dmgPer}%`
+								}}>
+							</div>
+						</div>
 					</div>
 				</div>
+				<ItemBox items={item} size={'25px'} type={'flat'} />
 			</div>
-			<ItemBox items={item} size={'25px'} type={'flat'} />
 		</div>
 	);
 }

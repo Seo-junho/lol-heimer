@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
-import SkeletonMatchCard from '@components/MatchCard/SkeletonMatchCard';
+import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
 
 
 const mapDispatchToProps = (dispatch: any) => {
