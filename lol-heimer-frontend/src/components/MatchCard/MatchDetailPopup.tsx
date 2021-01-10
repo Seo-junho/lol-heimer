@@ -44,15 +44,20 @@ const MatchDetailPopup: React.FC<IProps> = ({
 		}
 	}, []);
 
+	const maxDamage = Math.max.apply(null, [
+		...blueTeam.map((item: any) => item.champion_total_damage),
+		...redTeam.map((item: any) => item.champion_total_damage),
+	]);
 	console.log('blue_team', blueTeam);
 	console.log('red_team', redTeam);
+	console.log('maxDamage', maxDamage);
 
 	return (
 		<div className="fixed top-0 left-0 z-50 flex justify-center items-center">
 			<div className="absolute shadow-lg mb-5 w-11/12 p-5 lg:max-w-5xl bg-gray-100 flex flex-col sm:flex-row items-center justify-center border border-white rounded-xl z-50">
 				{ isLoading && <>Loading</> }
 				<div className="flex justify-center flex-col">
-					{ blueTeam.map((data: any) => <MatchDetailUser user={data} />) }
+					{ blueTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
 				</div>
 			</div>
 			<div

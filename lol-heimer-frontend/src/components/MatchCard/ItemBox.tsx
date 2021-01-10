@@ -45,7 +45,7 @@ interface IProps {
 
 const ItemBox: React.FC<IProps> = ({
 	items,
-	className,
+	className = '',
 	size = '40px',
 	type = 'double'
 }) => {

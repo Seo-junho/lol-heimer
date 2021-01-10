@@ -3,12 +3,15 @@ import ItemBox from './ItemBox';
 
 interface IProps {
 	user: any;
+	maxDamage: number;
 }
 
 const MatchDetailUser: React.FC<IProps> = ({
 	user,
+	maxDamage,
 }) => {
 	const {
+		play_champion,
 		spell_1,
 		spell_2,
 		item,
@@ -22,9 +25,21 @@ const MatchDetailUser: React.FC<IProps> = ({
 		total_damage,
 	} = user;
 
+	const dmgPer = (total_damage / maxDamage) * 100;
+
 	return (
-		<div className="flex justify-center flex-row items-center">
-			<div className="flex flex-col">
+		<div className="flex justify-start flex-row items-center">
+			<div className="w-10">
+				<div
+					className="bg-cover bg-no-repeat rounded-full"
+					style={{
+						width: '40px',
+						height: '40px',
+						backgroundImage: `url(${play_champion.image})`,
+					}}
+				/>
+			</div>
+			<div className="flex flex-col mx-2">
 				<div
 					className="bg-cover bg-no-repeat mb-0.5"
 					style={{
@@ -42,20 +57,30 @@ const MatchDetailUser: React.FC<IProps> = ({
 					}}
 				/>
 			</div>
-			<div>{ player_name }</div>
-			<div className="flex flex-col items-center justify-center">
+			<div className="w-40">{ player_name }</div>
+			<div className="w-20 flex flex-col items-center justify-center mx-2">
 				<span>Level { player_level }</span>
 				<span>{ player_tier }</span>
 			</div>
-			<div className="flex flex-row">
+			<div className="w-20 flex flex-row">
 				<span>{ kills }</span>
 				<span>/</span>
 				<span>{ deaths }</span>
 				<span>/</span>
 				<span>{ assists }</span>
 			</div>
-			<div>CS { total_minions_killed }</div>
-			<div>{ total_damage }</div>
+			<div className="w-16">CS { total_minions_killed }</div>
+			<div className="w-28 mx-2">
+				<span className="text-sm">{ total_damage }</span>
+				<div className="w-full h-3 bg-gray-300">
+					<div
+						className="bg-red-500 h-3"
+						style={{
+							width: `${dmgPer}%`
+						}}>
+					</div>
+				</div>
+			</div>
 			<ItemBox items={item} size={'25px'} type={'flat'} />
 		</div>
 	);
