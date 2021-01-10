@@ -50,13 +50,18 @@ const User: React.FC<IProps> = ({
 						team_league_info,
 						profile_icon,
 					} } } = response;
-					if (user_info && solo_league_info && team_league_info && profile_icon) {
+					console.log('response', response.data.data)
+					if (user_info && profile_icon) {
 						setUserInfo({
 							...JSON.parse(user_info),
 							profile_icon,
 						});
-						setSoloLeague(solo_league_info);
+					}
+					if (team_league_info) {
 						setTeamLeague(team_league_info);
+					}
+					if (solo_league_info) {
+						setSoloLeague(solo_league_info);
 					}
 					setLoading(false);
 				})
@@ -103,9 +108,11 @@ const User: React.FC<IProps> = ({
 					userInfo={userInfo}
 				/>
 				<LeagueCard
+					type='solo'
 					leagueInfo={soloLeague}
 				/>
 				<LeagueCard
+					type='team'
 					leagueInfo={teamLeague}
 				/>
 			</div>
