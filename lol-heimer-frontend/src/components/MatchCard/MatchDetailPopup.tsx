@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_SEARCH_GET_MATCH_DETAIL } from './../../end-point/index';
+import ItemBox from './ItemBox';
+import MatchDetailUser from './MatchDetailUser';
 
 interface IProps {
 	gameId: number;
@@ -47,8 +49,11 @@ const MatchDetailPopup: React.FC<IProps> = ({
 
 	return (
 		<div className="fixed top-0 left-0 z-50 flex justify-center items-center">
-			<div className="absolute shadow-lg mb-5 w-full lg:max-w-5xl p-5 bg-gray-100 flex flex-col sm:flex-row items-center justify-center border border-white rounded-xl z-50">
-				popup
+			<div className="absolute shadow-lg mb-5 w-11/12 p-5 lg:max-w-5xl bg-gray-100 flex flex-col sm:flex-row items-center justify-center border border-white rounded-xl z-50">
+				{ isLoading && <>Loading</> }
+				<div className="flex justify-center flex-col">
+					{ blueTeam.map((data: any) => <MatchDetailUser user={data} />) }
+				</div>
 			</div>
 			<div
 				className="w-screen h-screen bg-black opacity-30"
