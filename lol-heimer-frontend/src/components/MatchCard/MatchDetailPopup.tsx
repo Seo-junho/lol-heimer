@@ -5,6 +5,33 @@ import ItemBox from './ItemBox';
 import MatchDetailUser from './MatchDetailUser';
 import SkeletonMatchDetail from './../../skeleton/SkeletonMatchDetail';
 
+interface IHeaderProps {
+	team: string;
+	className: string;
+	stat: string;
+};
+
+const MatchTeamHeader: React.FC<IHeaderProps> = ({
+	team = 'blue',
+	className = '',
+	stat = '',
+}) => {
+	return (
+		<div className="hidden md:flex justify-start flex-row items-center my-1">
+			<div className="w-60 mr-0.5">
+				<span className={`font-bold ${className}`}>
+					{ stat }
+				</span>&nbsp;({ team === 'blue' ? '블루' : '레드' }팀)
+			</div>
+			<div className="md: w-20 text-center">티어</div>
+			<div className="w-24 text-center">KDA</div>
+			<div className="w-14 text-center">CS</div>
+			<div className="w-28 text-center ml-2.5">피해량</div>
+			<div className="w-48 text-center">아이템</div>
+		</div>
+	);
+}
+
 interface IProps {
 	gameId: number;
 	setIsPopup: Function;
@@ -50,48 +77,34 @@ const MatchDetailPopup: React.FC<IProps> = ({
 		...redTeam.map((item: any) => item.champion_total_damage),
 	]);
 
-	console.log('blue_team', blueTeam);
-	console.log('red_team', redTeam);
-	console.log('maxDamage', maxDamage);
-
 	const isWin = (stat: string) => (stat === '승리');
 
 	return (
-		<div className="fixed top-0 left-0 z-50 flex justify-center items-center">
-			<div className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col sm:flex-row items-center justify-center border border-white rounded-xl z-50">
-				{ true ? <SkeletonMatchDetail /> : (
+		<div
+			className="fixed top-0 left-0 z-50 flex justify-center items-center"
+		>
+			<div
+				className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50"
+			>
+				{ isLoading ? <SkeletonMatchDetail /> : (
 					<section className="flex flex-col">
 						{ blueTeam.length !== 0 && (
 							<div className="flex justify-center flex-col bg-blue-100 p-10 rounded-xl mb-2">
-								<div className="flex justify-start flex-row items-center my-1">
-									<div className="w-60 mr-0.5">
-										<span className={`font-bold ${isWin(blueTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}`}>
-											{ blueTeam[0].game_stat }
-										</span>&nbsp;(블루팀)
-									</div>
-									<div className="w-20 text-center">티어</div>
-									<div className="w-20 text-center">KDA</div>
-									<div className="w-16 text-center mx-2">CS</div>
-									<div className="w-28 text-center mr-2">피해량</div>
-									<div className="w-48 text-center">아이템</div>
-								</div>
+								<MatchTeamHeader
+									team={'blue'}
+									className={isWin(blueTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
+									stat={blueTeam[0].game_stat}
+								/>
 								{ blueTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
 							</div>
 						) }
 						{ redTeam.length !== 0 && (
 							<div className="flex justify-center flex-col bg-red-100 p-10 rounded-xl">
-								<div className="flex justify-start flex-row items-center my-1">
-									<div className="w-60 mr-0.5">
-										<span className={`font-bold ${isWin(redTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}`}>
-											{ redTeam[0].game_stat }
-										</span>&nbsp;(레드팀)
-									</div>
-									<div className="w-20 text-center">티어</div>
-									<div className="w-20 text-center">KDA</div>
-									<div className="w-16 text-center mx-2">CS</div>
-									<div className="w-28 text-center mr-2">피해량</div>
-									<div className="w-48 text-center">아이템</div>
-								</div>
+								<MatchTeamHeader
+									team={'red'}
+									className={isWin(redTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
+									stat={redTeam[0].game_stat}
+								/>
 								{ redTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
 							</div>
 						) }
