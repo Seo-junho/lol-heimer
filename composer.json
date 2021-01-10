@@ -14,8 +14,9 @@
 	  "php": "^7.2.0",
 	  "ext-curl": "*",
 	  "ext-json": "*",
-      "ext-mbstring": "*"
-    },
+	  "predis/predis": "1.0.3",
+	  "ext-memcached": "*"
+	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
