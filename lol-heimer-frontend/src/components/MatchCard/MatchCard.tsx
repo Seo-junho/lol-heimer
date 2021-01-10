@@ -24,6 +24,7 @@ const MatchCard: React.FC<IProps> = ({
 		spell_2: {
 			icon_img: spellIconImg2,
 		},
+		game_id,
 		game_duration,
 		game_stat,
 		kills,
@@ -83,7 +84,7 @@ const MatchCard: React.FC<IProps> = ({
 		>
 			<div className="flex-grow-0 flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
 				<div className="sm:pb-2">
-					<span className="font-light">{`${parseTime(timestamp)}`}</span>
+					<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
 				</div>
 				<div className="flex sm:flex-col justify-center items-center sm:pt-2">
 					<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
@@ -146,7 +147,7 @@ const MatchCard: React.FC<IProps> = ({
 			<button className="base-btn" onClick={()=>setIsPopup(true)}>
 				상세보기
 			</button>
-			{ isPopup && <MatchDetailPopup /> }
+			{ isPopup && <MatchDetailPopup gameId={game_id} setIsPopup={setIsPopup} /> }
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
