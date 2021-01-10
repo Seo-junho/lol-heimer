@@ -2,7 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 define("RIOT_API_KEY",'RGAPI-0197d66d-87b9-4d7e-bbc3-fc38644e586a');
+define("REDIS_URL",'memcachedcloud-crystalline-34925');
 
+define("MEMCACHEDCLOUD_SERVERS",'memcached-19181.c240.us-east-1-3.ec2.cloud.redislabs.com:19181');
+define("MEMCACHEDCLOUD_USERNAME",'memcached-app197113680');
+define("MEMCACHEDCLOUD_PASSWORD",'LvkAWP5By2wI55fpKqlJvMifFh5wDp8C ');
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
