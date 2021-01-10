@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemBox from './ItemBox';
+import KdaBox from './KdaBox';
 
 interface IProps {
 	user: any;
@@ -28,7 +29,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 	const dmgPer = (total_damage / maxDamage) * 100;
 
 	return (
-		<div className="flex justify-start flex-row items-center">
+		<div className="flex justify-start flex-row items-center my-1">
 			<div className="w-10">
 				<div
 					className="bg-cover bg-no-repeat rounded-full"
@@ -59,16 +60,16 @@ const MatchDetailUser: React.FC<IProps> = ({
 			</div>
 			<div className="w-40">{ player_name }</div>
 			<div className="w-20 flex flex-col items-center justify-center mx-2">
-				<span>Level { player_level }</span>
-				<span>{ player_tier }</span>
+				<span className="text-sm">Level { player_level }</span>
+				<span className="text-sm">{ player_tier }</span>
 			</div>
-			<div className="w-20 flex flex-row">
-				<span>{ kills }</span>
-				<span>/</span>
-				<span>{ deaths }</span>
-				<span>/</span>
-				<span>{ assists }</span>
-			</div>
+			<KdaBox
+				className="w-20 flex flex-row"
+				type={'md'}
+				kills={kills}
+				deaths={deaths}
+				assists={assists}
+			/>
 			<div className="w-16">CS { total_minions_killed }</div>
 			<div className="w-28 mx-2">
 				<span className="text-sm">{ total_damage }</span>

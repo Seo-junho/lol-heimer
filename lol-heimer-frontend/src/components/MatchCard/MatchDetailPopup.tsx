@@ -56,9 +56,15 @@ const MatchDetailPopup: React.FC<IProps> = ({
 		<div className="fixed top-0 left-0 z-50 flex justify-center items-center">
 			<div className="absolute shadow-lg mb-5 w-11/12 p-5 lg:max-w-5xl bg-gray-100 flex flex-col sm:flex-row items-center justify-center border border-white rounded-xl z-50">
 				{ isLoading && <>Loading</> }
-				<div className="flex justify-center flex-col">
-					{ blueTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
-				</div>
+				<section className="flex flex-col">
+					<div className="flex justify-center flex-col">
+						{ blueTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
+					</div>
+					<div className="border-b border-gray-300 w-full h-0 border-solid my-3" />
+					<div className="flex justify-center flex-col">
+						{ redTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
+					</div>
+				</section>
 			</div>
 			<div
 				className="w-screen h-screen bg-black opacity-30"

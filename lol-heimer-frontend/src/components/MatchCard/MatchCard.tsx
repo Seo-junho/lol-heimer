@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ItemBox from './ItemBox';
+import KdaBox from './KdaBox';
 import MatchDetailPopup from './MatchDetailPopup';
 import PlayerTitle from './PlayerTitle';
 
@@ -123,13 +124,11 @@ const MatchCard: React.FC<IProps> = ({
 				</div>
 			</div>
 			<div className="px-5 flex flex-col justify-center items-center">
-				<div>
-					<span className="text-xl">{ kills }</span>
-					<span className="text-xl text-gray-500 mx-1">/</span>
-					<span className={`text-xl ${deaths !== 0 && ('text-red-500')}`}>{ deaths }</span>
-					<span className="text-xl text-gray-500 mx-1">/</span>
-					<span className="text-xl">{ assists }</span>
-				</div>
+				<KdaBox
+					kills={kills}
+					deaths={deaths}
+					assists={assists}
+				/>
 				<div className={`text-xl py-1 ${deaths === 0 && 'text-orange-600'}`}>
 					{ kda }
 				</div>
