@@ -84,12 +84,12 @@ const MatchDetailPopup: React.FC<IProps> = ({
 			className="fixed top-0 left-0 z-50 flex justify-center items-center"
 		>
 			<div
-				className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50"
+				className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50 overscroll-y-scroll"
 			>
 				{ isLoading ? <SkeletonMatchDetail /> : (
 					<section className="flex flex-col">
 						{ blueTeam.length !== 0 && (
-							<div className="flex justify-center flex-col bg-blue-100 p-10 rounded-xl mb-2">
+							<div className="flex justify-center flex-col bg-blue-100 p-2 md:p-10 rounded-xl mb-2">
 								<MatchTeamHeader
 									team={'blue'}
 									className={isWin(blueTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
@@ -99,7 +99,7 @@ const MatchDetailPopup: React.FC<IProps> = ({
 							</div>
 						) }
 						{ redTeam.length !== 0 && (
-							<div className="flex justify-center flex-col bg-red-100 p-10 rounded-xl">
+							<div className="flex justify-center flex-col bg-red-100 p-2 md:p-10 rounded-xl">
 								<MatchTeamHeader
 									team={'red'}
 									className={isWin(redTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
@@ -108,6 +108,14 @@ const MatchDetailPopup: React.FC<IProps> = ({
 								{ redTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
 							</div>
 						) }
+						<div>
+							<button
+								className="base-btn w-full text-center text-sm md:text-xl"
+								onClick={() => { setIsPopup(false) }}
+							>
+								닫기
+							</button>
+						</div>
 					</section>
 				) }
 			</div>

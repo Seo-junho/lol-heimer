@@ -29,20 +29,18 @@ const MatchDetailUser: React.FC<IProps> = ({
 	const dmgPer = (total_damage / maxDamage) * 100;
 
 	return (
-		<div className="flex justify-start flex-row items-center my-1">
-			<div className="w-10">
+		<div className="flex justify-start flex-row items-center my-0.5 mb:my-1">
+			<div>
 				<div
-					className="bg-cover bg-no-repeat rounded-full"
+					className="w-8 h-8 md:w-10 md:h-10 bg-cover bg-no-repeat rounded-full"
 					style={{
-						width: '40px',
-						height: '40px',
 						backgroundImage: `url(${play_champion.image})`,
 					}}
 				/>
 			</div>
 			<div className="flex flex-col mx-2">
 				<div
-					className="bg-cover bg-no-repeat mb-0.5"
+					className="w-20 h-20 bg-cover bg-no-repeat mb-0.5"
 					style={{
 						width: '20px',
 						height: '20px',
@@ -58,14 +56,14 @@ const MatchDetailUser: React.FC<IProps> = ({
 					}}
 				/>
 			</div>
-			<div className="flex flex-col md:flex-row">
-				<div className="w-40">{ player_name }</div>
-				<div className="w-20 hidden md:flex flex-col items-center justify-center mx-2">
+			<div className="flex flex-col md:flex-row items-start md:items-center">
+				<div className="w-20 md:w-40 text-xs md:text-base">{ player_name }</div>
+				<div className="w-10 md:w-20 hidden md:flex flex-col items-center justify-center mx-2">
 					<span className="text-sm">Level { player_level }</span>
 					<span className="text-sm">{ player_tier }</span>
 				</div>
 				<KdaBox
-					className="w-20 flex flex-row items-center justify-center"
+					className="w-20 flex flex-row items-center justify-start md:justify-center text-xs md:text-base"
 					type={'md'}
 					kills={kills}
 					deaths={deaths}

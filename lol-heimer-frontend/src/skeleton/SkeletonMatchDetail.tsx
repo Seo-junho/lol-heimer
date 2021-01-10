@@ -10,13 +10,13 @@ const SkeletonMatchDetail: React.FC = () => {
 			}}
 		>
 			<div
-				className="h-80 flex-grow-0 items-center mx-auto rounded-xl mb-2 bg-gray-200"
+				className="h-40 md:h-80 flex-grow-0 items-center mx-auto rounded-xl mb-2 bg-gray-200"
 				style={{
 					width: '100%'
 				}}>
 			</div>
 			<div
-				className="h-80 flex-grow-0 items-center mx-auto rounded-xl bg-gray-200"
+				className="h-40 md:h-80 flex-grow-0 items-center mx-auto rounded-xl bg-gray-200"
 				style={{
 					width: '100%'
 				}}>
