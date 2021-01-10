@@ -90,6 +90,7 @@ class Search extends CI_Controller{
 			${$team}[$i]['player_name'] = $player['summonerName'];
 			${$team}[$i]['player_level'] = $player_info['level'];
 			${$team}[$i]['player_tier'] = $player_info['tier'];
+			${$team}[$i]['play_champion'] = getChampionData($match_participants[$player_index]->championId);
 
 			${$team}[$i]['kills'] = $match_participants[$player_index]->stats->kills;
 			${$team}[$i]['deaths'] = $match_participants[$player_index]->stats->deaths;
