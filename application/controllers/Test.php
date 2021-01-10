@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Test extends CI_Controller {
 	public function index(){
-		$redis = new Predis\Client(getenv('REDIS_URL'));
-		var_dump($redis);
-
 		$mc = new Memcached();
 		$mc->setOption(Memcached::OPT_BINARY_PROTOCOL, true);
 		$mc->addServers(array_map(function($server) { return explode(':', $server, 2); }, explode(',', MEMCACHEDCLOUD_SERVERS)));
