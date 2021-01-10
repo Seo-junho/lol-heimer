@@ -70,7 +70,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 				deaths={deaths}
 				assists={assists}
 			/>
-			<div className="w-16">CS { total_minions_killed }</div>
+			<div className="w-16 text-center">CS { total_minions_killed }</div>
 			<div className="w-28 mx-2">
 				<span className="text-sm">{ total_damage }</span>
 				<div className="w-full h-3 bg-gray-300">
