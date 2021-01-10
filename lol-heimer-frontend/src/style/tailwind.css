@@ -18,5 +18,5 @@
 }
 
 .base-btn {
-	@apply bg-blue-500 hover:bg-blue-400 text-white p-3 rounded-xl;
+	@apply bg-blue-500 hover:bg-blue-400 text-white p-3 rounded-xl focus:outline-none;
 }

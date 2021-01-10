@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ItemBox from './ItemBox';
+import MatchDetailPopup from './MatchDetailPopup';
 import PlayerTitle from './PlayerTitle';
 
 interface IProps {
@@ -37,6 +38,7 @@ const MatchCard: React.FC<IProps> = ({
 		item,
 	} = match;
 
+	const [isPopup, setIsPopup] = useState(false);
 	const isWin = game_stat === '승리';
 	const playMinute = Math.floor(game_duration / 60);
 	const playTime = `${playMinute}분 ${game_duration % 60}초`;
@@ -141,9 +143,10 @@ const MatchCard: React.FC<IProps> = ({
 				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
 			</div>
 			<ItemBox items={item} className="mx-3"/>
-			<button className="base-btn">
+			<button className="base-btn" onClick={()=>setIsPopup(true)}>
 				상세보기
 			</button>
+			{ isPopup && <MatchDetailPopup /> }
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
