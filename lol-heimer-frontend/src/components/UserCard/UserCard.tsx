@@ -27,25 +27,27 @@ const UserCard: React.FC<Props> = (
 	} }
 ): JSX.Element => {
 	return (
-		<div className="card flex-1 flex flex-col justify-center items-center">
-			<h3 className="text-4xl mb-5">{ name }</h3>
-			<div
-				className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"
-				style={{
-					backgroundImage: `url(${profile_icon})`
-				}}
-			>
+		<div className="card flex-1 flex flex-row justify-center items-center">
+			<div className="flex flex-col items-center">
+				<div
+					className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"
+					style={{
+						backgroundImage: `url(${profile_icon})`
+					}}
+				>
+				</div>
+				<div
+					className="bg-cover bg-no-repeat flex justify-center items-center relative -top-2"
+					style={{
+						width: '50px',
+						height: '26px',
+						backgroundImage: `url('${LevelBox}')`,
+					}}
+				>
+					<h4 className="text-md font-light text-white">{ summonerLevel }</h4>
+				</div>
 			</div>
-			<div
-				className="bg-cover bg-no-repeat flex justify-center items-center"
-				style={{
-					width: '44px',
-					height: '24px',
-					backgroundImage: `url('${LevelBox}')`,
-				}}
-			>
-				<h4 className="text-sm font-light text-white">{ summonerLevel }</h4>
-			</div>
+			<h3 className="text-4xl p-5">{ name }</h3>
 		</div>
 	)
 }
