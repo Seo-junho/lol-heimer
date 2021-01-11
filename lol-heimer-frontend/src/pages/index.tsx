@@ -31,12 +31,14 @@ const Pages: React.FC<IProps> = ({
 		username: '',
 		country: 'kr',
 	});
+
 	const nameChange = (username: string) => {
 		setUser({
 			...user,
 			username,
 		})
-	}
+	};
+
 	const onSubmit = async (): Promise<void> => {
 		try {
 			const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
@@ -44,7 +46,8 @@ const Pages: React.FC<IProps> = ({
 		} catch {
 			// TODO: Error handling
 		}
-	}
+	};
+
 	return (
 		<>
 			<div className="pt-12">
