@@ -38,7 +38,7 @@ const LotationChampion: React.FC = () => {
 					Loading
 				</>
 			) : (
-				<div className="flex flex-row flex-wrap	justify-center items-center py-3">
+				<div className="flex flex-row	justify-center items-center py-3">
 					{ champions.map((champ: any) => (
 						<div
 							className="flex-1 flex flex-col items-center"
