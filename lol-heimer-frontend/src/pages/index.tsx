@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
 import { connect } from 'react-redux';
 import Heimer from '../images/heimer.png';
+import LotationChampion from '@components/Lotation/LotationChampion';
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
@@ -57,6 +58,7 @@ const Pages: React.FC<IProps> = ({
 				onSubmit={onSubmit}
 				nameChange={nameChange}
 			/>
+			<LotationChampion />
 		</>
 	)
 }
