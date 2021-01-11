@@ -18,9 +18,5 @@
   "heroku-run-build-script": true,
   "dependencies": {
     "lol-heimer-frontend": "file:lol-heimer-frontend"
-  },
-  "engine": {
-    "node": "14.15.0",
-    "npm": "6.14.9"
-  }
+	}
 }
