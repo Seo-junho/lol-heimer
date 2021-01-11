@@ -103,18 +103,22 @@ const User: React.FC<IProps> = ({
 
 	return (
 		<Article>
-			<div className="flex flex-col sm:flex-row items-center justify-center">
-				<UserCard
-					userInfo={userInfo}
-				/>
-				<LeagueCard
-					type='solo'
-					leagueInfo={soloLeague}
-				/>
-				<LeagueCard
-					type='team'
-					leagueInfo={teamLeague}
-				/>
+			<div className="flex flex-col items-center justify-center">
+				<div className="w-full flex">
+					<UserCard
+						userInfo={userInfo}
+					/>
+				</div>
+				<div className="flex flex-col sm:flex-row w-full">
+					<LeagueCard
+						type='solo'
+						leagueInfo={soloLeague}
+					/>
+					<LeagueCard
+						type='team'
+						leagueInfo={teamLeague}
+					/>
+				</div>
 			</div>
 			{ matchList.length !== 0 && (
 				<div className="flex flex-col items-start justify-center">
