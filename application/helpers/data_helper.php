@@ -93,8 +93,9 @@ function getChampionData($id = 0)
 	$champion['key'] = $champion_data['key'];
 	$champion['name'] = $champion_data['name'];
 	$champion['title'] = $champion_data['title'];
+	$champion['loading_image'] = '//ddragon.leagueoflegends.com/cdn/img/champion/loading/' . $champion_data['id'] . '_0.jpg';
 	//$champion['desc'] = $champion_data['blurb'];
-	$champion['image'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/' . $champion_data['image']['full'];
+	$champion['image'] = '//ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/' . $champion_data['image']['full'];
 
 	return $champion;
 }

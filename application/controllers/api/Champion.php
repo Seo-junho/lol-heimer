@@ -29,12 +29,16 @@ class Champion extends CI_Controller {
 			$champion = getChampionData($freeChampion);
 			$data['free_champion_list'][$k]['name'] = $champion['name'];
 			$data['free_champion_list'][$k]['image'] = $champion['image'];
+			$data['free_champion_list'][$k]['loading_image'] = $champion['loading_image'];
+			$data['free_champion_list'][$k]['title'] = $champion['title'];
 		}
 
 		foreach($result->freeChampionIdsForNewPlayers as $k=>$freeChampionIdsForNewPlayers){
 			$champion = getChampionData($freeChampionIdsForNewPlayers);
 			$data['free_champion_list_for_new_player'][$k]['name'] = $champion['name'];
 			$data['free_champion_list_for_new_player'][$k]['image'] = $champion['image'];
+			$data['free_champion_list_for_new_player'][$k]['loading_image'] = $champion['loading_image'];
+			$data['free_champion_list_for_new_player'][$k]['title'] = $champion['title'];
 		}
 
 		$response['data'] = $data;
