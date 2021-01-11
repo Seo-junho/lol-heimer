@@ -27,7 +27,7 @@ const UserCard: React.FC<Props> = (
 	} }
 ): JSX.Element => {
 	return (
-		<div className="card flex flex-col justify-center items-center">
+		<div className="card flex-1 flex flex-col justify-center items-center">
 			<h3 className="text-4xl mb-5">{ name }</h3>
 			<div
 				className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"

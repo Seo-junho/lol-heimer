@@ -48,7 +48,7 @@ const LeagueCard: React.FC<Props> = (
 	}
 
 	return (
-		<div className="card flex flex-col lg:flex-row items-center">
+		<div className="card flex-1 flex flex-col lg:flex-row items-center">
 			<div className="flex-grow-0">
 				<img
 					src={`${tier_img}`}
