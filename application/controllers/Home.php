@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 		$this->load->view('home.html');
 	}
 
-	public function user()
+	public function user($user_name)
 	{
 		$this->load->view('home.html');
 	}
