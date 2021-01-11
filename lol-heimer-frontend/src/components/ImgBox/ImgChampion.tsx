@@ -2,24 +2,25 @@ import React from 'react';
 
 interface IProps {
   className?: string;
-  size?: string;
+  style?: object;
   imgUrl: string;
 }
 
 const ImgChampion: React.FC<IProps> = ({
-  className = '',
-  size = '20px',
-  imgUrl,
+	className = '',
+	style = {},
+	imgUrl,
+	children,
 }) => {
   return (
     <div
       className={`${className} bg-cover bg-no-repeat`}
       style={{
-        width: size,
-        height: size,
+				...style,
         backgroundImage: `url(${imgUrl})`,
       }}
     >
+			{ children }
     </div>
   );
 }

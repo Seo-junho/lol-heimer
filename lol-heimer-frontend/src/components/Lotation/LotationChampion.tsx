@@ -43,15 +43,23 @@ const LotationChampion: React.FC = () => {
 						<div
 							className="flex-1 flex flex-col items-center"
 							style={{
-								minWidth: `5rem`
+								minWidth: `130px`
 							}}
 						>
 							<ImgChampion
-								className={'rounded-full'}
-								size={`50px`}
-								imgUrl={champ.image}
-							/>
-							{ champ.name }
+								className={'rounded-md relative'}
+								style={{
+									width: `130px`,
+									height: `200px`,
+								}}
+								imgUrl={champ.loading_image}
+							>
+								<div className="absolute bottom-0 w-full text-center">
+									<div className="w-full h-8 bg-white bg-opacity-50 flex items-center justify-center font-bold">
+										{ champ.name }
+									</div>
+								</div>
+							</ImgChampion>
 						</div>
 					))}
 				</div>
