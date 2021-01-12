@@ -33,7 +33,7 @@ const UserCard: React.FC<Props> = (
 				<div
 					className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"
 					style={{
-						backgroundImage: `${CDN_URL(profile_icon)})`
+						backgroundImage: `${CDN_URL(profile_icon)}`
 					}}
 				>
 				</div>
@@ -42,7 +42,7 @@ const UserCard: React.FC<Props> = (
 					style={{
 						width: '50px',
 						height: '26px',
-						backgroundImage: `${CDN_URL(LevelBox)}`,
+						backgroundImage: `url('${LevelBox}')`,
 					}}
 				>
 					<h4 className="text-md font-light text-white">{ summonerLevel }</h4>
