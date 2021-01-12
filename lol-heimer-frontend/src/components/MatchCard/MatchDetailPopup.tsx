@@ -30,6 +30,33 @@ const MatchTeamHeader: React.FC<IHeaderProps> = ({
 			<div className="w-48 text-center">아이템</div>
 		</div>
 	);
+};
+
+interface ISectionProps {
+	team: string;
+	data: any[];
+	maxDamage: number;
+};
+
+const MatchTeamSection: React.FC<ISectionProps> = ({
+	team,
+	data,
+	maxDamage,
+}) => {
+
+	const isWin = (stat: string) => (stat === '승리');
+	const bgStyle = team === 'blue' ? 'bg-blue-100 rounded-xl rounded-b-none' : 'bg-red-100';
+
+	return (
+		<div className={`flex justify-center flex-col ${bgStyle} p-2 md:p-10`}>
+			<MatchTeamHeader
+				team={team}
+				className={isWin(data[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
+				stat={data[0].game_stat}
+			/>
+			{ data.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
+		</div>
+	)
 }
 
 interface IProps {
@@ -77,8 +104,6 @@ const MatchDetailPopup: React.FC<IProps> = ({
 		...redTeam.map((item: any) => item.champion_total_damage),
 	]);
 
-	const isWin = (stat: string) => (stat === '승리');
-
 	return (
 		<div
 			className="fixed top-0 left-0 z-50 flex justify-center items-center"
@@ -87,30 +112,24 @@ const MatchDetailPopup: React.FC<IProps> = ({
 				className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50 overscroll-y-scroll"
 			>
 				{ isLoading ? <SkeletonMatchDetail /> : (
-					<section className="flex flex-col">
+					<section className="flex flex-col bg-red-100 rounded-xl">
 						{ blueTeam.length !== 0 && (
-							<div className="flex justify-center flex-col bg-blue-100 p-2 md:p-10 rounded-xl mb-2">
-								<MatchTeamHeader
-									team={'blue'}
-									className={isWin(blueTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
-									stat={blueTeam[0].game_stat}
-								/>
-								{ blueTeam.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
-							</div>
+							<MatchTeamSection
+								team={'blue'}
+								data={blueTeam}
+								maxDamage={maxDamage}
+							/>
 						) }
 						{ redTeam.length !== 0 && (
-							<div className="flex justify-center flex-col bg-red-100 p-2 md:p-10 rounded-xl">
-								<MatchTeamHeader
-									team={'red'}
-									className={isWin(redTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
-									stat={redTeam[0].game_stat}
-								/>
-								{ redTeam.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
-							</div>
+							<MatchTeamSection
+								team={'red'}
+								data={redTeam}
+								maxDamage={maxDamage}
+							/>
 						) }
 						<div>
 							<button
-								className="base-btn w-full text-center text-sm md:text-xl"
+								className="base-btn rounded-t-none w-full text-center text-sm md:text-xl"
 								onClick={() => { setIsPopup(false) }}
 							>
 								닫기
