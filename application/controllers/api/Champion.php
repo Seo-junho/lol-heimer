@@ -26,7 +26,7 @@ class Champion extends CI_Controller {
 		$data = [];
 
 		foreach($result->freeChampionIds as $k=>$freeChampion){
-			$champion = getChampionData($freeChampion);
+			$champion = getMainChampionData($freeChampion);
 			$data['free_champion_list'][$k]['name'] = $champion['name'];
 			$data['free_champion_list'][$k]['image'] = $champion['image'];
 			$data['free_champion_list'][$k]['loading_image'] = $champion['loading_image'];
@@ -34,7 +34,7 @@ class Champion extends CI_Controller {
 		}
 
 		foreach($result->freeChampionIdsForNewPlayers as $k=>$freeChampionIdsForNewPlayers){
-			$champion = getChampionData($freeChampionIdsForNewPlayers);
+			$champion = getMainChampionData($freeChampionIdsForNewPlayers);
 			$data['free_champion_list_for_new_player'][$k]['name'] = $champion['name'];
 			$data['free_champion_list_for_new_player'][$k]['image'] = $champion['image'];
 			$data['free_champion_list_for_new_player'][$k]['loading_image'] = $champion['loading_image'];
