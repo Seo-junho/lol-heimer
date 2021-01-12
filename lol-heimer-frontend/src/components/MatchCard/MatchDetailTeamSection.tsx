@@ -18,7 +18,7 @@ const MatchDetailTeamSection: React.FC<ISectionProps> = ({
 	const bgStyle = team === 'blue' ? 'bg-blue-100 rounded-xl rounded-b-none' : 'bg-red-100';
 
 	return (
-		<div className={`flex justify-center flex-col ${bgStyle} p-1 md:p-7`}>
+		<div className={`flex justify-center flex-col ${bgStyle} p-2 md:p-7`}>
 			<MatchTeamHeader
 				team={team}
 				className={isWin(data[0].game_stat) ? 'text-blue-600' : 'text-red-600'}

@@ -10,7 +10,7 @@ interface IItemProps {
 }
 
 const Item: React.FC<IItemProps> = ({
-	item,
+	item = { name: '' },
 	size,
 	className,
 }) => {
