@@ -339,13 +339,23 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['spell_1'] = getSpell($match_participants[$my_participant_id]->spell1Id);
 			$matchDetail[$key]['spell_2'] = getSpell($match_participants[$my_participant_id]->spell2Id);
 
-			$matchDetail[$key]['item'][0] = getItem($match_participants[$my_participant_id]->stats->item0);
-			$matchDetail[$key]['item'][1] = getItem($match_participants[$my_participant_id]->stats->item1);
-			$matchDetail[$key]['item'][2] = getItem($match_participants[$my_participant_id]->stats->item2);
-			$matchDetail[$key]['item'][3] = getItem($match_participants[$my_participant_id]->stats->item3);
-			$matchDetail[$key]['item'][4] = getItem($match_participants[$my_participant_id]->stats->item4);
-			$matchDetail[$key]['item'][5] = getItem($match_participants[$my_participant_id]->stats->item5);
-			$matchDetail[$key]['item'][6] = getItem($match_participants[$my_participant_id]->stats->item6);
+			$items = [
+				$match_participants[$my_participant_id]->stats->item0,
+				$match_participants[$my_participant_id]->stats->item1,
+				$match_participants[$my_participant_id]->stats->item2,
+				$match_participants[$my_participant_id]->stats->item3,
+				$match_participants[$my_participant_id]->stats->item4,
+				$match_participants[$my_participant_id]->stats->item5,
+				$match_participants[$my_participant_id]->stats->item6,
+			];
+
+			$item_list = getItemList($items);
+
+			$matchDetail[$key]['item'] = [];
+
+			foreach($item_list as $item){
+				array_push($matchDetail[$key]['item'], $item);
+			}
 		}
 
 		$this->return('200', 'Success!', $matchDetail);
@@ -537,6 +547,8 @@ class Search extends CI_Controller{
 
 		return $res;
 	}
+
+	function get_time() { $t=explode(' ',microtime()); return (float)$t[0]+(float)$t[1]; }
 }
 
 

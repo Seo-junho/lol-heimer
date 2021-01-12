@@ -36,3 +36,4 @@ distribution
 application/config/config.php
 
 node_modules
+game_meta/*
