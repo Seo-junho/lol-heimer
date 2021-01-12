@@ -58,7 +58,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 				/>
 			</div>
 			<div className="flex flex-col md:flex-row items-start md:items-center">
-				<div className="w-14 md:w-20 md:w-40 text-xs md:text-base">{ player_name }</div>
+				<div className="w-14 md:w-40 text-xs md:text-base">{ player_name }</div>
 				<div className="w-10 md:w-20 hidden md:flex flex-col items-center justify-center mx-2">
 					<span className="text-sm">Level { player_level }</span>
 					<span className="text-sm">{ player_tier }</span>
