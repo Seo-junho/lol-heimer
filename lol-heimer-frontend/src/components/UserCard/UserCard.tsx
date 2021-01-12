@@ -1,5 +1,6 @@
 import React from 'react';
 import LevelBox from '@images/bg-levelbox.png';
+import { CDN_URL } from '@end-point/server';
 
 interface Props {
 	userInfo: {
@@ -32,7 +33,7 @@ const UserCard: React.FC<Props> = (
 				<div
 					className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"
 					style={{
-						backgroundImage: `url(${profile_icon})`
+						backgroundImage: `${CDN_URL(profile_icon)})`
 					}}
 				>
 				</div>
@@ -41,7 +42,7 @@ const UserCard: React.FC<Props> = (
 					style={{
 						width: '50px',
 						height: '26px',
-						backgroundImage: `url('${LevelBox}')`,
+						backgroundImage: `${CDN_URL(LevelBox)}`,
 					}}
 				>
 					<h4 className="text-md font-light text-white">{ summonerLevel }</h4>

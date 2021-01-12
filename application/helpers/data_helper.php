@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 function getItem($id = 0)
 {
-	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/item.json');
+	$userIconData = file_get_content( 'https://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/item.json');
 
 	$reponseData = [];
 	$reponseData['name'] = '';
@@ -15,7 +15,7 @@ function getItem($id = 0)
 	if (!empty($userIconData['data'][$id])) {
 		$userIconData = $userIconData['data'][$id];
 		$reponseData['name'] = $userIconData['name'];
-		$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/item/' .$userIconData['image']['full'];
+		$reponseData['icon_img'] = '/item/' .$userIconData['image']['full'];
 		//$reponseData['desc'] = $userIconData['description'];
 		//$reponseData['plain_text'] = $userIconData['plaintext'];
 		$reponseData['item_price'] = $userIconData['gold']['total'];
@@ -31,7 +31,7 @@ function getItem($id = 0)
  */
 function getUserIcon($id = 0)
 {
-	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json');
+	$userIconData = file_get_content( 'https://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json');
 	$key = array_search($id, array_column($userIconData['data'], 'id'));
 
 	$userIconData = $userIconData['data'];
@@ -40,7 +40,7 @@ function getUserIcon($id = 0)
 
 	$userIconData = $userIconData[$userIconId];
 
-	return 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/profileicon/' . $userIconData['image']['full'];
+	return '/profileicon/' . $userIconData['image']['full'];
 }
 
 /**
@@ -50,7 +50,7 @@ function getUserIcon($id = 0)
  */
 function getSpell($id = 0)
 {
-	$data = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json');
+	$data = file_get_content( 'https://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json');
 	$key = array_search($id, array_column($data['data'], 'key'));
 	$data = $data['data'];
 	$list = array_keys($data);
@@ -59,9 +59,9 @@ function getSpell($id = 0)
 
 	$reponseData = [];
 
-	$reponseData['id'] = $data['id'];
+	//$reponseData['id'] = $data['id'];
 	$reponseData['name'] = $data['name'];
-	$reponseData['icon_img'] = 'http://ddragon.leagueoflegends.com/cdn/10.25.1/img/spell/'	.$data['id']. '.png';
+	$reponseData['icon_img'] = '/spell/'. $data['id']. '.png';
 	//$reponseData['desc'] = $data['description'];
 
 	return $reponseData;
@@ -78,7 +78,39 @@ function getChampionData($id = 0)
 		return [];
 	}
 
-	$champion_data = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json');
+	$champion_data = file_get_content( 'https://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json');
+
+	$key = array_search($id, array_column($champion_data['data'], 'key'));
+
+	$champion_data = $champion_data['data'];
+	$champion_list = array_keys($champion_data);
+	$champion_name = $champion_list[$key];
+
+	$champion_data = $champion_data[$champion_name];
+	$champion = [];
+
+	$champion['id'] = $champion_data['id'];
+	$champion['key'] = $champion_data['key'];
+	$champion['name'] = $champion_data['name'];
+	$champion['title'] = $champion_data['title'];
+	//$champion['desc'] = $champion_data['blurb'];
+	$champion['image'] = '/champion/' . $champion_data['image']['full'];
+
+	return $champion;
+}
+
+/**
+ * 챔피언 정보를 가져옵니다 ( 로테이션 페이지 전용 )
+ * @param int $id
+ * @return array
+ */
+function getMainChampionData($id = 0)
+{
+	if ($id == 0) {
+		return [];
+	}
+
+	$champion_data = file_get_content( 'https://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json');
 
 	$key = array_search($id, array_column($champion_data['data'], 'key'));
 
@@ -95,7 +127,7 @@ function getChampionData($id = 0)
 	$champion['title'] = $champion_data['title'];
 	$champion['loading_image'] = '//ddragon.leagueoflegends.com/cdn/img/champion/loading/' . $champion_data['id'] . '_0.jpg';
 	//$champion['desc'] = $champion_data['blurb'];
-	$champion['image'] = '//ddragon.leagueoflegends.com/cdn/10.25.1/img/champion/' . $champion_data['image']['full'];
+	$champion['image'] = '/champion/' . $champion_data['image']['full'];
 
 	return $champion;
 }
