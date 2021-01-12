@@ -102,7 +102,7 @@ function get_map()
 		],
 		[
 			"id" =>  12,
-			"mapName" =>  "하울링 어비스",
+			"mapName" =>  "칼바람 나락",
 			"notes" =>  "ARAM 맵"
 		],
 		[
@@ -354,13 +354,13 @@ function get_queues()
 		],
 		[
 			"id" => 65,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "5v5 ARAM 게임",
 			"notes" => "7.19 패치에서 사용되지 않고 id 450이 사용됩니다."
 		],
 		[
 			"id" => 67,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "ARAM Co-op vs AI 게임",
 			"notes" => "게임 모드 지원 중단됨"
 		],
@@ -372,13 +372,13 @@ function get_queues()
 		],
 		[
 			"id" => 72,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "1v1 Snowdown Showdown 게임",
 			"참고" => null
 		],
 		[
 			"id" => 73,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "2v2 Snowdown Showdown 게임",
 			"참고" => null
 		],
@@ -396,7 +396,7 @@ function get_queues()
 		],
 		[
 			"id" => 78,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "One For All  => 미러 모드 게임",
 			"참고" => null
 		],
@@ -444,7 +444,7 @@ function get_queues()
 		],
 		[
 			"id" => 300,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "포로 킹 게임의 전설",
 			"notes" => "id 920을 위해 7.19 패치에서 사용되지 않음"
 		],
@@ -516,7 +516,7 @@ function get_queues()
 		],
 		[
 			"id" => 450,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "5v5 ARAM 게임",
 			"참고" => null
 		],
@@ -600,7 +600,7 @@ function get_queues()
 		],
 		[
 			"id" => 920,
-			"map" => "하울링 어비스",
+			"map" => "칼바람 나락",
 			"description" => "포로 킹 게임의 전설",
 			"참고" => null
 		],

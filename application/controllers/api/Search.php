@@ -178,9 +178,9 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['queue'] = get_property('queues',$value->queue);
 			$matchDetail[$key]['game_creation'] = $matchInfo->gameCreation;
 			$matchDetail[$key]['game_duration'] = $matchInfo->gameDuration;
-			$matchDetail[$key]['game_mode'] = get_property('game_mode', $matchInfo->gameMode);
+			//$matchDetail[$key]['game_mode'] = get_property('game_mode', $matchInfo->gameMode);
 			$matchDetail[$key]['game_type'] = get_property('game_type', $matchInfo->gameType);
-			$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
+			//$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
 
 			$teams = []; // 팀 리스트
 			$players = []; // 게임 플레이어 리스트
