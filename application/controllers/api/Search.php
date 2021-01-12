@@ -135,6 +135,7 @@ class Search extends CI_Controller{
 
 		$this->return('200', 'Success!', $matchDetail);
 	}
+
 	/**
 	 * 유저 이름 기준으로 게임 매칭 리스트를 가져옴
 	 * @param string $userName 유저 닉네임
@@ -239,6 +240,114 @@ class Search extends CI_Controller{
 			$matchDetail[$key]['item'][5] = getItem($match_participants[$my_participant_id]->stats->item5);
 			$matchDetail[$key]['item'][6] = getItem($match_participants[$my_participant_id]->stats->item6);
 		}
+		$this->return('200', 'Success!', $matchDetail);
+	}
+
+	/**
+	 * 유저 이름 기준으로 게임 매칭 리스트를 가져옴 ( new )
+	 * @param string $userName 유저 닉네임
+	 * @param int $beginIndex
+	 * @param int $endIndex
+	 */
+	public function getMatchListNew(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
+	{
+		if (empty($userName)) {
+			$this->return('400', 'not found username', []);
+		}
+
+		$AccountId = $this->getUserAccountId($userName);
+		$apiUrl = $this->base_url . '/match/v4/matchlists/by-account/' . $AccountId .'?api_key=' . RIOT_API_KEY . '&beginIndex='.$beginIndex.'&endIndex='.$endIndex;
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $apiUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$matchList = json_decode(curl_exec($ch));
+		curl_close($ch);
+
+		$matchDetail = [];
+
+		$url_list = [];
+		foreach ($matchList->matches as $key=>$value) {
+			array_push($url_list,$this->base_url . '/match/v4/matches/' . $value->gameId .'?api_key=' . RIOT_API_KEY);
+		}
+
+		$res = $this->fetch_multi_url($url_list, 0.5);
+
+		foreach ($matchList->matches as $key=>$value) {
+			$matchInfo = $res[$key];
+
+			$matchDetail[$key]['game_id'] = $value->gameId;
+			$matchDetail[$key]['play_champion'] = getChampionData($value->champion);
+			$matchDetail[$key]['timestamp'] = $value->timestamp;
+			$matchDetail[$key]['role'] = $value->role;
+			$matchDetail[$key]['lane'] = $value->lane;
+			$matchDetail[$key]['queue'] = get_property('queues',$value->queue);
+			$matchDetail[$key]['game_creation'] = $matchInfo->gameCreation;
+			$matchDetail[$key]['game_duration'] = $matchInfo->gameDuration;
+			//$matchDetail[$key]['game_mode'] = get_property('game_mode', $matchInfo->gameMode);
+			$matchDetail[$key]['game_type'] = get_property('game_type', $matchInfo->gameType);
+			//$matchDetail[$key]['map'] = get_property('map', $matchInfo->mapId);
+
+			$teams = []; // 팀 리스트
+			$players = []; // 게임 플레이어 리스트
+			$my_participant_id = ''; // 내 고유 아이디
+
+			foreach ($matchInfo->teams as $team) {
+				$teams[$team->teamId] = $team;
+			}
+
+			$match_participants = $matchInfo->participants;
+			foreach ($matchInfo->participantIdentities as $player) {
+				$players[$player->participantId]['participantId'] = $player->participantId;
+				$players[$player->participantId]['summonerName'] = $player->player->summonerName;
+				$players[$player->participantId]['currentAccountId'] = $player->player->currentAccountId;
+				if ($players[$player->participantId]['currentAccountId'] == $AccountId) {
+					$my_participant_id = $players[$player->participantId]['participantId'];
+				}
+			}
+
+			$player_info = $this->getUserTierAndLevel($players[$my_participant_id]['summonerName']);
+
+			$matchDetail[$key]['player_name'] = $players[$my_participant_id]['summonerName'];
+			$matchDetail[$key]['player_level'] = $player_info['level'];
+			$matchDetail[$key]['player_tier'] = $player_info['tier'];
+
+			$my_participant_id = $my_participant_id - 1;
+
+			$matchDetail[$key]['kills'] = $match_participants[$my_participant_id]->stats->kills;
+			$matchDetail[$key]['deaths'] = $match_participants[$my_participant_id]->stats->deaths;
+			$matchDetail[$key]['assists'] = $match_participants[$my_participant_id]->stats->assists;
+			$matchDetail[$key]['champ_level'] = $match_participants[$my_participant_id]->stats->champLevel;
+			$matchDetail[$key]['total_minions_killed'] = $match_participants[$my_participant_id]->stats->totalMinionsKilled;
+			$matchDetail[$key]['champion_total_damage'] = $match_participants[$my_participant_id]->stats->totalDamageDealtToChampions;
+			$matchDetail[$key]['total_damage'] = $match_participants[$my_participant_id]->stats->totalDamageDealtToChampions;
+			$matchDetail[$key]['vision_score'] = $match_participants[$my_participant_id]->stats->visionScore;
+
+			$matchDetail[$key]['is_double_kill'] = $match_participants[$my_participant_id]->stats->doubleKills > 0;
+			$matchDetail[$key]['is_triple_kill'] = $match_participants[$my_participant_id]->stats->tripleKills > 0;
+			$matchDetail[$key]['is_quadra_kill'] = $match_participants[$my_participant_id]->stats->quadraKills > 0;
+			$matchDetail[$key]['is_penta_kill'] = $match_participants[$my_participant_id]->stats->pentaKills > 0;
+
+			$matchDetail[$key]['double_kill_count'] = $match_participants[$my_participant_id]->stats->doubleKills;
+			$matchDetail[$key]['triple_kill_count'] = $match_participants[$my_participant_id]->stats->tripleKills;
+			$matchDetail[$key]['quadra_kill_count'] = $match_participants[$my_participant_id]->stats->quadraKills;
+			$matchDetail[$key]['penta_kill_count'] = $match_participants[$my_participant_id]->stats->pentaKills;
+
+			$matchDetail[$key]['game_stat'] = ($teams[$match_participants[$my_participant_id]->teamId]->win == 'Fail') ? '패배' : '승리';
+			$matchDetail[$key]['spell_1'] = getSpell($match_participants[$my_participant_id]->spell1Id);
+			$matchDetail[$key]['spell_2'] = getSpell($match_participants[$my_participant_id]->spell2Id);
+
+			$matchDetail[$key]['item'][0] = getItem($match_participants[$my_participant_id]->stats->item0);
+			$matchDetail[$key]['item'][1] = getItem($match_participants[$my_participant_id]->stats->item1);
+			$matchDetail[$key]['item'][2] = getItem($match_participants[$my_participant_id]->stats->item2);
+			$matchDetail[$key]['item'][3] = getItem($match_participants[$my_participant_id]->stats->item3);
+			$matchDetail[$key]['item'][4] = getItem($match_participants[$my_participant_id]->stats->item4);
+			$matchDetail[$key]['item'][5] = getItem($match_participants[$my_participant_id]->stats->item5);
+			$matchDetail[$key]['item'][6] = getItem($match_participants[$my_participant_id]->stats->item6);
+		}
+
 		$this->return('200', 'Success!', $matchDetail);
 	}
 
@@ -367,7 +476,67 @@ class Search extends CI_Controller{
 		return;
 	}
 
-	function get_time() { $t=explode(' ',microtime()); return (float)$t[0]+(float)$t[1]; }
+	/**
+	 * fetch_multi_url
+	 *
+	 * @param array $url_list
+	 * @param int $timeout
+	 * @return array
+	 */
+	private function fetch_multi_url( array $url_list, $timeout = 0 ) {
 
+		$mh = curl_multi_init();
+
+		foreach ($url_list as $i => $url) {
+			$conn[$i] = curl_init($url);
+			curl_setopt($conn[$i],CURLOPT_RETURNTRANSFER,1);
+			curl_setopt($conn[$i],CURLOPT_FAILONERROR,1);
+			curl_setopt($conn[$i],CURLOPT_FOLLOWLOCATION,1);
+			curl_setopt($conn[$i],CURLOPT_MAXREDIRS,3);
+			curl_setopt($conn[$i],CURLOPT_SSL_VERIFYPEER,false);
+			curl_setopt($conn[$i],CURLOPT_SSL_VERIFYHOST,false);
+
+			// 타임아웃
+			if ($timeout){
+				curl_setopt($conn[$i],CURLOPT_TIMEOUT, $timeout);
+			}
+			curl_multi_add_handle($mh,$conn[$i]);
+		}
+
+		$active = null;
+		do {
+			usleep(10000);
+			$mrc = curl_multi_exec($mh,$active);
+		} while ($active > 0);
+//		while ($active and $mrc == CURLM_OK) {
+//			if (curl_multi_select($mh) != -1) {
+//				do {
+//					$mrc = curl_multi_exec($mh,$active);
+//				} while ($mrc == CURLM_CALL_MULTI_PERFORM);
+//			}
+//		}
+
+		if ($mrc != CURLM_OK) {
+			echo 'read fail :'.$mrc;
+		}
+		//결과 취득
+		$res = array();
+		foreach ($url_list as $i => $url) {
+			if (($err = curl_error($conn[$i])) == '') {
+				$res[$i] = json_decode(curl_multi_getcontent($conn[$i]));
+			} else {
+				echo 'fail :'.$url_list[$i].'<br />';
+
+			}
+			curl_multi_remove_handle($mh,$conn[$i]);
+
+			curl_close($conn[$i]);
+
+		}
+		curl_multi_close($mh);
+
+		return $res;
+	}
 }
+
 
