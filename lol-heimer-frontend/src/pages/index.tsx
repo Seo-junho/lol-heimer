@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
 import { connect } from 'react-redux';
 import Heimer from '../images/heimer.png';
+import LotationChampion from '@components/Rotation/RotationChampion';
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
@@ -15,47 +16,51 @@ const mapDispatchToProps = (dispatch: any) => {
 };
 
 interface IProps {
-	setLoading: Function;
+  setLoading: Function;
 };
 
 const Pages: React.FC<IProps> = ({
-	setLoading
+  setLoading
 }): JSX.Element => {
-	const history = useHistory();
+  const history = useHistory();
 
-	useEffect(() => {
-		setLoading(false);
-	}, [])
+  useEffect(() => {
+    setLoading(false);
+  }, [])
 
-	const [user, setUser] = useState({
-		username: '',
-		country: 'kr',
-	});
-	const nameChange = (username: string) => {
-		setUser({
-			...user,
-			username,
-		})
-	}
-	const onSubmit = async (): Promise<void> => {
-		try {
-			const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
-			history.push(`/user/${user.username}`);
-		} catch {
-			// TODO: Error handling
-		}
-	}
-	return (
-		<>
-			<div className="pt-12">
-				<img src={Heimer} className="mx-auto" />
-			</div>
-			<MainSearchBox
-				onSubmit={onSubmit}
-				nameChange={nameChange}
-			/>
-		</>
-	)
+  const [user, setUser] = useState({
+    username: '',
+    country: 'kr',
+  });
+
+  const nameChange = (username: string) => {
+    setUser({
+      ...user,
+      username,
+    })
+  };
+
+  const onSubmit = async (): Promise<void> => {
+    try {
+      const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
+      history.push(`/user/${user.username}`);
+    } catch {
+      // TODO: Error handling
+    }
+  };
+
+  return (
+    <>
+      <div className="pt-12">
+        <img src={Heimer} className="mx-auto" />
+      </div>
+      <MainSearchBox
+        onSubmit={onSubmit}
+        nameChange={nameChange}
+      />
+      <LotationChampion />
+    </>
+  )
 }
 
 export default connect(null, mapDispatchToProps)(Pages);
