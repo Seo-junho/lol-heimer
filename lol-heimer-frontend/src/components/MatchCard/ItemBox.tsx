@@ -28,7 +28,14 @@ const Item: React.FC<IItemProps> = ({
 			>
 				{ isItem && (
 					<ToolTip>
-						툴팁
+						<div className="flex flex-col p-1">
+							<span className="font-bold text-xs">{ item.name }</span>
+							{ item.item_price !== 0 && (
+								<span className="text-xs">
+									가격: <span className="text-yellow-400">{ item.item_price }</span>
+								</span>
+							) }
+						</div>
 					</ToolTip>
 				)}
 			</div>
