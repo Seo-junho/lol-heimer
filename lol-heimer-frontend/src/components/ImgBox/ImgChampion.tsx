@@ -7,20 +7,20 @@ interface IProps {
 }
 
 const ImgChampion: React.FC<IProps> = ({
-	className = '',
-	style = {},
-	imgUrl,
-	children,
+  className = '',
+  style = {},
+  imgUrl,
+  children,
 }) => {
   return (
     <div
       className={`${className} bg-cover bg-no-repeat`}
       style={{
-				...style,
+        ...style,
         backgroundImage: `url(${imgUrl})`,
       }}
     >
-			{ children }
+      { children }
     </div>
   );
 }
