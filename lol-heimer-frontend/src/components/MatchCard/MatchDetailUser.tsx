@@ -1,3 +1,4 @@
+import { CDN_URL } from '@end-point/server';
 import React from 'react';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
@@ -34,7 +35,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 				<div
 					className="w-8 h-8 md:w-10 md:h-10 bg-cover bg-no-repeat rounded-full"
 					style={{
-						backgroundImage: `url(${play_champion.image})`,
+						backgroundImage: `${CDN_URL(play_champion.image)}`,
 					}}
 				/>
 			</div>
@@ -44,7 +45,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 					style={{
 						width: '20px',
 						height: '20px',
-						backgroundImage: `url(${spell_1.icon_img})`,
+						backgroundImage: `${CDN_URL(spell_1.icon_img)}`,
 					}}
 				/>
 				<div
@@ -52,7 +53,7 @@ const MatchDetailUser: React.FC<IProps> = ({
 					style={{
 						width: '20px',
 						height: '20px',
-						backgroundImage: `url(${spell_2.icon_img})`,
+						backgroundImage: `${CDN_URL(spell_2.icon_img)}`,
 					}}
 				/>
 			</div>

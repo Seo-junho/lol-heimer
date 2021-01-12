@@ -1,6 +1,7 @@
 import ToolTip from '@components/ToolTip';
 import React, { useState } from 'react';
 import './ItemBox.scss'
+import { CDN_URL } from '@end-point/server';
 
 interface IItemProps {
 	item: any;
@@ -22,7 +23,7 @@ const Item: React.FC<IItemProps> = ({
 				style={{
 					width: size,
 					height: size,
-					backgroundImage: `url(${item.icon_img})`,
+					backgroundImage: `${CDN_URL(item.icon_img)}`,
 				}}
 			>
 				{ isItem && (

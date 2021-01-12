@@ -1,3 +1,4 @@
+import { CDN_URL } from '@end-point/server';
 import React, { useState } from 'react';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
@@ -99,7 +100,7 @@ const MatchCard: React.FC<IProps> = ({
 						style={{
 							width: '100px',
 							height: '100px',
-							backgroundImage: `url(${championIcon})`,
+							backgroundImage: `${CDN_URL(championIcon)}`,
 						}}
 					/>
 					<div className="mt-1 text-lg">{ championName } </div>
@@ -110,7 +111,7 @@ const MatchCard: React.FC<IProps> = ({
 						style={{
 							width: '40px',
 							height: '40px',
-							backgroundImage: `url(${spellIconImg1})`,
+							backgroundImage: `${CDN_URL(spellIconImg1)}`,
 						}}
 					/>
 					<div
@@ -118,7 +119,7 @@ const MatchCard: React.FC<IProps> = ({
 						style={{
 							width: '40px',
 							height: '40px',
-							backgroundImage: `url(${spellIconImg2})`,
+							backgroundImage: `${CDN_URL(spellIconImg2)}`,
 						}}
 					/>
 				</div>
