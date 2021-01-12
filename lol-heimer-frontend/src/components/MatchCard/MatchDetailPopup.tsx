@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_SEARCH_GET_MATCH_DETAIL } from './../../end-point/index';
 import SkeletonMatchDetail from './../../skeleton/SkeletonMatchDetail';
-import MatchDetailTeamSection from './MathDetailTeamSection';
+import MatchDetailTeamSection from './MatchDetailTeamSection';
 
 interface IProps {
 	gameId: number;

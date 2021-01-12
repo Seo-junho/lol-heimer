@@ -1,11 +1,11 @@
 import ToolTip from '@components/ToolTip';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemBox.scss'
 import { CDN_URL } from '@end-point/server';
 
 interface IItemProps {
 	item: any;
-	size?: string;
+	size: string;
 	className: string;
 }
 
@@ -15,14 +15,11 @@ const Item: React.FC<IItemProps> = ({
 	className,
 }) => {
 	const isItem = item.name ? true : false;
-
 	return (
 		<>
 			<div
-				className={`${className} tooltip-box rounded-md bg-cover bg-no-repeat bg-gray-500 ${!isItem && ' opacity-30'}`}
+				className={`${className} ${size}-box tooltip-box rounded-md bg-cover bg-no-repeat bg-gray-500 ${!isItem && ' opacity-30'}`}
 				style={{
-					width: size,
-					height: size,
 					backgroundImage: `${CDN_URL(item.icon_img)}`,
 				}}
 			>
@@ -54,7 +51,7 @@ interface IProps {
 const ItemBox: React.FC<IProps> = ({
 	items,
 	className = '',
-	size = '40px',
+	size = 'md',
 	type = 'double'
 }) => {
 

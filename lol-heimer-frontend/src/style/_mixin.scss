@@ -1,8 +1,8 @@
 // Breakpoints (bootstrap)
-$XS: 576px;
+$XS:640px;
 $S: 768px;
-$M: 992px;
-$L: 1200px;
+$M: 1024px;
+$L: 1280px;
 
 @mixin XS {
   @media (max-width: #{$XS}) {
