@@ -95,7 +95,7 @@ const MatchDetailPopup: React.FC<IProps> = ({
 									className={isWin(blueTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
 									stat={blueTeam[0].game_stat}
 								/>
-								{ blueTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
+								{ blueTeam.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
 							</div>
 						) }
 						{ redTeam.length !== 0 && (
@@ -105,7 +105,7 @@ const MatchDetailPopup: React.FC<IProps> = ({
 									className={isWin(redTeam[0].game_stat) ? 'text-blue-600' : 'text-red-600'}
 									stat={redTeam[0].game_stat}
 								/>
-								{ redTeam.map((data: any) => <MatchDetailUser user={data} maxDamage={maxDamage} />) }
+								{ redTeam.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
 							</div>
 						) }
 						<div>
