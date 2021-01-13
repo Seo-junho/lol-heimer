@@ -1,3 +1,5 @@
+import ImgToolTipBox from '@components/ImgBox/ItemToolTipBox';
+import SpellToolTipBox from '@components/ImgBox/SpellToolTipBox';
 import { CDN_URL } from '@end-point/server';
 import React, { useState } from 'react';
 import ItemBox from './ItemBox';
@@ -21,11 +23,14 @@ const MatchCard: React.FC<IProps> = ({
 			image: championIcon,
 		},
 		spell_1: {
+			name: spellName1,
 			icon_img: spellIconImg1,
 		},
 		spell_2: {
+			name: spellName2,
 			icon_img: spellIconImg2,
 		},
+		queue,
 		game_id,
 		game_duration,
 		game_stat,
@@ -82,15 +87,18 @@ const MatchCard: React.FC<IProps> = ({
 
 	return (
 		<div
-			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
+			className={`shadow-lg mb-5 w-full p-2 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
 		>
-			<div className="flex-grow-0 flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
-				<div className="sm:pb-2">
-					<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
-				</div>
-				<div className="flex sm:flex-col justify-center items-center sm:pt-2">
-					<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
-					<div className="font-light">{`${playTime}`}</div>
+			<div className="flex-grow-0 flex flex-col items-center">
+				<span className="font-bold text-gray-800">{ queue }</span>
+				<div className="flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
+					<div className="sm:pb-2">
+						<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
+					</div>
+					<div className="flex sm:flex-col justify-center items-center sm:pt-2">
+						<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+						<div className="font-light">{`${playTime}`}</div>
+					</div>
 				</div>
 			</div>
 			<div className="flex-grow-0 w-40 flex flex-row">
@@ -106,21 +114,16 @@ const MatchCard: React.FC<IProps> = ({
 					<div className="mt-1 text-lg">{ championName } </div>
 				</div>
 				<div className="flex flex-col justify-center items-center my-2 pb-8 sm:pb-0">
-					<div
-						className="bg-cover bg-no-repeat mb-1"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `${CDN_URL(spellIconImg1)}`,
-						}}
+					<SpellToolTipBox
+						className={'mb-1'}
+						name={spellName1}
+						imgUrl={spellIconImg1}
+						size={'md'}
 					/>
-					<div
-						className="bg-cover bg-no-repeat"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `${CDN_URL(spellIconImg2)}`,
-						}}
+					<SpellToolTipBox
+						name={spellName2}
+						imgUrl={spellIconImg2}
+						size={'md'}
 					/>
 				</div>
 			</div>
@@ -147,7 +150,13 @@ const MatchCard: React.FC<IProps> = ({
 			<button className="base-btn" onClick={()=>setIsPopup(true)}>
 				상세보기
 			</button>
-			{ isPopup && <MatchDetailPopup gameId={game_id} setIsPopup={setIsPopup} /> }
+			{ isPopup && (
+				<MatchDetailPopup
+					gameId={game_id}
+					setIsPopup={setIsPopup}
+					queue={queue}
+				/>
+			) }
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (

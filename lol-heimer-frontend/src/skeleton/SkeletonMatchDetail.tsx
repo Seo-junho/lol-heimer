@@ -1,25 +1,20 @@
 import React from 'react';
+import './SkeletonMatchDetail.scss';
 
 const SkeletonMatchDetail: React.FC = () => {
 	return (
 		<div
-			className="w-screen animate-pulse p-5 flex flex-col items-center justify-center border border-white rounded-xl"
-			style={{
-				maxWidth: '900px',
-				minWidth: '300px',
-			}}
+			className="skeleton-match-detail"
 		>
-			<div
-				className="h-40 md:h-80 flex-grow-0 items-center mx-auto rounded-xl mb-2 bg-gray-200"
-				style={{
-					width: '100%'
-				}}>
-			</div>
-			<div
-				className="h-40 md:h-80 flex-grow-0 items-center mx-auto rounded-xl bg-gray-200"
-				style={{
-					width: '100%'
-				}}>
+			<div className="animate-pulse h-full p-5 flex flex-col items-center justify-center border border-white rounded-xl">
+				<div
+					className="detail-box flex-grow-0 items-center mx-auto rounded-xl mb-2 bg-gray-200"
+				>
+				</div>
+				<div
+					className="detail-box flex-grow-0 items-center mx-auto rounded-xl bg-gray-200"
+				>
+				</div>
 			</div>
 		</div>
 	);
