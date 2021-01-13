@@ -87,7 +87,7 @@ const MatchCard: React.FC<IProps> = ({
 
 	return (
 		<div
-			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
+			className={`shadow-lg mb-5 w-full p-2 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
 		>
 			<div className="flex-grow-0 flex flex-col items-center">
 				<span className="font-bold text-gray-800">{ queue }</span>
