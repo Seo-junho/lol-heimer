@@ -13,7 +13,6 @@ const MatchDetailTeamSection: React.FC<ISectionProps> = ({
 	data,
 	maxDamage,
 }) => {
-
 	const isWin = (stat: string) => (stat === '승리');
 	const bgStyle = team === 'blue' ? 'bg-blue-100 rounded-xl rounded-b-none' : 'bg-red-100';
 

@@ -26,6 +26,7 @@ const MatchCard: React.FC<IProps> = ({
 		spell_2: {
 			icon_img: spellIconImg2,
 		},
+		queue,
 		game_id,
 		game_duration,
 		game_stat,
@@ -84,13 +85,16 @@ const MatchCard: React.FC<IProps> = ({
 		<div
 			className={`shadow-lg mb-5 w-full p-5 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
 		>
-			<div className="flex-grow-0 flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
-				<div className="sm:pb-2">
-					<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
-				</div>
-				<div className="flex sm:flex-col justify-center items-center sm:pt-2">
-					<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
-					<div className="font-light">{`${playTime}`}</div>
+			<div className="flex-grow-0 flex flex-col items-center">
+				<span className="font-bold text-gray-800">{ queue }</span>
+				<div className="flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
+					<div className="sm:pb-2">
+						<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
+					</div>
+					<div className="flex sm:flex-col justify-center items-center sm:pt-2">
+						<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+						<div className="font-light">{`${playTime}`}</div>
+					</div>
 				</div>
 			</div>
 			<div className="flex-grow-0 w-40 flex flex-row">
