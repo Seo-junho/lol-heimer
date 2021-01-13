@@ -1,4 +1,4 @@
-import ImgChampion from '@components/ImgBox/ImgChampion';
+import ImgBox from '@components/ImgBox/ImgBox';
 import { API_CHANPION_GET_ROTATIONS } from '@end-point/index';
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
@@ -87,20 +87,20 @@ const RotationChampion: React.FC = () => {
 									minWidth: `${champWidth}px`
 								}}
 							>
-								<ImgChampion
+								<ImgBox
 									className={'rounded-md relative bg-gray-500'}
 									style={{
 										width: `${champWidth}px`,
 										height: `200px`,
 									}}
-									imgUrl={champ.loading_image}
+									imgUrl={`url(${champ.loading_image})`}
 								>
 									<div className="absolute bottom-0 w-full text-center">
 										<div className="w-full h-8 bg-white bg-opacity-50 flex items-center justify-center font-bold text-sm">
 											{ champ.name }
 										</div>
 									</div>
-								</ImgChampion>
+								</ImgBox>
 							</div>
 						))}
 					</div>

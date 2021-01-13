@@ -9,10 +9,13 @@ const SkeletonMatchCard: React.FC = () => {
 	return (
 		<div className={`shadow-lg mb-5 w-full p-10 flex flex-col sm:flex-row items-center justify-center bg-gray-200 border border-white rounded-xl`}>
 			<div className="animate-pulse flex-grow-0 flex flex-col sm:flex-row justify-center items-center mx-auto">
-				<div className="flex sm:flex-col justify-center items-center mt-1">
-					<div className="sm:pb-2 bg-gray-300 w-10 md:w-20 h-5"></div>
-					<div className="px-3 font-bold bg-gray-300 w-10 h-5 my-1"></div>
-					<div className="bg-gray-300 w-10 md:w-20 h-5"></div>
+				<div className="flex-grow-0 flex flex-col items-center">
+					<div className="px-3 bg-gray-300 w-20 h-5"></div>
+					<div className="flex sm:flex-col justify-center items-center mt-1">
+						<div className="sm:pb-2 bg-gray-300 w-10 md:w-20 h-5"></div>
+						<div className="px-3 bg-gray-300 w-10 h-5 my-1"></div>
+						<div className="bg-gray-300 w-10 md:w-20 h-5"></div>
+					</div>
 				</div>
 				<div className="flex-grow-0 w-40 flex flex-row">
 					<div className="flex flex-col justify-center items-center p-3">

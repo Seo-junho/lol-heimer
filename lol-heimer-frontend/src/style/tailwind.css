@@ -6,10 +6,6 @@
 	@apply shadow-lg mb-5 sm:m-5 w-full p-5;
 }
 
-.common-article {
-	@apply w-full px-5 xl:px-0 mt-10 max-w-screen-xl mx-auto
-}
-
 .h-loading {
 	position: fixed;
 	width: 100%;
