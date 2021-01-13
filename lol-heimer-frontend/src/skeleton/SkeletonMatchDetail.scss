@@ -1,0 +1,22 @@
+@import '../style/mixin';
+
+.skeleton-match-detail {
+
+	width: 1000px;
+	height: 800px;
+	@include XS {
+		width: 280px;
+		height: 400px;
+	}
+	@include S {
+		width: 500px;
+	}
+
+	.detail-box {
+		width: 100%;
+		height: 400px;
+		@include XS {
+			height: 200px;
+		}
+	}
+}
