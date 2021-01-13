@@ -5,19 +5,18 @@ function getItemList($ids = []){
 	$item_list = json_decode(file_get_contents('game_meta/item.json'), true);
 	$result = [];
 	foreach ($ids as $id) {
+		$reponseData = [];
+		$reponseData['name'] = '';
+		$reponseData['icon_img'] = '';
+		$reponseData['plain_text'] = '';
+		$reponseData['item_price'] = '';
 		if (!empty($item_list['data'][$id])) {
-			$reponseData = [];
-			$reponseData['name'] = '';
-			$reponseData['icon_img'] = '';
-			$reponseData['plain_text'] = '';
-			$reponseData['item_price'] = '';
-
 			$userIconData = $item_list['data'][$id];
 			$reponseData['name'] = $userIconData['name'];
 			$reponseData['icon_img'] = '/item/' .$userIconData['image']['full'];
 			$reponseData['item_price'] = $userIconData['gold']['total'];
-			array_push($result, $reponseData);
 		}
+		array_push($result, $reponseData);
 	}
 	return $result;
 }
