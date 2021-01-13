@@ -35,7 +35,7 @@ const MainSearchBox: React.FC<Props> = (
 
 	return (
 		<article
-			className="common-article"
+			className="w-full px-5 xl:px-0 mt-10 max-w-screen-xl mx-auto"
 		>
 			<form
 				className="flex items-center justify-center h-20"
