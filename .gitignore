@@ -36,4 +36,8 @@ distribution
 application/config/config.php
 
 node_modules
-game_meta/*
+
+game_meta/champion.json
+game_meta/profile_icon.json
+game_meta/summoner.json
+game_meta/item.json

@@ -22,29 +22,6 @@ function getItemList($ids = []){
 	return $result;
 }
 
-function getItem($id = 0)
-{
-	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/item.json');
-
-	$reponseData = [];
-	$reponseData['name'] = '';
-	$reponseData['icon_img'] = '';
-	//$reponseData['desc'] = '';
-	$reponseData['plain_text'] = '';
-	$reponseData['item_price'] = '';
-
-	if (!empty($userIconData['data'][$id])) {
-		$userIconData = $userIconData['data'][$id];
-		$reponseData['name'] = $userIconData['name'];
-		$reponseData['icon_img'] = '/item/' .$userIconData['image']['full'];
-		//$reponseData['desc'] = $userIconData['description'];
-		//$reponseData['plain_text'] = $userIconData['plaintext'];
-		$reponseData['item_price'] = $userIconData['gold']['total'];
-	}
-	return $reponseData;
-}
-
-
 /**
  * 유저 아이콘을 가져 옵니다.
  * @param int $id
@@ -52,7 +29,7 @@ function getItem($id = 0)
  */
 function getUserIcon($id = 0)
 {
-	$userIconData = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/profileicon.json');
+	$userIconData = json_decode(file_get_contents('game_meta/profile_icon.json'), true);
 	$key = array_search($id, array_column($userIconData['data'], 'id'));
 
 	$userIconData = $userIconData['data'];
@@ -71,7 +48,7 @@ function getUserIcon($id = 0)
  */
 function getSpell($id = 0)
 {
-	$data = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/summoner.json');
+	$data = json_decode(file_get_contents('game_meta/summoner.json'), true);
 	$key = array_search($id, array_column($data['data'], 'key'));
 	$data = $data['data'];
 	$list = array_keys($data);
@@ -98,8 +75,7 @@ function getChampionData($id = 0)
 	if ($id == 0) {
 		return [];
 	}
-
-	$champion_data = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json');
+	$champion_data = json_decode(file_get_contents('game_meta/champion.json'), true);
 
 	$key = array_search($id, array_column($champion_data['data'], 'key'));
 
@@ -131,7 +107,7 @@ function getMainChampionData($id = 0)
 		return [];
 	}
 
-	$champion_data = file_get_content( 'http://ddragon.leagueoflegends.com/cdn/10.25.1/data/ko_KR/champion.json');
+	$champion_data = json_decode(file_get_contents('game_meta/champion.json'), true);
 
 	$key = array_search($id, array_column($champion_data['data'], 'key'));
 

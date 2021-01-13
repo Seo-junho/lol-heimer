@@ -54,7 +54,6 @@ class Search extends CI_Controller{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apiUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$matchInfo = json_decode(curl_exec($ch));
 		curl_close($ch);
@@ -115,13 +114,23 @@ class Search extends CI_Controller{
 			${$team}[$i]['spell_1'] = getSpell($match_participants[$player_index]->spell1Id);
 			${$team}[$i]['spell_2'] = getSpell($match_participants[$player_index]->spell2Id);
 
-			${$team}[$i]['item'][0] = getItem($match_participants[$player_index]->stats->item0);
-			${$team}[$i]['item'][1] = getItem($match_participants[$player_index]->stats->item1);
-			${$team}[$i]['item'][2] = getItem($match_participants[$player_index]->stats->item2);
-			${$team}[$i]['item'][3] = getItem($match_participants[$player_index]->stats->item3);
-			${$team}[$i]['item'][4] = getItem($match_participants[$player_index]->stats->item4);
-			${$team}[$i]['item'][5] = getItem($match_participants[$player_index]->stats->item5);
-			${$team}[$i]['item'][6] = getItem($match_participants[$player_index]->stats->item6);
+			$items = [
+				$match_participants[$player_index]->stats->item0,
+				$match_participants[$player_index]->stats->item1,
+				$match_participants[$player_index]->stats->item2,
+				$match_participants[$player_index]->stats->item3,
+				$match_participants[$player_index]->stats->item4,
+				$match_participants[$player_index]->stats->item5,
+				$match_participants[$player_index]->stats->item6,
+			];
+
+			$item_list = getItemList($items);
+
+			${$team}[$i]['item'] = [];
+
+			foreach($item_list as $item){
+				array_push(${$team}[$i]['item'], $item);
+			}
 
 			$i++;
 
@@ -142,7 +151,7 @@ class Search extends CI_Controller{
 	 * @param int $beginIndex
 	 * @param int $endIndex
 	 */
-	public function getMatchList(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
+	public function getMatchListOld(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
 	{
 		if (empty($userName)) {
 			$this->return('400', 'not found username', []);
@@ -154,7 +163,6 @@ class Search extends CI_Controller{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apiUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$matchList = json_decode(curl_exec($ch));
 		curl_close($ch);
@@ -166,7 +174,6 @@ class Search extends CI_Controller{
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $apiUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			$matchInfo = json_decode(curl_exec($ch));
 			curl_close($ch);
@@ -249,7 +256,7 @@ class Search extends CI_Controller{
 	 * @param int $beginIndex
 	 * @param int $endIndex
 	 */
-	public function getMatchListNew(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
+	public function getMatchList(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
 	{
 		if (empty($userName)) {
 			$this->return('400', 'not found username', []);
@@ -261,7 +268,6 @@ class Search extends CI_Controller{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $apiUrl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0.5);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$matchList = json_decode(curl_exec($ch));
 		curl_close($ch);
@@ -273,7 +279,7 @@ class Search extends CI_Controller{
 			array_push($url_list,$this->base_url . '/match/v4/matches/' . $value->gameId .'?api_key=' . RIOT_API_KEY);
 		}
 
-		$res = $this->fetch_multi_url($url_list, 0.5);
+		$res = $this->fetch_multi_url($url_list);
 
 		foreach ($matchList->matches as $key=>$value) {
 			$matchInfo = $res[$key];
