@@ -1,3 +1,5 @@
+import ImgToolTipBox from '@components/ImgBox/ItemToolTipBox';
+import SpellToolTipBox from '@components/ImgBox/SpellToolTipBox';
 import { CDN_URL } from '@end-point/server';
 import React, { useState } from 'react';
 import ItemBox from './ItemBox';
@@ -21,9 +23,11 @@ const MatchCard: React.FC<IProps> = ({
 			image: championIcon,
 		},
 		spell_1: {
+			name: spellName1,
 			icon_img: spellIconImg1,
 		},
 		spell_2: {
+			name: spellName2,
 			icon_img: spellIconImg2,
 		},
 		queue,
@@ -110,21 +114,16 @@ const MatchCard: React.FC<IProps> = ({
 					<div className="mt-1 text-lg">{ championName } </div>
 				</div>
 				<div className="flex flex-col justify-center items-center my-2 pb-8 sm:pb-0">
-					<div
-						className="bg-cover bg-no-repeat mb-1"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `${CDN_URL(spellIconImg1)}`,
-						}}
+					<SpellToolTipBox
+						className={'mb-1'}
+						name={spellName1}
+						imgUrl={spellIconImg1}
+						size={'md'}
 					/>
-					<div
-						className="bg-cover bg-no-repeat"
-						style={{
-							width: '40px',
-							height: '40px',
-							backgroundImage: `${CDN_URL(spellIconImg2)}`,
-						}}
+					<SpellToolTipBox
+						name={spellName2}
+						imgUrl={spellIconImg2}
+						size={'md'}
 					/>
 				</div>
 			</div>

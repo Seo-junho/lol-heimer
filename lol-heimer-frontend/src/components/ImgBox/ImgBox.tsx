@@ -6,7 +6,7 @@ interface IProps {
   imgUrl: string;
 }
 
-const ImgChampion: React.FC<IProps> = ({
+const ImgBox: React.FC<IProps> = ({
   className = '',
   style = {},
   imgUrl,
@@ -17,7 +17,7 @@ const ImgChampion: React.FC<IProps> = ({
       className={`${className} bg-cover bg-no-repeat`}
       style={{
         ...style,
-        backgroundImage: `url(${imgUrl})`,
+        backgroundImage: `${imgUrl}`,
       }}
     >
       { children }
@@ -25,4 +25,4 @@ const ImgChampion: React.FC<IProps> = ({
   );
 }
 
-export default ImgChampion;
+export default ImgBox;

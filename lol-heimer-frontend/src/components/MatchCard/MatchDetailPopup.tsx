@@ -52,12 +52,8 @@ const MatchDetailPopup: React.FC<IProps> = ({
 	]);
 
 	return (
-		<div
-			className="fixed top-0 left-0 z-50 flex justify-center items-center"
-		>
-			<div
-				className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50 overscroll-y-scroll"
-			>
+		<div className="fixed top-0 left-0 z-50 flex justify-center items-center">
+			<div className="absolute shadow-lg lg:max-w-5xl bg-gray-100 flex flex-col items-center justify-center border border-white rounded-xl z-50 overscroll-y-scroll">
 				<span className="w-full text-center rounded-t-xl text-white font-bold text-base md:text-xl p-2 bg-blue-400">{ queue }</span>
 				{ isLoading ? <SkeletonMatchDetail /> : (
 					<section className="flex flex-col bg-red-100 rounded-xl">
