@@ -43,10 +43,10 @@ const Layout: React.FC<IProps> = ({
 						<span className="pr-2">
 							Developer: AJu / junho.seo
 						</span>
-						<span className="pr-2">
+						<span className="pr-2 text-gray-600">
 							<a className="gitgub-a" target="_blink" href="https://github.com/zoz0312">https://github.com/zoz0312</a>
 						</span>
-						<span>
+						<span className="text-gray-600">
 							<a className="gitgub-a" target="_blink" href="https://github.com/Seo-junho">https://github.com/Seo-junho</a>
 						</span>
 					</div>
