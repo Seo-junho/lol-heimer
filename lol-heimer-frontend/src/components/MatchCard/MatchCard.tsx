@@ -151,7 +151,13 @@ const MatchCard: React.FC<IProps> = ({
 			<button className="base-btn" onClick={()=>setIsPopup(true)}>
 				상세보기
 			</button>
-			{ isPopup && <MatchDetailPopup gameId={game_id} setIsPopup={setIsPopup} /> }
+			{ isPopup && (
+				<MatchDetailPopup
+					gameId={game_id}
+					setIsPopup={setIsPopup}
+					queue={queue}
+				/>
+			) }
 			{/* <div className="flex-1 hidden sm:flex flex-row items-center justify-between px-1">
 				<div className="flex flex-col">
 					{ blueTeam.map((identitiy: any) => (
