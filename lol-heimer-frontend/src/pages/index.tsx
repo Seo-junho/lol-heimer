@@ -60,6 +60,17 @@ const Pages: React.FC<IProps> = ({
         onSubmit={onSubmit}
         nameChange={nameChange}
       />
+			<Article>
+				<ins
+					className="kakao_ad_area"
+					style={{
+						display: 'none',
+					}}
+					data-ad-unit    = "DAN-7SsI5Wftq4gGy5PI"
+					data-ad-width   = "320"
+					data-ad-height  = "50">
+				</ins>
+			</Article>
       <LotationChampion />
 			<Article>
 				<h1 className="text-orange-500 font-bold text-lg sm:text-xl my-3 pb	-2 border-b-2 border-solid border-orange-500">
