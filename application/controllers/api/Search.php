@@ -363,8 +363,6 @@ class Search extends CI_Controller{
 				array_push($matchDetail[$key]['item'], $item);
 			}
 		}
-		var_dump($matchDetail);
-		die();
 		$this->return('200', 'Success!', $matchDetail);
 	}
 
