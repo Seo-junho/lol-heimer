@@ -1,0 +1,49 @@
+@import '../../style/mixin';
+
+
+.champion-img {
+	width: 100px;
+	height: 100px;
+	border-radius: 9999px;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	@include XS {
+		width: 30px;
+		height: 30px;
+	}
+	@include S {
+		width: 60px;
+		height: 60px;
+	}
+}
+
+.kda-text {
+	* {
+		font-size: 1.25rem !important;
+		line-height: 1.75rem !important;
+
+		@include XS {
+			font-size: 0.5rem !important;
+			line-height: 0.75rem !important;
+		}
+		@include S {
+			font-size: 0.75rem !important;
+			line-height: 1rem !important;
+		}
+	}
+}
+
+.match-card-text {
+	font-size: 1rem !important;
+	line-height: 1.25rem !important;
+
+	@include XS {
+		font-size: 0.5rem !important;
+		line-height: 0.75rem !important;
+	}
+	@include S {
+		font-size: 0.75rem !important;
+		line-height: 1rem !important;
+	}
+}

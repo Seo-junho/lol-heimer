@@ -51,7 +51,11 @@
 	width: 40px;
 	height: 40px;
 	@include XS {
-		width: 35px;
-		height: 35px;
+		width: 18px;
+		height: 18px;
+	}
+	@include S {
+		width: 25px;
+		height: 25px;
 	}
 }

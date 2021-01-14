@@ -154,7 +154,7 @@ const User: React.FC<IProps> = ({
 			) : (
 				<div>
 					<button
-						className="base-btn w-full text-cente text-2xl"
+						className="btn-base w-full text-cente text-2xl"
 						onClick={() => { setOffset(current => current += limit) }}
 					>
 						더보기

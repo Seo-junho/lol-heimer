@@ -68,7 +68,7 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 						) }
 						<div>
 							<button
-								className="base-btn rounded-t-none w-full text-center text-sm md:text-xl"
+								className="btn-base rounded-t-none w-full text-center text-sm md:text-xl"
 								onClick={() => { setIsPopup(false) }}
 							>
 								닫기

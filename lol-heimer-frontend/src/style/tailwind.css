@@ -13,8 +13,12 @@
 	z-index: 999;
 }
 
-.base-btn {
+.btn-base {
 	@apply bg-blue-500 hover:bg-blue-400 text-white p-3 rounded-xl focus:outline-none;
+}
+
+.btn-primary {
+	@apply text-white border border-orange-400 bg-orange-400 hover:bg-orange-500 transition-colors ;
 }
 
 .m-0\.1 {

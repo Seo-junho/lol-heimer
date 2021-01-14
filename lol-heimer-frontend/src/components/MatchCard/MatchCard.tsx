@@ -5,6 +5,7 @@ import { CDN_URL } from '@end-point/server';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
 import MatchDetailPopup from './MatchDetailPopup';
+import './MatchCard.scss';
 
 const MatchCard: React.FC<MatchCardProps> = ({
 	match,
@@ -82,30 +83,28 @@ const MatchCard: React.FC<MatchCardProps> = ({
 			className={`shadow-lg mb-5 w-full p-2 flex flex-col sm:flex-row items-center justify-center ${cardBgColor} border border-white rounded-xl`}
 		>
 			<div className="flex-grow-0 flex flex-col items-center">
-				<span className="font-bold text-gray-800">{ queue }</span>
+				<span className="font-bold text-gray-800 match-card-text">{ queue }</span>
 				<div className="flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
-					<div className="sm:pb-2">
-						<span className="font-light">{`${parseTime(timestamp + game_duration)}`}</span>
+					<div className="sm:pb-2 flex items-center">
+						<span className="match-card-text font-light">{`${parseTime(timestamp + game_duration)}`}</span>
 					</div>
 					<div className="flex sm:flex-col justify-center items-center sm:pt-2">
-						<div className={`px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
-						<div className="font-light">{`${playTime}`}</div>
+						<div className={`match-card-text px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+						<div className="match-card-text font-light">{`${playTime}`}</div>
 					</div>
 				</div>
 			</div>
-			<div className="flex-grow-0 w-40 flex flex-row">
-				<div className="flex flex-col justify-center items-center p-3">
+			<div className="flex-grow-0 flex flex-row items-center">
+				<div className="flex flex-col justify-center items-center px-3">
 					<div
-						className="border border-white rounded-full bg-cover bg-no-repeat"
+						className="border border-white champion-img"
 						style={{
-							width: '100px',
-							height: '100px',
 							backgroundImage: `${CDN_URL(championIcon)}`,
 						}}
 					/>
-					<div className="mt-1 text-lg">{ championName } </div>
+					<div className="mt-1 match-card-text">{ championName } </div>
 				</div>
-				<div className="flex flex-col justify-center items-center my-2 pb-8 sm:pb-0">
+				<div className="flex flex-col justify-center items-center my-2 pb-1 sm:pb-0">
 					<SpellToolTipBox
 						className={'mb-1'}
 						name={spellName1}
@@ -118,28 +117,29 @@ const MatchCard: React.FC<MatchCardProps> = ({
 						size={'md'}
 					/>
 				</div>
-			</div>
-			<div className="px-5 flex flex-col justify-center items-center">
-				<KdaBox
-					kills={kills}
-					deaths={deaths}
-					assists={assists}
-				/>
-				<div className={`text-xl py-1 ${deaths === 0 && 'text-orange-600'}`}>
-					{ kda }
-				</div>
-				{ killType && (
-					<div className="px-2 py-0.5 text-white bg-red-500 border border-red-500 rounded-2xl">
-						{ killType }
+				<div className="px-2 md:px-5 flex flex-col justify-center items-center">
+					<KdaBox
+						className="kda-text"
+						kills={kills}
+						deaths={deaths}
+						assists={assists}
+					/>
+					<div className={`match-card-text py-1 ${deaths === 0 && 'text-orange-600'}`}>
+						{ kda }
 					</div>
-				)}
+					{ killType && (
+						<div className="match-card-text px-1 md:px-3 py-0.5 text-white bg-red-500 border border-red-500 rounded-2xl">
+							{ killType }
+						</div>
+					)}
+				</div>
+				<div className="hidden xs:flex flex-col justify-center items-center py-3">
+					<span className="text-xs md:text-sm text-gray-500">레벨: { champ_level }</span>
+					<span className="text-xs md:text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
+				</div>
+				<ItemBox items={item} className="md:mx-5"/>
 			</div>
-			<div className="flex flex-col justify-center items-center py-3">
-				<span className="text-sm text-gray-500">레벨: { champ_level }</span>
-				<span className="text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
-			</div>
-			<ItemBox items={item} className="mx-3"/>
-			<button className="base-btn" onClick={()=>setIsPopup(true)}>
+			<button className="btn-primary" onClick={()=>setIsPopup(true)}>
 				상세보기
 			</button>
 			{ isPopup && (
