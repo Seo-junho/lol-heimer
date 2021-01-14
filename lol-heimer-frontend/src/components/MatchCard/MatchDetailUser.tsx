@@ -1,14 +1,10 @@
 import { CDN_URL } from '@end-point/server';
 import React from 'react';
+import { MatchDetailUserProps } from '@dtos/MatchCard/MatchDetailUser.dto';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
 
-interface IProps {
-	user: any;
-	maxDamage: number;
-}
-
-const MatchDetailUser: React.FC<IProps> = ({
+const MatchDetailUser: React.FC<MatchDetailUserProps> = ({
 	user,
 	maxDamage,
 }) => {

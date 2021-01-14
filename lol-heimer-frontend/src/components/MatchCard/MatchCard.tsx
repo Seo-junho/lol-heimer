@@ -1,18 +1,12 @@
-import ImgToolTipBox from '@components/ImgBox/ItemToolTipBox';
-import SpellToolTipBox from '@components/ImgBox/SpellToolTipBox';
-import { CDN_URL } from '@end-point/server';
 import React, { useState } from 'react';
+import SpellToolTipBox from '@components/ImgBox/SpellToolTipBox';
+import { MatchCardProps } from '@dtos/MatchCard/MatchCard.dto';
+import { CDN_URL } from '@end-point/server';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
 import MatchDetailPopup from './MatchDetailPopup';
-import PlayerTitle from './PlayerTitle';
 
-interface IProps {
-	match: any;
-	username: string;
-}
-
-const MatchCard: React.FC<IProps> = ({
+const MatchCard: React.FC<MatchCardProps> = ({
 	match,
 	username,
 }) => {
@@ -82,8 +76,6 @@ const MatchCard: React.FC<IProps> = ({
 		const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
 		return `${betweenTimeDay}일전`;
 	}
-
-	console.log('match', match)
 
 	return (
 		<div

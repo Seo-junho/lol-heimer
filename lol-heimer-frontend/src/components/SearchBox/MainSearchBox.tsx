@@ -1,22 +1,9 @@
+import { MainSearchBoxProps, MainSearchBoxUserSearchForm } from '@dtos/SearchBox/MainSearchBox.dto';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 
-interface Props {
-	onSubmit: any;
-	nameChange: any;
-}
-
-export interface UserSearchType {
-	username: string;
-	country: string;
-}
-
-interface UserSearchForm {
-	username: string;
-}
-
-const MainSearchBox: React.FC<Props> = (
+const MainSearchBox: React.FC<MainSearchBoxProps> = (
 	{ onSubmit, nameChange }
 ): JSX.Element => {
 	const history = useHistory();
@@ -24,7 +11,7 @@ const MainSearchBox: React.FC<Props> = (
     register,
     getValues,
     handleSubmit
-  } = useForm<UserSearchForm>({
+  } = useForm<MainSearchBoxUserSearchForm>({
     mode: 'onChange',
 	});
 

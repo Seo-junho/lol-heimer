@@ -1,12 +1,7 @@
+import { ImgBoxProps } from '@dtos/ImgBox/ImgBox.dto';
 import React from 'react';
 
-interface IProps {
-  className?: string;
-  style?: object;
-  imgUrl: string;
-}
-
-const ImgBox: React.FC<IProps> = ({
+const ImgBox: React.FC<ImgBoxProps> = ({
   className = '',
   style = {},
   imgUrl,

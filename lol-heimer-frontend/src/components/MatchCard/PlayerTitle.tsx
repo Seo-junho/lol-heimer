@@ -1,11 +1,7 @@
 import React from 'react';
+import { PlayerTitleProps } from '@dtos/MatchCard/PlayerTitle.dto';
 
-interface IProps {
-	championId: number;
-	summonerName: string;
-}
-
-const PlayerTitle: React.FC<IProps> = ({
+const PlayerTitle: React.FC<PlayerTitleProps> = ({
 	championId,
 	summonerName,
 }) => {
