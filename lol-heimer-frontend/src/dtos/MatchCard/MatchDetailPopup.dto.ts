@@ -17,7 +17,7 @@ interface MatchDetailPopupSpellDTO {
 	icon_img: string;
 }
 
-interface MatchDetailPopupItemDTO {
+export interface MatchDetailPopupItemDTO {
 	name: string;
 	icon_img: string;
 	plain_text: string;

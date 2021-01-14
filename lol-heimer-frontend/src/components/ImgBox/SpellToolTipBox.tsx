@@ -3,15 +3,9 @@ import ToolTip from '@components/ToolTip';
 import { CDN_URL } from '@end-point/server';
 import './ToolTip.scss'
 import ImgBox from './ImgBox';
+import { SpellToolTipBoxProps } from '@dtos/ImgBox/SpellToolTipBox.dto';
 
-interface IProps {
-	name: string;
-	imgUrl: string;
-	size?: string;
-	className?: string;
-}
-
-const SpellToolTipBox: React.FC<IProps> = ({
+const SpellToolTipBox: React.FC<SpellToolTipBoxProps> = ({
 	name = '',
 	imgUrl = '',
 	size = 'md',

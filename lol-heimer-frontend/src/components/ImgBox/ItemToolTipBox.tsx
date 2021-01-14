@@ -3,14 +3,9 @@ import ToolTip from '@components/ToolTip';
 import { CDN_URL } from '@end-point/server';
 import './ToolTip.scss'
 import ImgBox from './ImgBox';
+import { ItemToolTipBoxProps } from '@dtos/ImgBox/ItemToolTipBox.dto';
 
-interface IProps {
-	item: any;
-	size?: string;
-	className?: string;
-}
-
-const ImgToolTipBox: React.FC<IProps> = ({
+const ImgToolTipBox: React.FC<ItemToolTipBoxProps> = ({
 	item = { name: '' },
 	size = 'md',
 	className = '',

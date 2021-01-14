@@ -61,15 +61,17 @@ const Pages: React.FC<IProps> = ({
         nameChange={nameChange}
       />
 			<Article>
-				<ins
-					className="kakao_ad_area"
-					style={{
-						display: 'none',
-					}}
-					data-ad-unit    = "DAN-7SsI5Wftq4gGy5PI"
-					data-ad-width   = "320"
-					data-ad-height  = "50">
-				</ins>
+				<div className="w-full flex flex-col items-center justify-center">
+					<ins
+						className="kakao_ad_area"
+						style={{
+							display: 'none',
+						}}
+						data-ad-unit    = "DAN-7SsI5Wftq4gGy5PI"
+						data-ad-width   = "728"
+						data-ad-height  = "90">
+					</ins>
+				</div>
 			</Article>
       <LotationChampion />
 			<Article>
