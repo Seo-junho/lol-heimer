@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { API_SEARCH_GET_MATCH_LIST, API_SEARCH_USER } from '@end-point/index';
 import UserCard from '@components/UserCard/UserCard';
 import LeagueCard from '@components/UserCard/LeagueCard';
@@ -43,13 +43,22 @@ const User: React.FC<IProps> = ({
 		setLoading(true);
 		try {
 			axios.get(`${API_SEARCH_USER}/${username}`)
-				.then((response: any) => {
-					const { data: { data : {
-						user_info,
-						solo_league_info,
-						team_league_info,
-						profile_icon,
-					} } } = response;
+				.then((response: AxiosResponse) => {
+					const {
+						data: {
+							data : {
+								user_info,
+								solo_league_info,
+								team_league_info,
+								profile_icon,
+							},
+							status,
+							message,
+						},
+					} = response;
+					if (status === '404') {
+						console.log('4040')
+					}
 
 					if (user_info && profile_icon) {
 						setUserInfo({

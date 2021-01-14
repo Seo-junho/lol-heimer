@@ -24,42 +24,17 @@ interface IProps {
 const Pages: React.FC<IProps> = ({
 	setLoading
 }): JSX.Element => {
-	const history = useHistory();
 
 	useEffect(() => {
 		setLoading(false);
 	}, [])
-
-	const [user, setUser] = useState({
-		username: '',
-		country: 'kr',
-	});
-
-	const nameChange = (username: string) => {
-		setUser({
-			...user,
-			username,
-		})
-	};
-
-	const onSubmit = async (): Promise<void> => {
-		try {
-			const data = await axios.get(`${API_SEARCH_USER}/${user.username}`);
-			history.push(`/user/${user.username}`);
-		} catch {
-			// TODO: Error handling
-		}
-	};
 
 	return (
 		<>
 			<div className="pt-12">
 				<img src={Heimer} className="mx-auto" />
 			</div>
-			<MainSearchBox
-				onSubmit={onSubmit}
-				nameChange={nameChange}
-			/>
+			<MainSearchBox />
 			<Article>
 				<div className="w-full flex flex-col items-center justify-center">
 					<ins

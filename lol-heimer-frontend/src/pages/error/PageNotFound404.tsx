@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Article from './../components/Article';
+import Article from '@components/Article';
 
 const PageNotFound404: React.FC = () => {
 	return (

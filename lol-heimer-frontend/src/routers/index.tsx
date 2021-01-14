@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import Pages from '@pages/index';
 import User from '../pages/User';
 import './index.scss'
-import PageNotFound404 from '@pages/PageNotFound404';
+import PageNotFound404 from '@pages/error/PageNotFound404';
 
 const Routers: React.FC = (
 ): JSX.Element => {
