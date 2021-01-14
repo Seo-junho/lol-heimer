@@ -16,11 +16,18 @@ class Search extends CI_Controller{
 	public function getUserInfo($userName = '')
 	{
 		if (empty($userName)) {
-			$this->return('400', 'not found username', []);
+			$this->return('400', '소환사명을 입력 해 주세요.', []);
+			exit;
 		}
 
-		$userId = $this->getUserId($userName);
-		$league_info = $this->getUserLeagueInfo($userId);
+		$user = $this->getUserId($userName)
+
+		if($user->status->status_code == 404 && empty($user->id)){
+			$this->return('404', '소환사가 존재하지 않습니다.', []);
+			exit;
+		}
+
+		$league_info = $this->getUserLeagueInfo($user->id);
 
 		$response['code'] = 200;
 		$response['message'] = 'Success';
@@ -455,7 +462,7 @@ class Search extends CI_Controller{
 		$result = json_decode(curl_exec($ch));
 		curl_close($ch);
 
-		return $result->id;
+		return $result;
 	}
 
 	/**
