@@ -1,6 +1,6 @@
 import { CDN_URL } from '@end-point/server';
 import React from 'react';
-import { MatchDetailUserProps } from 'src/dtos/MatchCard/MatchDetailUser.dto';
+import { MatchDetailUserProps } from '@dtos/MatchCard/MatchDetailUser.dto';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
 

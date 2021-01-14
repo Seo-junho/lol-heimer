@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayerTitleProps } from 'src/dtos/MatchCard/PlayerTitle.dto';
+import { PlayerTitleProps } from '@dtos/MatchCard/PlayerTitle.dto';
 
 const PlayerTitle: React.FC<PlayerTitleProps> = ({
 	championId,

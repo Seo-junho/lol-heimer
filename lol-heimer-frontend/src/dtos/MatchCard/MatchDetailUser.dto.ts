@@ -1,4 +1,4 @@
-import { MatchDetailPopupTeamDTO } from 'src/dtos/MatchCard/MatchDetailPopup.dto';
+import { MatchDetailPopupTeamDTO } from '@dtos/MatchCard/MatchDetailPopup.dto';
 
 export interface MatchDetailUserProps {
 	user: MatchDetailPopupTeamDTO;
