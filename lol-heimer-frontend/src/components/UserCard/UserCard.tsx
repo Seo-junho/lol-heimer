@@ -1,21 +1,9 @@
 import React from 'react';
 import LevelBox from '@images/bg-levelbox.png';
 import { CDN_URL } from '@end-point/server';
+import { UserCardProps } from '@dtos/UserCard/UserCard.dto';
 
-interface Props {
-	userInfo: {
-		name: string;
-		summonerLevel: number;
-		profileIconId: number;
-		profile_icon: string;
-		id?: string;
-		accountId?: string;
-		puuid?: string;
-		revisionDate?: number;
-	}
-};
-
-const UserCard: React.FC<Props> = (
+const UserCard: React.FC<UserCardProps> = (
 	{ userInfo: {
 		name = 'unknown',
 		summonerLevel = 0,

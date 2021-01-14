@@ -1,26 +1,7 @@
+import { LeagueCardProps } from '@dtos/UserCard/LeagueCard.dto';
 import React from 'react';
 
-interface Props {
-	type: string;
-	leagueInfo: {
-		leagueId: string;
-		queueType: string; // 솔로 | 팀랭
-		tier: string;
-		rank: string;
-		summonerId: string;
-		summonerName: string;
-		leaguePoints: number;
-		wins: number;
-		losses: number;
-		veteran: boolean;
-		inactive: boolean;
-		freshBlood: boolean;
-		hotStreak: boolean;
-		tier_img: string;
-	};
-};
-
-const LeagueCard: React.FC<Props> = (
+const LeagueCard: React.FC<LeagueCardProps> = (
 	{
 		type,
 		leagueInfo: {
