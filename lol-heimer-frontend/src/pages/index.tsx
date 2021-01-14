@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 import MainSearchBox from '@components/SearchBox/MainSearchBox';
-import { API_SEARCH_USER } from '@end-point/index';
-import { useHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
 import { connect } from 'react-redux';

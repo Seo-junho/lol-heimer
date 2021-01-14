@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import axios, { AxiosResponse } from 'axios';
 import { API_SEARCH_GET_MATCH_LIST, API_SEARCH_USER } from '@end-point/index';
 import UserCard from '@components/UserCard/UserCard';
@@ -29,6 +29,8 @@ interface IProps {
 const User: React.FC<IProps> = ({
 	setLoading,
 }) => {
+	const history = useHistory();
+
 	const { username }: Params = useParams();
 	const [userInfo, setUserInfo] = useState<any>({});
 	const [soloLeague, setSoloLeague] = useState<any>({});
@@ -57,7 +59,7 @@ const User: React.FC<IProps> = ({
 						},
 					} = response;
 					if (status === '404') {
-						console.log('4040')
+						history.push(`/error/nouser`);
 					}
 
 					if (user_info && profile_icon) {
