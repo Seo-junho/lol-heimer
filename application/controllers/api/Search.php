@@ -20,7 +20,7 @@ class Search extends CI_Controller{
 			exit;
 		}
 
-		$user = $this->getUserId($userName)
+		$user = $this->getUserId($userName);
 
 		if($user->status->status_code == 404 && empty($user->id)){
 			$this->return('404', '소환사가 존재하지 않습니다.', []);
