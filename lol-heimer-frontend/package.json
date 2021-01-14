@@ -41,7 +41,7 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "tailwind:prodbuild": "NODE_ENV=production npm run tailwind:build",
-    "tailwind:devbuild": "cross-eNODE_ENV=production npm run tailwind:build",
+    "tailwind:devbuild": "NODE_ENV=dev npm run tailwind:build",
     "tailwind:build": "tailwind build ./src/style/tailwind.css -o ./src/style/styles.css"
   },
   "eslintConfig": {

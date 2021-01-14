@@ -1,6 +1,6 @@
 import React from 'react';
-import { MatchDetailPopupTeamDTO } from 'src/dtos/MatchCard/MatchDetailPopup.dto';
-import { MatchDetailTeamSectionProps } from 'src/dtos/MatchCard/MatchDetailTeamSection.dto';
+import { MatchDetailPopupTeamDTO } from '@dtos/MatchCard/MatchDetailPopup.dto';
+import { MatchDetailTeamSectionProps } from '@dtos/MatchCard/MatchDetailTeamSection.dto';
 import MatchDetailUser from './MatchDetailUser';
 
 const MatchDetailTeamSection: React.FC<MatchDetailTeamSectionProps> = ({

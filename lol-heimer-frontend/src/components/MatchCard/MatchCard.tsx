@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import SpellToolTipBox from '@components/ImgBox/SpellToolTipBox';
+import { MatchCardProps } from '@dtos/MatchCard/MatchCard.dto';
 import { CDN_URL } from '@end-point/server';
 import ItemBox from './ItemBox';
 import KdaBox from './KdaBox';
 import MatchDetailPopup from './MatchDetailPopup';
-import { MatchCardProps } from '@dtos/MatchCard/MatchCard.dto';
 
 const MatchCard: React.FC<MatchCardProps> = ({
 	match,

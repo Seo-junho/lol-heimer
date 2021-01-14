@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { API_SEARCH_GET_MATCH_DETAIL } from './../../end-point/index';
 import SkeletonMatchDetail from './../../skeleton/SkeletonMatchDetail';
 import MatchDetailTeamSection from './MatchDetailTeamSection';
-import { MatchDetailPopupProps, MatchDetailPopupTeamDTO } from 'src/dtos/MatchCard/MatchDetailPopup.dto';
+import { MatchDetailPopupProps, MatchDetailPopupTeamDTO } from '@dtos/MatchCard/MatchDetailPopup.dto';
 
 const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 	gameId,
@@ -21,7 +21,7 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 			cancelToken: new axios.CancelToken((c) => {
 				cancel = c;
 			})
-		}).then((response: any) => {
+		}).then((response: AxiosResponse) => {
 				const { data: { data: {
 					blue_team,
 					red_team,
@@ -32,7 +32,7 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 				}
 				setIsLoading(false);
 			})
-			.catch((error: any) => {
+			.catch((error: AxiosError) => {
 				console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
 				setIsLoading(false);
 			});
