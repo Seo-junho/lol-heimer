@@ -1,13 +1,9 @@
 import React from 'react';
+import { MatchDetailPopupTeamDTO } from 'src/dtos/MatchCard/MatchDetailPopup.dto';
+import { MatchDetailTeamSectionProps } from 'src/dtos/MatchCard/MatchDetailTeamSection.dto';
 import MatchDetailUser from './MatchDetailUser';
 
-interface ISectionProps {
-	team: string;
-	data: any[];
-	maxDamage: number;
-};
-
-const MatchDetailTeamSection: React.FC<ISectionProps> = ({
+const MatchDetailTeamSection: React.FC<MatchDetailTeamSectionProps> = ({
 	team,
 	data,
 	maxDamage,
@@ -29,7 +25,7 @@ const MatchDetailTeamSection: React.FC<ISectionProps> = ({
 				<div className="w-28 text-center ml-2.5">피해량</div>
 				<div className="w-48 text-center">아이템</div>
 			</div>
-			{ data.map((data: any, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
+			{ data.map((data: MatchDetailPopupTeamDTO, index: number) => <MatchDetailUser key={index} user={data} maxDamage={maxDamage} />) }
 		</div>
 	)
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IProps {
   className?: string;
-  style?: object;
+  style?: any;
   imgUrl: string;
 }
 

@@ -3,22 +3,17 @@ import axios from 'axios';
 import { API_SEARCH_GET_MATCH_DETAIL } from './../../end-point/index';
 import SkeletonMatchDetail from './../../skeleton/SkeletonMatchDetail';
 import MatchDetailTeamSection from './MatchDetailTeamSection';
+import { MatchDetailPopupProps, MatchDetailPopupTeamDTO } from 'src/dtos/MatchCard/MatchDetailPopup.dto';
 
-interface IProps {
-	gameId: number;
-	setIsPopup: Function;
-	queue: string;
-};
-
-const MatchDetailPopup: React.FC<IProps> = ({
+const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 	gameId,
 	setIsPopup,
 	queue,
 }) => {
 
 	const [isLoading, setIsLoading] = useState(true);
-	const [blueTeam, setBlueTeam] = useState<any>([]);
-	const [redTeam, setRedTeam] = useState<any>([]);
+	const [blueTeam, setBlueTeam] = useState<MatchDetailPopupTeamDTO[]>([]);
+	const [redTeam, setRedTeam] = useState<MatchDetailPopupTeamDTO[]>([]);
 
 	useEffect(() => {
 		let cancel = () => {};
@@ -47,8 +42,8 @@ const MatchDetailPopup: React.FC<IProps> = ({
 	}, []);
 
 	const maxDamage = Math.max.apply(null, [
-		...blueTeam.map((item: any) => item.champion_total_damage),
-		...redTeam.map((item: any) => item.champion_total_damage),
+		...blueTeam.map((item: MatchDetailPopupTeamDTO) => item.champion_total_damage),
+		...redTeam.map((item: MatchDetailPopupTeamDTO) => item.champion_total_damage),
 	]);
 
 	return (

@@ -1,14 +1,8 @@
 import React from 'react';
 import ImgToolTipBox from '@components/ImgBox/ItemToolTipBox';
+import { ItemBoxProps } from '@dtos/MatchCard/ItemBox.dto';
 
-interface IProps {
-	items: any;
-	className?: string;
-	size?: string;
-	type?: string;
-}
-
-const ItemBox: React.FC<IProps> = ({
+const ItemBox: React.FC<ItemBoxProps> = ({
 	items,
 	className = '',
 	size,
