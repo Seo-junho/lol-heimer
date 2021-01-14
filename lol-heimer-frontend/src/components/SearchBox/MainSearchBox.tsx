@@ -1,12 +1,14 @@
-import { MainSearchBoxProps, MainSearchBoxUserSearchForm } from '@dtos/SearchBox/MainSearchBox.dto';
-import React from 'react';
+import { MainSearchBoxUserSearchForm } from '@dtos/SearchBox/MainSearchBox.dto';
+import { API_SEARCH_USER } from '@end-point/index';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 
-const MainSearchBox: React.FC<MainSearchBoxProps> = (
-	{ onSubmit, nameChange }
+const MainSearchBox: React.FC = (
 ): JSX.Element => {
 	const history = useHistory();
+
 	const {
     register,
     getValues,
@@ -15,10 +17,14 @@ const MainSearchBox: React.FC<MainSearchBoxProps> = (
     mode: 'onChange',
 	});
 
-	const formSubmit = () => {
-		const { username } = getValues();
-		history.push(`/home/user/${username}`);
-  }
+	const onSubmit = async (): Promise<void> => {
+		try {
+			const { username } = getValues();
+			history.push(`/home/user/${username}`);
+		} catch {
+			// TODO: Error handling
+		}
+	};
 
 	return (
 		<article
@@ -26,7 +32,7 @@ const MainSearchBox: React.FC<MainSearchBoxProps> = (
 		>
 			<form
 				className="flex items-center justify-center h-20"
-				onSubmit={handleSubmit(formSubmit)}
+				onSubmit={handleSubmit(onSubmit)}
 			>
 				<div className="w-full sm:w-2/5 flex flex-row shadow-md rounded-sm">
 					<input

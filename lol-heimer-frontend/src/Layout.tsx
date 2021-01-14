@@ -31,9 +31,9 @@ const Layout: React.FC<IProps> = ({
 					</ul>
 				</nav>
 			</header> */}
-			{ isLoading && (
+			{/* { isLoading && (
 				<Loading />
-			)}
+			)} */}
 			<div className="main-container">
 				{ children }
 			</div>
