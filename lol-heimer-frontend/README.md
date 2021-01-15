@@ -13,8 +13,8 @@
  - [X] Typescript
  - [X] Sass
  - [X] TailWind
- - [] Jest (Unit Test)
- - [] Cypress (E2E Test)
+ - [ ] Jest (Unit Test)
+ - [ ] Cypress (E2E Test)
 
 <hr />
 <br />
