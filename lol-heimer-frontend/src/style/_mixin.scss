@@ -1,11 +1,18 @@
 // Breakpoints (bootstrap)
-$XS:640px;
-$S: 768px;
-$M: 1024px;
-$L: 1280px;
+$XS2:400px; // Small Mobile (iPhone SE2)
+$XS:640px; // Mobile
+$S: 768px; // Tablet
+$M: 1024px; // Small Browser
+$L: 1280px; // Browser
+
+@mixin XS2 {
+  @media (max-width: #{$XS2}) {
+    @content;
+  }
+}
 
 @mixin XS {
-  @media (max-width: #{$XS}) {
+  @media (min-width: #{$XS2}) and (max-width: #{$XS - 1px}) {
     @content;
   }
 }

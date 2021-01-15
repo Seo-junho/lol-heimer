@@ -33,11 +33,13 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 				setIsLoading(false);
 			})
 			.catch((error: AxiosError) => {
-				console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
+				// console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
 				setIsLoading(false);
 			});
 		return () => {
 			cancel();
+			setBlueTeam([]);
+			setRedTeam([]);
 		}
 	}, []);
 
