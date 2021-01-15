@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "lol-herimer",
   "scripts": {
-		"build": "npm install && cd lol-heimer-frontend && npm run build:prod"
+		"prebuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; chmod u+x ./heroku.sh; npm install",
+		"build": "cd lol-heimer-frontend && npm run build:prod && ../heroku.sh",
+		"build:ec2": "cd lol-heimer-frontend && npm run build:prod"
   },
   "repository": {
     "type": "git",
