@@ -32,3 +32,6 @@
  - 💻 반응형 웹
  - 🔍 소환사 검색
    - Match 상세검색
+			
+## 🔨 개발 경험
+[Cafe24, Heroku 그리고 AWS 서버를 3번 구축하며 느낀점](https://blog.naver.com/zoz0312/222208915897)<br>
