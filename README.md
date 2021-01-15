@@ -18,8 +18,8 @@
  - [X] React.js
  - [X] Typescript
  - [Front-End Stack 더보기](./lol-heimer-frontend)
- - [] Jest (Unit Test)
- - [] Cypress (E2E Test)
+ - [ ] Jest (Unit Test)
+ - [ ] Cypress (E2E Test)
  - [X] AWS
  - [X] Jenkins
  - <del>Cafe24</del>
