@@ -36,7 +36,7 @@ const User: React.FC = () => {
 	const [soloLeague, setSoloLeague] = useState<any>({});
 	const [teamLeague, setTeamLeague] = useState<any>({});
 	const [matchList, setMatches] = useState<any[]>([]);
-	const [matchLoading, setMatchLoading] = useState<boolean>(true);
+	const [matchLoading, setMatchLoading] = useState<boolean>(false);
 
 	const limit = 10; // limit 개수 만큼 가져옵니다
 	const [offset, setOffset] = useState<number>(limit);
