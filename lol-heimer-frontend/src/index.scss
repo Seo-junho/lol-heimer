@@ -1,4 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import './style/mixin';
 
 html, body, div, span, applet,
 object, iframe, h1, h2, h3, h4, h5, h6,
@@ -49,4 +50,68 @@ a, u {
 
 #root {
 	height: 100vh;
+}
+
+/* custum text */
+$textS: 1rem;
+$textLineS: 1.25rem;
+
+$textM: 1.25rem;
+$textLineM: 1.5rem;
+
+$textXL: 1.5rem;
+$textLineXL: 1.7rem;
+
+.text--sm {
+	font-size: $textS !important;
+	line-height: $textLineS !important;
+
+	@include XS2 {
+		font-size: $textS - 0.55rem !important;
+		line-height: $textLineS - 0.55rem !important;
+	}
+	@include XS {
+		font-size: $textS - 0.35rem !important;
+		line-height: $textLineS - 0.35rem !important;
+	}
+	@include S {
+		font-size: $textS - 0.25rem !important;
+		line-height: $textLineS - 0.25rem !important;
+	}
+}
+
+.text--md {
+	font-size: $textM !important;
+	line-height: $textLineM !important;
+
+	@include XS2 {
+		font-size: $textM - 0.55rem !important;
+		line-height: $textLineM - 0.55rem !important;
+	}
+	@include XS {
+		font-size: $textM - 0.35rem !important;
+		line-height: $textLineM - 0.35rem !important;
+	}
+	@include S {
+		font-size: $textM - 0.25rem !important;
+		line-height: $textLineM - 0.25rem !important;
+	}
+}
+
+.text--xl {
+	font-size: $textXL !important;
+	line-height: $textLineXL !important;
+
+	@include XS2 {
+		font-size: $textXL - 0.55rem !important;
+		line-height: $textLineXL - 0.55rem !important;
+	}
+	@include XS {
+		font-size: $textXL - 0.35rem !important;
+		line-height: $textLineXL - 0.35rem !important;
+	}
+	@include S {
+		font-size: $textXL - 0.25rem !important;
+		line-height: $textLineXL - 0.25rem !important;
+	}
 }
