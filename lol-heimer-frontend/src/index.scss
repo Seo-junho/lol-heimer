@@ -59,8 +59,8 @@ $textLineS: 1.25rem;
 $textM: 1.25rem;
 $textLineM: 1.5rem;
 
-$textXL: 1.5rem;
-$textLineXL: 1.7rem;
+$textL: 1.5rem;
+$textLineL: 1.7rem;
 
 .text--sm {
 	font-size: $textS !important;
@@ -98,20 +98,20 @@ $textLineXL: 1.7rem;
 	}
 }
 
-.text--xl {
-	font-size: $textXL !important;
-	line-height: $textLineXL !important;
+.text--lg {
+	font-size: $textL !important;
+	line-height: $textLineL !important;
 
 	@include XS2 {
-		font-size: $textXL - 0.5rem !important;
-		line-height: $textLineXL - 0.5rem !important;
+		font-size: $textL - 0.5rem !important;
+		line-height: $textLineL - 0.5rem !important;
 	}
 	@include XS {
-		font-size: $textXL - 0.3rem !important;
-		line-height: $textLineXL - 0.3rem !important;
+		font-size: $textL - 0.3rem !important;
+		line-height: $textLineL - 0.3rem !important;
 	}
 	@include S {
-		font-size: $textXL - 0.2rem !important;
-		line-height: $textLineXL - 0.2rem !important;
+		font-size: $textL - 0.2rem !important;
+		line-height: $textLineL - 0.2rem !important;
 	}
 }

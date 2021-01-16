@@ -38,7 +38,7 @@ const LeagueCard: React.FC<LeagueCardProps> = (
 				/>
 			</div>
 			<div className="flex-1 lg:pl-5 flex flex-col items-center justify-center lg:items-start">
-				<h3 className="text--xl">{ type === 'solo' ? '솔로랭크' : '자유 5:5 랭크' }</h3>
+				<h3 className="text--lg">{ type === 'solo' ? '솔로랭크' : '자유 5:5 랭크' }</h3>
 				<h4 className="text--md">{ tier } { rank }</h4>
 				<h4 className="text--sm">포인트 { leaguePoints }</h4>
 				<div>

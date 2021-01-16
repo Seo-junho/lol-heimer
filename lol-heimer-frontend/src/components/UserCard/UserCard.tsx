@@ -2,6 +2,7 @@ import React from 'react';
 import LevelBox from '@images/bg-levelbox.png';
 import { CDN_URL } from '@end-point/server';
 import { UserCardProps } from '@dtos/UserCard/UserCard.dto';
+import './UserCard.scss';
 
 const UserCard: React.FC<UserCardProps> = (
 	{ userInfo: {
@@ -19,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = (
 		<div className="card flex-1 flex flex-row justify-center items-center">
 			<div className="flex flex-col items-center">
 				<div
-					className="w-40 h-40 bg-cover bg-no-repeat border-white border rounded-xl"
+					className="img-icon bg-cover bg-no-repeat border-white border rounded-xl"
 					style={{
 						backgroundImage: `${CDN_URL(profile_icon)}`
 					}}
@@ -33,10 +34,10 @@ const UserCard: React.FC<UserCardProps> = (
 						backgroundImage: `url('${LevelBox}')`,
 					}}
 				>
-					<h4 className="text-md font-light text-white">{ summonerLevel }</h4>
+					<h4 className="text--md font-light text-white">{ summonerLevel }</h4>
 				</div>
 			</div>
-			<h3 className="text-4xl p-5">{ name }</h3>
+			<h3 className="text--lg p-5">{ name }</h3>
 		</div>
 	)
 }
