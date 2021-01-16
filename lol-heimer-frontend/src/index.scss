@@ -115,3 +115,33 @@ $textLineL: 1.7rem;
 		line-height: $textLineL - 0.2rem !important;
 	}
 }
+
+.box-xs {
+	width: 25px;
+	height: 25px;
+	@include XS2 {
+		width: 18px;
+		height: 18px;
+	}
+	@include XS {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.box-md {
+	width: 40px;
+	height: 40px;
+	@include XS2 {
+		width: 20px;
+		height: 20px;
+	}
+	@include XS {
+		width: 28px;
+		height: 28px;
+	}
+	@include S {
+		width: 30px;
+		height: 30px;
+	}
+}

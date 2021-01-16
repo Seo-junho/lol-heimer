@@ -14,7 +14,7 @@ const SpellToolTipBox: React.FC<SpellToolTipBoxProps> = ({
 	return (
 		<>
 			<ImgBox
-				className={`${className} ${size}-box tooltip-box rounded-md bg-gray-500`}
+				className={`${className} box-${size} tooltip-box rounded-md bg-gray-500`}
 				imgUrl={`${CDN_URL(imgUrl)}`}
 			>
 				<ToolTip>

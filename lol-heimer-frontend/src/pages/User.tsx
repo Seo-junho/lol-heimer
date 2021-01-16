@@ -145,7 +145,7 @@ const User: React.FC<IProps> = ({
 					)) }
 				</div>
 			)}
-			{ matchLoading ? (
+			{ true ? (
 				<div>
 					{[...Array(limit)].map((_, index) => (
 						<SkeletonMatchCard key={index} />

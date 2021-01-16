@@ -139,7 +139,7 @@ const MatchCard: React.FC<MatchCardProps> = ({
 						<span className="text-xs md:text-sm text-gray-500">레벨: { champ_level }</span>
 						<span className="text-xs md:text-sm text-gray-500">{ total_minions_killed } ({ csPerMinute }) CS</span>
 					</div>
-					<ItemBox items={item} className="md:mx-5"/>
+					<ItemBox items={item} />
 				</div>
 			</div>
 			<button className={`flex-grow-0 rounded-r-xl p-2 md:p-5 text-white text-2xl md:text-5xl ${cardBtnColor} btn-normal`} onClick={()=>setIsPopup(true)}>
