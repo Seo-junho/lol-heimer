@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define("RIOT_API_KEY",'RGAPI-49a1fbb6-20d3-47f3-af02-0a94a8456958');
+define("RIOT_API_KEY",'RGAPI-09a1e770-8966-4245-b012-47b866cf7464');
 define("REDIS_URL",'memcachedcloud-crystalline-34925');
 
 define("MEMCACHEDCLOUD_SERVERS",'memcached-19181.c240.us-east-1-3.ec2.cloud.redislabs.com:19181');
