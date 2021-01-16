@@ -38,7 +38,7 @@ const User: React.FC<IProps> = ({
 	const [matchList, setMatches] = useState<any[]>([]);
 	const [matchLoading, setMatchLoading] = useState<boolean>(false);
 
-	const limit = 5; // limit 개수 만큼 가져옵니다
+	const limit = 10; // limit 개수 만큼 가져옵니다
 	const [offset, setOffset] = useState<number>(limit);
 
 	useEffect(() => {
@@ -145,7 +145,7 @@ const User: React.FC<IProps> = ({
 					)) }
 				</div>
 			)}
-			{ true ? (
+			{ matchLoading ? (
 				<div>
 					{[...Array(limit)].map((_, index) => (
 						<SkeletonMatchCard key={index} />
