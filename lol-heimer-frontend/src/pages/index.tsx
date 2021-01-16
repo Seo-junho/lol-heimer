@@ -24,7 +24,7 @@ const Pages: React.FC<IProps> = ({
 
 	useEffect(() => {
 		setLoading(false);
-	}, [])
+	}, []);
 
 	return (
 		<>

@@ -1,0 +1,31 @@
+@import '../style/mixin';
+
+.skeleton-champion-name-box {
+	width: 90px;
+	height: 20px;
+
+	@include XS2 {
+		width: 40px;
+	}
+	@include XS {
+		width: 50px;
+	}
+	@include S {
+		width: 60px;
+	}
+}
+
+.skeleton-kda-box {
+	width: 80px;
+	height: 20px;
+
+	@include XS2 {
+		width: 50px;
+	}
+	@include XS {
+		width: 60px;
+	}
+	@include S {
+		width: 70px;
+	}
+}

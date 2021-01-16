@@ -37,21 +37,3 @@
     border-color: black transparent transparent transparent;
 	}
 }
-
-.xs-box {
-	width: 25px;
-	height: 25px;
-	@include XS {
-		width: 20px;
-		height: 20px;
-	}
-}
-
-.md-box {
-	width: 40px;
-	height: 40px;
-	@include XS {
-		width: 35px;
-		height: 35px;
-	}
-}
