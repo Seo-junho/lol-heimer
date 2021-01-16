@@ -13,21 +13,3 @@
 		width: 120px;
 	}
 }
-
-.text-tier {
-	font-size: 1.25rem !important;
-	line-height: 1.5rem !important;
-
-	@include XS2 {
-		font-size: 0.5rem !important;
-		line-height: 0.75rem !important;
-	}
-	@include XS {
-		font-size: 0.85rem !important;
-		line-height: 1rem !important;
-	}
-	@include S {
-		font-size: 0.75rem !important;
-		line-height: 1rem !important;
-	}
-}

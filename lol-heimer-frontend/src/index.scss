@@ -67,15 +67,15 @@ $textLineXL: 1.7rem;
 	line-height: $textLineS !important;
 
 	@include XS2 {
-		font-size: $textS - 0.55rem !important;
+		font-size: $textS - 0.5rem !important;
 		line-height: $textLineS - 0.55rem !important;
 	}
 	@include XS {
-		font-size: $textS - 0.35rem !important;
+		font-size: $textS - 0.3rem !important;
 		line-height: $textLineS - 0.35rem !important;
 	}
 	@include S {
-		font-size: $textS - 0.25rem !important;
+		font-size: $textS - 0.2rem !important;
 		line-height: $textLineS - 0.25rem !important;
 	}
 }
@@ -85,16 +85,16 @@ $textLineXL: 1.7rem;
 	line-height: $textLineM !important;
 
 	@include XS2 {
-		font-size: $textM - 0.55rem !important;
-		line-height: $textLineM - 0.55rem !important;
+		font-size: $textM - 0.65rem !important;
+		line-height: $textLineM - 0.5rem !important;
 	}
 	@include XS {
 		font-size: $textM - 0.35rem !important;
-		line-height: $textLineM - 0.35rem !important;
+		line-height: $textLineM - 0.3rem !important;
 	}
 	@include S {
 		font-size: $textM - 0.25rem !important;
-		line-height: $textLineM - 0.25rem !important;
+		line-height: $textLineM - 0.2rem !important;
 	}
 }
 
@@ -103,15 +103,15 @@ $textLineXL: 1.7rem;
 	line-height: $textLineXL !important;
 
 	@include XS2 {
-		font-size: $textXL - 0.55rem !important;
-		line-height: $textLineXL - 0.55rem !important;
+		font-size: $textXL - 0.5rem !important;
+		line-height: $textLineXL - 0.5rem !important;
 	}
 	@include XS {
-		font-size: $textXL - 0.35rem !important;
-		line-height: $textLineXL - 0.35rem !important;
+		font-size: $textXL - 0.3rem !important;
+		line-height: $textLineXL - 0.3rem !important;
 	}
 	@include S {
-		font-size: $textXL - 0.25rem !important;
-		line-height: $textLineXL - 0.25rem !important;
+		font-size: $textXL - 0.2rem !important;
+		line-height: $textLineXL - 0.2rem !important;
 	}
 }

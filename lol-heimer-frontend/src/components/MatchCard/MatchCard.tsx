@@ -85,14 +85,14 @@ const MatchCard: React.FC<MatchCardProps> = ({
 		>
 			<div className="flex-grow flex flex-col p-2 md:p-5 sm:flex-row items-center justify-center">
 				<div className="flex-grow-0 flex flex-col items-center">
-					<span className="font-bold text-gray-800 match-card-text">{ queue }</span>
+					<span className="text--md font-bold text-gray-800">{ queue }</span>
 					<div className="flex flex-row sm:flex-col sm:divide-y-2 divide-white divide-solid justify-center items-center">
 						<div className="sm:pb-2 flex items-center">
-							<span className="match-card-text font-light">{`${parseTime(timestamp + game_duration)}`}</span>
+							<span className="text--md font-light">{`${parseTime(timestamp + game_duration)}`}</span>
 						</div>
 						<div className="flex sm:flex-col justify-center items-center sm:pt-2">
-							<div className={`match-card-text px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
-							<div className="match-card-text font-light">{`${playTime}`}</div>
+							<div className={`text--md px-3 font-bold ${isWin ? 'text-blue-500' : 'text-red-500'}`}>{ game_stat }</div>
+							<div className="text--md font-light">{`${playTime}`}</div>
 						</div>
 					</div>
 				</div>
@@ -104,7 +104,7 @@ const MatchCard: React.FC<MatchCardProps> = ({
 								backgroundImage: `${CDN_URL(championIcon)}`,
 							}}
 						/>
-						<div className="mt-1 match-card-text">{ championName } </div>
+						<div className="mt-1 text--md">{ championName } </div>
 					</div>
 					<div className="flex flex-col justify-center items-center my-2 pb-1 sm:pb-0">
 						<SpellToolTipBox
@@ -126,11 +126,11 @@ const MatchCard: React.FC<MatchCardProps> = ({
 							deaths={deaths}
 							assists={assists}
 						/>
-						<div className={`match-card-text py-1 ${deaths === 0 && 'text-orange-600'}`}>
+						<div className={`text--md py-1 ${deaths === 0 && 'text-orange-600'}`}>
 							{ kda }
 						</div>
 						{ killType && (
-							<div className="match-card-text px-1 md:px-3 py-0.5 text-white bg-red-500 border border-red-500 rounded-2xl">
+							<div className="text--md px-1 md:px-3 py-0.5 text-white bg-red-500 border border-red-500 rounded-2xl">
 								{ killType }
 							</div>
 						)}
