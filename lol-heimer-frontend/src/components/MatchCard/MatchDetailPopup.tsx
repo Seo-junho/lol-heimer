@@ -33,11 +33,13 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 				setIsLoading(false);
 			})
 			.catch((error: AxiosError) => {
-				console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
+				// console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
 				setIsLoading(false);
 			});
 		return () => {
 			cancel();
+			setBlueTeam([]);
+			setRedTeam([]);
 		}
 	}, []);
 
@@ -68,7 +70,7 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 						) }
 						<div>
 							<button
-								className="base-btn rounded-t-none w-full text-center text-sm md:text-xl"
+								className="btn-base rounded-t-none w-full text-center text-sm md:text-xl"
 								onClick={() => { setIsPopup(false) }}
 							>
 								닫기

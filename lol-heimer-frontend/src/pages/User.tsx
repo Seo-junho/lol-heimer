@@ -10,39 +10,39 @@ import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
 import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
+import SkeletonUser from '@skeleton/SkeletonUser';
 
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({
-    setLoading
-  }, dispatch);
-};
+// const mapDispatchToProps = (dispatch: any) => {
+//   return bindActionCreators({
+//     setLoading
+//   }, dispatch);
+// };
 
 interface Params {
 	username: string;
 };
 
-interface IProps {
-	setLoading: Function;
-}
+// interface IProps {
+// 	setLoading: Function;
+// }
 
-const User: React.FC<IProps> = ({
-	setLoading,
-}) => {
+const User: React.FC = () => {
 	const history = useHistory();
 
 	const { username }: Params = useParams();
 	const [userInfo, setUserInfo] = useState<any>({});
+	const [userLoading, setUserLoading] = useState<boolean>(true);
 	const [soloLeague, setSoloLeague] = useState<any>({});
 	const [teamLeague, setTeamLeague] = useState<any>({});
 	const [matchList, setMatches] = useState<any[]>([]);
 	const [matchLoading, setMatchLoading] = useState<boolean>(false);
 
-	const limit = 5; // limit 개수 만큼 가져옵니다
+	const limit = 10; // limit 개수 만큼 가져옵니다
 	const [offset, setOffset] = useState<number>(limit);
 
 	useEffect(() => {
-		setLoading(true);
+		setUserLoading(true);
 		try {
 			axios.get(`${API_SEARCH_USER}/${username}`)
 				.then((response: AxiosResponse) => {
@@ -77,15 +77,15 @@ const User: React.FC<IProps> = ({
 						setSoloLeague(solo_league_info);
 					}
 
-					setLoading(false);
+					setUserLoading(false);
 				})
 				.catch((error: any) => {
 					console.log('error', error);
-					setLoading(false);
+					setUserLoading(false);
 				});
 		} catch (e) {
 			console.log('axios catch', e);
-			setLoading(false);
+			setUserLoading(false);
 		}
 	}, []);
 
@@ -118,21 +118,29 @@ const User: React.FC<IProps> = ({
 	return (
 		<Article>
 			<div className="flex flex-col items-center justify-center">
-				<div className="w-full flex">
-					<UserCard
-						userInfo={userInfo}
-					/>
-				</div>
-				<div className="flex flex-col sm:flex-row w-full">
-					<LeagueCard
-						type='solo'
-						leagueInfo={soloLeague}
-					/>
-					<LeagueCard
-						type='team'
-						leagueInfo={teamLeague}
-					/>
-				</div>
+				{ userLoading ? (
+					<>
+						<SkeletonUser />
+					</>
+				) : (
+					<>
+						<div className="w-full flex">
+							<UserCard
+								userInfo={userInfo}
+							/>
+						</div>
+						<div className="flex flex-col sm:flex-row w-full">
+							<LeagueCard
+								type='solo'
+								leagueInfo={soloLeague}
+							/>
+							<LeagueCard
+								type='team'
+								leagueInfo={teamLeague}
+							/>
+						</div>
+					</>
+				)}
 			</div>
 			{ matchList.length !== 0 && (
 				<div className="flex flex-col items-start justify-center">
@@ -154,7 +162,7 @@ const User: React.FC<IProps> = ({
 			) : (
 				<div>
 					<button
-						className="base-btn w-full text-cente text-2xl"
+						className="btn-base w-full text-cente text-2xl"
 						onClick={() => { setOffset(current => current += limit) }}
 					>
 						더보기
@@ -165,4 +173,5 @@ const User: React.FC<IProps> = ({
 	)
 }
 
-export default connect(null, mapDispatchToProps)(User);
+// export default connect(null, mapDispatchToProps)(User);
+export default User;

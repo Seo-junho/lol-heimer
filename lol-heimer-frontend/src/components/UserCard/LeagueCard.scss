@@ -1,0 +1,15 @@
+@import '../../style/mixin';
+
+.img-tier {
+	width: 150px;
+
+	@include XS2 {
+		width: 90px;
+	}
+	@include XS {
+		width: 100px;
+	}
+	@include S {
+		width: 120px;
+	}
+}

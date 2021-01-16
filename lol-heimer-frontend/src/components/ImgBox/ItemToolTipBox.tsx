@@ -14,7 +14,7 @@ const ImgToolTipBox: React.FC<ItemToolTipBoxProps> = ({
 	return (
 		<>
 			<ImgBox
-				className={`${className} ${size}-box tooltip-box rounded-md bg-gray-500 ${!isItem && ' opacity-30'}`}
+				className={`${className} box-${size} tooltip-box rounded-md bg-gray-500 ${!isItem && ' opacity-30'}`}
 				imgUrl={`${CDN_URL(item.icon_img)}`}
 			>
 				{ isItem && (

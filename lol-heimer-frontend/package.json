@@ -18,6 +18,7 @@
 		"axios": "^0.21.1",
 		"craco": "0.0.3",
 		"craco-alias": "^2.1.1",
+		"cross-env": "^7.0.3",
 		"install": "^0.13.0",
 		"node-sass": "^4.14.1",
 		"npm": "^6.14.9",
@@ -37,11 +38,11 @@
 	"scripts": {
 		"start": "npm run tailwind:build && craco start",
 		"build": "npm run tailwind:devbuild && CI=false craco build",
-		"build:prod": "npm run tailwind:prodbuild && CI=false craco build",
+		"build:prod": "npm run tailwind:prodbuild && craco build",
 		"test": "craco test",
 		"eject": "react-scripts eject",
-		"tailwind:prodbuild": "NODE_ENV=production npm run tailwind:build",
-		"tailwind:devbuild": "NODE_ENV=dev npm run tailwind:build",
+		"tailwind:prodbuild": "cross-env NODE_ENV=production npm run tailwind:build",
+		"tailwind:devbuild": "cross-env NODE_ENV=dev npm run tailwind:build",
 		"tailwind:build": "tailwind build ./src/style/tailwind.css -o ./src/style/styles.css"
 	},
 	"eslintConfig": {
