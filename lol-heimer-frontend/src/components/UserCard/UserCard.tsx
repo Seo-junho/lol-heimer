@@ -24,6 +24,7 @@ const UserCard: React.FC<UserCardProps> = (
 					style={{
 						backgroundImage: `${CDN_URL(profile_icon)}`
 					}}
+					role="summonerIcon"
 				>
 				</div>
 				<div
@@ -33,6 +34,7 @@ const UserCard: React.FC<UserCardProps> = (
 						height: '26px',
 						backgroundImage: `url('${LevelBox}')`,
 					}}
+					role="levelBox"
 				>
 					<h4 className="text--md font-light text-white">{ summonerLevel }</h4>
 				</div>

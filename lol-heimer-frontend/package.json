@@ -5,7 +5,7 @@
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.5.0",
 		"@tailwindcss/postcss7-compat": "^2.0.2",
-		"@testing-library/jest-dom": "^5.11.4",
+		"@testing-library/jest-dom": "^5.11.9",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
 		"@types/jest": "^26.0.15",
@@ -39,7 +39,8 @@
 		"start": "npm run tailwind:build && craco start",
 		"build": "npm run tailwind:devbuild && CI=false craco build",
 		"build:prod": "npm run tailwind:prodbuild && craco build",
-		"test": "craco test",
+		"test": "craco test --verbose",
+		"test:cov": "npm run test -- --coverage --watchAll=false",
 		"eject": "react-scripts eject",
 		"tailwind:prodbuild": "cross-env NODE_ENV=production npm run tailwind:build",
 		"tailwind:devbuild": "cross-env NODE_ENV=dev npm run tailwind:build",

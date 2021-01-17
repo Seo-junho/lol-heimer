@@ -12,7 +12,10 @@ const ItemBox: React.FC<ItemBoxProps> = ({
 	return (
 		<>
 			{ type === 'double' && (
-				<div className={`${className} flex flex-col`}>
+				<div
+					className={`${className} flex flex-col`}
+					role="items"
+				>
 					<div className="flex flex-row">
 						<ImgToolTipBox item={items[0]} size={size} className={`m-0.5`} />
 						<ImgToolTipBox item={items[1]} size={size} className={`m-0.5`} />
@@ -27,7 +30,10 @@ const ItemBox: React.FC<ItemBoxProps> = ({
 				</div>
 			)}
 			{ type === 'flat' && (
-				<div className={`${className} flex flex-row`}>
+				<div
+					className={`${className} flex flex-row`}
+					role="items"
+				>
 					<ImgToolTipBox item={items[0]} size={size} className={`m-0.1`}/>
 					<ImgToolTipBox item={items[1]} size={size} className={`m-0.1`}/>
 					<ImgToolTipBox item={items[2]} size={size} className={`m-0.1`}/>

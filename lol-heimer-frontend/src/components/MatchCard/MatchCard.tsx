@@ -82,6 +82,7 @@ const MatchCard: React.FC<MatchCardProps> = ({
 	return (
 		<div
 			className={`flex flex-row shadow-lg mb-5 w-full ${cardBgColor} border border-white rounded-xl`}
+			role="matchCard"
 		>
 			<div className="flex-grow flex flex-col p-2 md:p-5 sm:flex-row items-center justify-center">
 				<div className="flex-grow-0 flex flex-col items-center">
@@ -103,6 +104,7 @@ const MatchCard: React.FC<MatchCardProps> = ({
 							style={{
 								backgroundImage: `${CDN_URL(championIcon)}`,
 							}}
+							role="chanpionIcon"
 						/>
 						<div className="mt-1 text--md">{ championName } </div>
 					</div>

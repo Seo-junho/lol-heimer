@@ -13,7 +13,8 @@ const ImgBox: React.FC<ImgBoxProps> = ({
       style={{
         ...style,
         backgroundImage: `${imgUrl}`,
-      }}
+			}}
+			role="image"
     >
       { children }
     </div>
