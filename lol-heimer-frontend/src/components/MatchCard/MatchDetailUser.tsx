@@ -33,6 +33,7 @@ const MatchDetailUser: React.FC<MatchDetailUserProps> = ({
 					style={{
 						backgroundImage: `${CDN_URL(play_champion.image)}`,
 					}}
+					role="championImage"
 				/>
 			</div>
 			<div className="flex flex-col mx-2">
@@ -43,6 +44,7 @@ const MatchDetailUser: React.FC<MatchDetailUserProps> = ({
 						height: '20px',
 						backgroundImage: `${CDN_URL(spell_1.icon_img)}`,
 					}}
+					role="spell1Image"
 				/>
 				<div
 					className="bg-cover bg-no-repeat"
@@ -51,6 +53,7 @@ const MatchDetailUser: React.FC<MatchDetailUserProps> = ({
 						height: '20px',
 						backgroundImage: `${CDN_URL(spell_2.icon_img)}`,
 					}}
+					role="spell2Image"
 				/>
 			</div>
 			<div className="flex flex-col md:flex-row items-start md:items-center">
