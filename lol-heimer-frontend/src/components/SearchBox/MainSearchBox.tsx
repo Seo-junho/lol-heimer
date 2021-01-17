@@ -1,7 +1,5 @@
 import { MainSearchBoxUserSearchForm } from '@dtos/SearchBox/MainSearchBox.dto';
-import { API_SEARCH_USER } from '@end-point/index';
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
 
@@ -27,8 +25,9 @@ const MainSearchBox: React.FC = (
 	};
 
 	return (
-		<article
+		<section
 			className="w-full px-5 xl:px-0 mt-2 max-w-screen-xl mx-auto"
+			role="serchBox"
 		>
 			<form
 				className="flex items-center justify-center h-20"
@@ -43,12 +42,15 @@ const MainSearchBox: React.FC = (
 						className="w-full px-3 py-1 text-xl focus:outline-none border border-orange-400 rounded-l-sm"
 						required
 					/>
-					<button className="w-20 p-2 text-white border border-orange-400 bg-orange-400 hover:bg-orange-500 transition-colors rounded-r-sm">
+					<button
+						className="w-20 p-2 text-white border border-orange-400 bg-orange-400 hover:bg-orange-500 transition-colors rounded-r-sm"
+						role="searchButton"
+					>
 						검색
 					</button>
 				</div>
 			</form>
-		</article>
+		</section>
 	)
 }
 
