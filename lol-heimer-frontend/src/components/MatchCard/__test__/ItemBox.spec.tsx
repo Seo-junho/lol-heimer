@@ -30,4 +30,4 @@ describe('<ItemBox />', () => {
 		const items = getByRole(/items/gi);
 		expect(items).toHaveClass('flex-row')
 	});
-})
+});
