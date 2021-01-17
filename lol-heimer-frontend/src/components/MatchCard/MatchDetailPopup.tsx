@@ -22,20 +22,20 @@ const MatchDetailPopup: React.FC<MatchDetailPopupProps> = ({
 				cancel = c;
 			})
 		}).then((response: AxiosResponse) => {
-				const { data: { data: {
-					blue_team,
-					red_team,
-				} } } = response;
-				if (blue_team && red_team) {
-					setBlueTeam(blue_team);
-					setRedTeam(red_team);
-				}
-				setIsLoading(false);
-			})
-			.catch((error: AxiosError) => {
-				// console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
-				setIsLoading(false);
-			});
+			const { data: { data: {
+				blue_team,
+				red_team,
+			} } } = response;
+			if (blue_team && red_team) {
+				setBlueTeam(blue_team);
+				setRedTeam(red_team);
+			}
+			setIsLoading(false);
+		})
+		.catch((error: AxiosError) => {
+			// console.log(`API_SEARCH_GET_MATCH_DETAIL ${error}`);
+			setIsLoading(false);
+		});
 		return () => {
 			cancel();
 			setBlueTeam([]);
