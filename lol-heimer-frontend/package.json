@@ -39,7 +39,7 @@
 		"start": "npm run tailwind:build && craco start",
 		"build": "npm run tailwind:devbuild && CI=false craco build",
 		"build:prod": "npm run tailwind:prodbuild && craco build",
-		"test": "react-scripts test --verbose",
+		"test": "craco test --verbose",
 		"test:cov": "npm run test -- --coverage --watchAll=false",
 		"eject": "react-scripts eject",
 		"tailwind:prodbuild": "cross-env NODE_ENV=production npm run tailwind:build",

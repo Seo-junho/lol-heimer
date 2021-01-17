@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemToolTipBox from '../ItemToolTipBox';
+import SpellToolTipBox from '../SpellToolTipBox';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -11,15 +11,11 @@ jest.mock('@components/ToolTip', () => {
   return () => <span>ToolTip</span>
 });
 
-describe('<ItemToolTipBox />', () => {
+describe('<SpellToolTipBox />', () => {
 	it('Render Done', () => {
-		const { getByText } = render(<ItemToolTipBox
-			item={{
-				name: '',
-				icon_img: '',
-				plain_text: '',
-				item_price: 123,
-			}}
+		const { getByText } = render(<SpellToolTipBox
+			name={'123'}
+			imgUrl={'url'}
 		/>);
 		getByText(/Img Box Call/gi);
 	});
