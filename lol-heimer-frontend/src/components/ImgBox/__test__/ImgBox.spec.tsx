@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('<ImgBox />', () => {
-	it('Render', () => {
+	it('Render Done', () => {
 		const imgUrl = `url(http://test.com)`;
 		const { getByText, getByRole, container } = render(
 			<ImgBox
