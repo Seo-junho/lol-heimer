@@ -1,6 +1,6 @@
 import React from 'react';
 import MainSearchBox from '../MainSearchBox';
-import { render, wait, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -17,7 +17,6 @@ jest.mock('react-router', () => {
 
 describe('<MainSearchBox />', () => {
 	it('Render & Search Done', async () => {
-		const imgUrl = `url(http://test.com)`;
 		const { getByText, getByRole, getByPlaceholderText } = render(
 			<MainSearchBox></MainSearchBox>
 		);

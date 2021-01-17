@@ -35,6 +35,7 @@ const LeagueCard: React.FC<LeagueCardProps> = (
 				<img
 					className="img-tier"
 					src={`${tier_img}`}
+					alt="img-tier"
 				/>
 			</div>
 			<div className="flex-1 lg:pl-5 flex flex-col items-center justify-center lg:items-start">
@@ -44,7 +45,12 @@ const LeagueCard: React.FC<LeagueCardProps> = (
 				<div>
 					<span className="text--md font-bold text-blue-600">{ wins }</span>승&nbsp;
 					<span className="text--md font-bold text-red-500">{ losses }</span>패
-					<div className="text--md text-center lg:text-left">(<span className={`font-bold ${winsLate >= 50 ? 'text-green-600' : 'text-gray-600'}`}>{ winsLate }%</span>)</div>
+					<div className="text--md text-center lg:text-left">
+						(<span
+							className={`font-bold ${winsLate >= 50 ? 'text-green-600' : 'text-gray-600'}`}
+							role="winsLate"
+						>{ winsLate }%</span>)
+					</div>
 				</div>
 			</div>
 		</div>
