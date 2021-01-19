@@ -1,4 +1,3 @@
-import Article from '@components/Article';
 import LoginForm from '@components/Login/LoginForm';
 import React from 'react';
 import './Login.scss';
