@@ -11,6 +11,7 @@ import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
 import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
 import SkeletonUser from '@skeleton/SkeletonUser';
+import { Helmet } from 'react-helmet-async';
 
 
 // const mapDispatchToProps = (dispatch: any) => {
@@ -118,6 +119,9 @@ const User: React.FC = () => {
 	return (
 		<Article>
 			<div className="flex flex-col items-center justify-center">
+				<Helmet>
+					<title>{ username } 전적 | LOL Heimer</title>
+				</Helmet>
 				{ userLoading ? (
 					<>
 						<SkeletonUser />

@@ -7,6 +7,7 @@ import Heimer from '../images/heimer.png';
 import LotationChampion from '@components/Rotation/RotationChampion';
 import Article from '@components/Article';
 import './index.scss'
+import { Helmet } from 'react-helmet-async';
 
 const mapDispatchToProps = (dispatch: any) => {
 	return bindActionCreators({
@@ -28,6 +29,9 @@ const Pages: React.FC<IProps> = ({
 
 	return (
 		<>
+			<Helmet>
+				<title>Home | LOL Heimer</title>
+			</Helmet>
 			<div className="pt-12">
 				<img src={Heimer} className="mx-auto" />
 			</div>
