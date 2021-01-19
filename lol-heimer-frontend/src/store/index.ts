@@ -1,4 +1,5 @@
 import loadingReducer from './loading';
+import authReducer from './auth';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 export interface LoadingType {
@@ -6,7 +7,8 @@ export interface LoadingType {
 };
 
 const reducers = combineReducers({
-  isLoading: loadingReducer,
+	isLoading: loadingReducer,
+	token: authReducer,
 })
 
 const rootStore = configureStore({ reducer: reducers });
