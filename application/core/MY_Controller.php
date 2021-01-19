@@ -2,8 +2,20 @@
 class MY_Controller extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		//$db = $this->load->database();
-		//$a = $db->query("SELECT * FROM env_config ");
-		//var_dump($a);
+
+		define("RIOT_API_KEY", $this->getRiotApiKey());
+	}
+
+	public function getRiotApiKey()
+	{
+		$this->load->database();
+
+		$sql = "SELECT * FROM env_config WHERE status = 'A' ";
+
+		$result = $this->db->query($sql)->result('object')[0];
+
+		$this->db->close();
+
+		return $result->config_value;
 	}
 }
