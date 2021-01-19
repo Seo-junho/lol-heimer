@@ -41,3 +41,4 @@ game_meta/champion.json
 game_meta/profile_icon.json
 game_meta/summoner.json
 game_meta/item.json
+application/config/database.php
