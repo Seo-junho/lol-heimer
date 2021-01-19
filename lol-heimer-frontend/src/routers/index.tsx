@@ -4,16 +4,21 @@ import User from '../pages/User';
 import './index.scss'
 import PageNotFound404 from '@pages/error/PageNotFound404';
 import UserNotFound from '@pages/error/UserNotFound';
+import Login from '@pages/Login';
+import Layout from './../Layout';
 
 const Routers: React.FC = (
 ): JSX.Element => {
 
 	return (
 		<Switch>
-			<Route exact path='/' component={Pages} />
-			<Route exact path='/home/user/:username' component={User} />
-			<Route exact path='/error/nouser' component={UserNotFound} />
-			<Route path='*' component={PageNotFound404} />
+			<Route exact path='/login' component={Login} />
+			<Layout>
+				<Route exact path='/' component={Pages} />
+				<Route exact path='/home/user/:username' component={User} />
+				<Route exact path='/error/nouser' component={UserNotFound} />
+				<Route path='*' component={PageNotFound404} />
+			</Layout>
 		</Switch>
 	)
 }
