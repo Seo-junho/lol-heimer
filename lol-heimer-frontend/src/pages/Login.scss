@@ -3,3 +3,16 @@
 .article-login {
 	height: 100%;
 }
+
+.login-box {
+	background-color:rgba(251, 146, 60, 0.85);
+}
+
+.link-box {
+	outline: none;
+	text-decoration: none;
+	&:hover, &:active {
+		text-decoration: underline;
+	}
+}
+

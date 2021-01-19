@@ -5,10 +5,10 @@ import './Login.scss';
 
 const Login: React.FC = () => {
 	return (
-		<Article className={'flex items-center justify-center article-login '}>
+		<div className={'flex flex-col items-center justify-center article-login login-box'}>
+			<h1 className="text-white text-2xl md:text-6xl leading-loose mb-5">LoL Heimer Login</h1>
 			<LoginForm />
-		</Article>
+		</div>
 	);
 }
-
 export default Login;
