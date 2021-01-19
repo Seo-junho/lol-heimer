@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Hook extends CI_Controller {
+class Hook extends MY_Controller {
 	public function index(){
 		$id = $_POST("id");
 		$data = $_POST("data");

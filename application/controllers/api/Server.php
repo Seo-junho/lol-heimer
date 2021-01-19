@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Server extends CI_Controller{
+class Server extends MY_Controller{
 
 	private $base_url = 'https://kr.api.riotgames.com/lol';
 

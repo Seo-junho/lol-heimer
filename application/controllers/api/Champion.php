@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
 
-class Champion extends CI_Controller {
+class Champion extends MY_Controller {
 
 	/**
 	 * 로테이션 챔피언을 가져옴
