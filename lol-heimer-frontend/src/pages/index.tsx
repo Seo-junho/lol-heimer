@@ -8,6 +8,7 @@ import LotationChampion from '@components/Rotation/RotationChampion';
 import Article from '@components/Article';
 import './index.scss'
 import { Helmet } from 'react-helmet-async';
+import Layout from './../Layout';
 
 const mapDispatchToProps = (dispatch: any) => {
 	return bindActionCreators({
@@ -28,7 +29,7 @@ const Pages: React.FC<IProps> = ({
 	}, []);
 
 	return (
-		<>
+		<Layout>
 			<Helmet>
 				<title>Home | LOL Heimer</title>
 			</Helmet>
@@ -63,7 +64,7 @@ const Pages: React.FC<IProps> = ({
 					</iframe>
 				</div>
 			</Article>
-		</>
+		</Layout>
 	)
 }
 

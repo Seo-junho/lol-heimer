@@ -12,6 +12,7 @@ import Article from '@components/Article';
 import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
 import SkeletonUser from '@skeleton/SkeletonUser';
 import { Helmet } from 'react-helmet-async';
+import Layout from './../Layout';
 
 
 // const mapDispatchToProps = (dispatch: any) => {
@@ -117,63 +118,65 @@ const User: React.FC = () => {
 	}, [offset]);
 
 	return (
-		<Article>
-			<div className="flex flex-col items-center justify-center">
-				<Helmet>
-					<title>{ username } 전적 | LOL Heimer</title>
-				</Helmet>
-				{ userLoading ? (
-					<>
-						<SkeletonUser />
-					</>
-				) : (
-					<>
-						<div className="w-full flex">
-							<UserCard
-								userInfo={userInfo}
+		<Layout>
+			<Article>
+				<div className="flex flex-col items-center justify-center">
+					<Helmet>
+						<title>{ username } 전적 | LOL Heimer</title>
+					</Helmet>
+					{ userLoading ? (
+						<>
+							<SkeletonUser />
+						</>
+					) : (
+						<>
+							<div className="w-full flex">
+								<UserCard
+									userInfo={userInfo}
+								/>
+							</div>
+							<div className="flex flex-col sm:flex-row w-full">
+								<LeagueCard
+									type='solo'
+									leagueInfo={soloLeague}
+								/>
+								<LeagueCard
+									type='team'
+									leagueInfo={teamLeague}
+								/>
+							</div>
+						</>
+					)}
+				</div>
+				{ matchList.length !== 0 && (
+					<div className="flex flex-col items-start justify-center">
+						{ matchList.map((item, index) => (
+							<MatchCard
+								key={index}
+								match={item}
+								username={username}
 							/>
-						</div>
-						<div className="flex flex-col sm:flex-row w-full">
-							<LeagueCard
-								type='solo'
-								leagueInfo={soloLeague}
-							/>
-							<LeagueCard
-								type='team'
-								leagueInfo={teamLeague}
-							/>
-						</div>
-					</>
+						)) }
+					</div>
 				)}
-			</div>
-			{ matchList.length !== 0 && (
-				<div className="flex flex-col items-start justify-center">
-					{ matchList.map((item, index) => (
-						<MatchCard
-							key={index}
-							match={item}
-							username={username}
-						/>
-					)) }
-				</div>
-			)}
-			{ matchLoading ? (
-				<div>
-					{[...Array(limit)].map((_, index) => (
-						<SkeletonMatchCard key={index} />
-					))}
-				</div>
-			) : (
-				<div>
-					<button
-						className="btn-base w-full text-cente text-2xl"
-						onClick={() => { setOffset(current => current += limit) }}
-					>
-						더보기
-					</button>
-				</div>
-			)}
-		</Article>
+				{ matchLoading ? (
+					<div>
+						{[...Array(limit)].map((_, index) => (
+							<SkeletonMatchCard key={index} />
+						))}
+					</div>
+				) : (
+					<div>
+						<button
+							className="btn-base w-full text-cente text-2xl"
+							onClick={() => { setOffset(current => current += limit) }}
+						>
+							더보기
+						</button>
+					</div>
+				)}
+			</Article>
+		</Layout>
 	)
 }
 

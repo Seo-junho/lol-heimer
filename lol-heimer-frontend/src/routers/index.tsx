@@ -13,12 +13,10 @@ const Routers: React.FC = (
 	return (
 		<Switch>
 			<Route exact path='/login' component={Login} />
-			<Layout>
-				<Route exact path='/' component={Pages} />
-				<Route exact path='/home/user/:username' component={User} />
-				<Route exact path='/error/nouser' component={UserNotFound} />
-				<Route path='*' component={PageNotFound404} />
-			</Layout>
+			<Route exact path='/' component={Pages} />
+			<Route exact path='/home/user/:username' component={User} />
+			<Route exact path='/error/nouser' component={UserNotFound} />
+			<Route path='*' component={PageNotFound404} />
 		</Switch>
 	)
 }
