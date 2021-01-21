@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import MainSearchBox from '@components/SearchBox/MainSearchBox';
 import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
@@ -34,7 +34,7 @@ const Pages: React.FC<IProps> = ({
 				<title>Home | LOL Heimer</title>
 			</Helmet>
 			<div className="pt-12">
-				<img src={Heimer} className="mx-auto" />
+				<img src={Heimer} className="mx-auto" alt="lol-heimer title" />
 			</div>
 			<MainSearchBox />
 			<Article>
@@ -57,6 +57,7 @@ const Pages: React.FC<IProps> = ({
 				</h1>
 				<div className="flex items-center justify-center youtube">
 					<iframe
+						title="youtube"
 						src="https://www.youtube.com/embed/lXWSn8lAn2k"
 						frameBorder={"0"}
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

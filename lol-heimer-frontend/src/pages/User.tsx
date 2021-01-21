@@ -4,9 +4,9 @@ import axios, { AxiosResponse } from 'axios';
 import { API_SEARCH_GET_MATCH_LIST, API_SEARCH_USER } from '@end-point/index';
 import UserCard from '@components/UserCard/UserCard';
 import LeagueCard from '@components/UserCard/LeagueCard';
-import { setLoading } from '@store/loading';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// import { setLoading } from '@store/loading';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
 import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
@@ -57,7 +57,6 @@ const User: React.FC = () => {
 								profile_icon,
 							},
 							status,
-							message,
 						},
 					} = response;
 					if (status === '404') {

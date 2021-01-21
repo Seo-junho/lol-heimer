@@ -5,7 +5,6 @@ import './index.scss'
 import PageNotFound404 from '@pages/error/PageNotFound404';
 import UserNotFound from '@pages/error/UserNotFound';
 import Login from '@pages/Login';
-import Layout from './../Layout';
 
 const Routers: React.FC = (
 ): JSX.Element => {
