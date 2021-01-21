@@ -1,21 +1,74 @@
+import ButtonLoading from '@components/Button/ButtonLoading';
 import ErrorSpan from '@components/Error/ErrorSpan';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { API_MEMBER_SIGNUP, API_MEMBER_LOGIN } from './../../end-point/index';
 
 const LoginForm: React.FC = () => {
-	const [isSignup, setIsSignup] = useState<Boolean>(false);
+	const history = useHistory();
+
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isSignup, setIsSignup] = useState<boolean>(false);
 	const {
 		errors,
 		register,
 		getValues,
 		handleSubmit,
+		formState,
 	} = useForm<any>({
-		mode: 'onSubmit',
+		mode: 'onChange',
 	});
 
 	const onSubmit = async (): Promise<void> => {
-		console.log('Submit')
+		if (isLoading) {
+			return;
+		}
+		setIsLoading(true);
+		const getValue = getValues();
+		try {
+			if (isSignup) {
+				// 회원가입
+				const { id, password, password2, name } = getValue;
+				if (password !== password2) {
+					// Error
+					return;
+				}
+				const { data: {
+					data,
+					status,
+					message,
+				} } = await axios.post(`${API_MEMBER_SIGNUP}`, {
+					id,
+					password,
+					name
+				});
+
+				alert(message);
+				if (status === '200') {
+					history.push('/');
+				}
+			} else {
+				// 로그인
+				const { id, password } = getValue;
+				const { data: {
+					data: {
+						id: sessionId,
+						status,
+						message,
+					}
+				} } = await axios.post(`${API_MEMBER_LOGIN}`, { id, password });
+
+				alert(message);
+				if (status === '200') {
+					history.push('/');
+				}
+			}
+			setIsLoading(false);
+		} catch (e) {
+			setIsLoading(false);
+		}
 	}
 
 	return (
@@ -95,18 +148,21 @@ const LoginForm: React.FC = () => {
 					)}
 				</>
 			) }
-			<button
-				className="btn-normal text-xl bg-orange-400 hover:bg-orange-300 text-white rounded-xl h-12 mb-5"
+			<ButtonLoading
+				type="submit"
+				className="btn-normal text-xl rounded-xl h-12 mb-5"
+				loading={isLoading}
+				canClick={formState.isValid}
 			>
 				{ isSignup ? (
 					<>회원가입</>
 				) : (
 					<>로그인</>
 				) }
-			</button>
+			</ButtonLoading>
 			<div className="flex flex-row items-center justify-evenly">
 				<button
-					className="link-box text-orange-600"
+					className="link-box text-orange-600 out"
 					onClick={() => { setIsSignup(current => !current)}}
 					type="button"
 				>

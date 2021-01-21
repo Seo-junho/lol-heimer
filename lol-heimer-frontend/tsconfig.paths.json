@@ -9,7 +9,8 @@
 			"@store/*": ["src/store/*"],
 			"@images/*": ["src/images/*"],
 			"@skeleton/*": ["src/skeleton/*"],
-			"@dtos/*": ["src/dtos/*"]
+			"@dtos/*": ["src/dtos/*"],
+			"@svg/*": ["src/svg/*"]
     }
   }
 }

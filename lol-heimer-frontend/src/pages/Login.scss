@@ -9,7 +9,10 @@
 }
 
 .link-box {
-	outline: none;
+	&:focus {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
 	text-decoration: none;
 	&:hover, &:active {
 		text-decoration: underline;
