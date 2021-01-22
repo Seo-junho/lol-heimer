@@ -35,10 +35,10 @@ const SkeletonUser: React.FC = () => {
 								height: '26px',
 							}}
 						>
-							<h4 className="skeleton-summoner-box bg-gray-200"></h4>
+							<div className="skeleton-summoner-box bg-gray-200" />
 						</div>
 					</div>
-					<h3 className="skeleton-name-box m-5 bg-gray-200"></h3>
+					<div className="skeleton-name-box m-5 bg-gray-200" />
 				</div>
 			</div>
 			<div className="flex flex-col sm:flex-row w-full">

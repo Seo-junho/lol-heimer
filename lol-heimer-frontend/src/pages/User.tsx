@@ -4,13 +4,15 @@ import axios, { AxiosResponse } from 'axios';
 import { API_SEARCH_GET_MATCH_LIST, API_SEARCH_USER } from '@end-point/index';
 import UserCard from '@components/UserCard/UserCard';
 import LeagueCard from '@components/UserCard/LeagueCard';
-import { setLoading } from '@store/loading';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// import { setLoading } from '@store/loading';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 import MatchCard from '@components/MatchCard/MatchCard';
 import Article from '@components/Article';
 import SkeletonMatchCard from '@skeleton/SkeletonMatchCard';
 import SkeletonUser from '@skeleton/SkeletonUser';
+import { Helmet } from 'react-helmet-async';
+import Layout from './../Layout';
 
 
 // const mapDispatchToProps = (dispatch: any) => {
@@ -55,10 +57,9 @@ const User: React.FC = () => {
 								profile_icon,
 							},
 							status,
-							message,
 						},
 					} = response;
-					if (status === '404') {
+					if (status === 404) {
 						history.push(`/error/nouser`);
 					}
 
@@ -116,60 +117,65 @@ const User: React.FC = () => {
 	}, [offset]);
 
 	return (
-		<Article>
-			<div className="flex flex-col items-center justify-center">
-				{ userLoading ? (
-					<>
-						<SkeletonUser />
-					</>
-				) : (
-					<>
-						<div className="w-full flex">
-							<UserCard
-								userInfo={userInfo}
+		<Layout>
+			<Article>
+				<div className="flex flex-col items-center justify-center">
+					<Helmet>
+						<title>{ username } 전적 | LOL Heimer</title>
+					</Helmet>
+					{ userLoading ? (
+						<>
+							<SkeletonUser />
+						</>
+					) : (
+						<>
+							<div className="w-full flex">
+								<UserCard
+									userInfo={userInfo}
+								/>
+							</div>
+							<div className="flex flex-col sm:flex-row w-full">
+								<LeagueCard
+									type='solo'
+									leagueInfo={soloLeague}
+								/>
+								<LeagueCard
+									type='team'
+									leagueInfo={teamLeague}
+								/>
+							</div>
+						</>
+					)}
+				</div>
+				{ matchList.length !== 0 && (
+					<div className="flex flex-col items-start justify-center">
+						{ matchList.map((item, index) => (
+							<MatchCard
+								key={index}
+								match={item}
+								username={username}
 							/>
-						</div>
-						<div className="flex flex-col sm:flex-row w-full">
-							<LeagueCard
-								type='solo'
-								leagueInfo={soloLeague}
-							/>
-							<LeagueCard
-								type='team'
-								leagueInfo={teamLeague}
-							/>
-						</div>
-					</>
+						)) }
+					</div>
 				)}
-			</div>
-			{ matchList.length !== 0 && (
-				<div className="flex flex-col items-start justify-center">
-					{ matchList.map((item, index) => (
-						<MatchCard
-							key={index}
-							match={item}
-							username={username}
-						/>
-					)) }
-				</div>
-			)}
-			{ matchLoading ? (
-				<div>
-					{[...Array(limit)].map((_, index) => (
-						<SkeletonMatchCard key={index} />
-					))}
-				</div>
-			) : (
-				<div>
-					<button
-						className="btn-base w-full text-cente text-2xl"
-						onClick={() => { setOffset(current => current += limit) }}
-					>
-						더보기
-					</button>
-				</div>
-			)}
-		</Article>
+				{ matchLoading ? (
+					<div>
+						{[...Array(limit)].map((_, index) => (
+							<SkeletonMatchCard key={index} />
+						))}
+					</div>
+				) : (
+					<div>
+						<button
+							className="btn-base w-full text-cente text-2xl"
+							onClick={() => { setOffset(current => current += limit) }}
+						>
+							더보기
+						</button>
+					</div>
+				)}
+			</Article>
+		</Layout>
 	)
 }
 

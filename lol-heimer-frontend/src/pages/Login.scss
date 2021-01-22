@@ -1,0 +1,21 @@
+@import '../style/mixin';
+
+.article-login {
+	height: 100%;
+}
+
+.login-box {
+	background-color:rgba(251, 146, 60, 0.85);
+}
+
+.link-box {
+	&:focus {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
+	text-decoration: none;
+	&:hover, &:active {
+		text-decoration: underline;
+	}
+}
+

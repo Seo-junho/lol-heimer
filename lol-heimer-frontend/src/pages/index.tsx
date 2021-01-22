@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import MainSearchBox from '@components/SearchBox/MainSearchBox';
 import { bindActionCreators } from 'redux';
 import { setLoading } from '@store/loading';
@@ -7,6 +7,8 @@ import Heimer from '../images/heimer.png';
 import LotationChampion from '@components/Rotation/RotationChampion';
 import Article from '@components/Article';
 import './index.scss'
+import { Helmet } from 'react-helmet-async';
+import Layout from './../Layout';
 
 const mapDispatchToProps = (dispatch: any) => {
 	return bindActionCreators({
@@ -24,12 +26,18 @@ const Pages: React.FC<IProps> = ({
 
 	useEffect(() => {
 		setLoading(false);
+		return () => {
+			setLoading(null);
+		}
 	}, []);
 
 	return (
-		<>
+		<Layout>
+			<Helmet>
+				<title>Home | LOL Heimer</title>
+			</Helmet>
 			<div className="pt-12">
-				<img src={Heimer} className="mx-auto" />
+				<img src={Heimer} className="mx-auto" alt="lol-heimer title" />
 			</div>
 			<MainSearchBox />
 			<Article>
@@ -52,6 +60,7 @@ const Pages: React.FC<IProps> = ({
 				</h1>
 				<div className="flex items-center justify-center youtube">
 					<iframe
+						title="youtube"
 						src="https://www.youtube.com/embed/lXWSn8lAn2k"
 						frameBorder={"0"}
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -59,7 +68,7 @@ const Pages: React.FC<IProps> = ({
 					</iframe>
 				</div>
 			</Article>
-		</>
+		</Layout>
 	)
 }
 

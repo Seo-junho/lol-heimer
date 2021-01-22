@@ -6,3 +6,6 @@ export const API_CHANPION_GET_ROTATIONS = `${ROOT}/api/champion/getRotations`;
 export const API_SEARCH_USER = `${ROOT}/api/search/getUserInfo`;
 export const API_SEARCH_GET_MATCH_LIST = `${ROOT}/api/search/getMatchList`;
 export const API_SEARCH_GET_MATCH_DETAIL = `${ROOT}/api/search/getMatchListDetail`;
+
+export const API_MEMBER_SIGNUP_MEMBER = `${ROOT}/api/member/signupMember`;
+export const API_MEMBER_LOGIN_MEMBER = `${ROOT}/api/member/loginMember`;
