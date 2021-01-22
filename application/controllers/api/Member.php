@@ -79,14 +79,14 @@ class Member extends MY_Controller
 		";
 
 		$this->load->database();
-		$response = $this->db->query($sql)->result('object');
+		$member = $this->db->query($sql)->result('object');
 		$this->db->close();
 
-		if(!empty($response)) {
+		if(!empty($member)) {
 			$result['status'] = 200;
 			$result['message'] = '로그인 되었습니다';
-			$result['id'] = $result[0]->id;
-			$_SESSION['id'] = $result[0]->id;
+			$result['id'] = $member[0]->id;
+			$_SESSION['id'] = $member[0]->id;
 		} else {
 			$result['status'] = 400;
 			$result['message'] = '아이디 비번이 틀렸거나 없는 회원입니다.';
