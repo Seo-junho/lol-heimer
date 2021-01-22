@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-header("Access-Control-Allow-Origin: *");
 
 class Member extends MY_Controller
 {
@@ -86,7 +85,7 @@ class Member extends MY_Controller
 			echo json_encode($result);
 			return;
 		}
-		
+
 		$sql = "
 			SELECT * FROM member 
 			WHERE id = '{$id}' AND password = password('{$password}') AND status = 'A'
@@ -100,7 +99,6 @@ class Member extends MY_Controller
 			$result['status'] = 200;
 			$result['message'] = '로그인 되었습니다';
 			$result['id'] = $member[0]->id;
-			$_SESSION['id'] = $member[0]->id;
 		} else {
 			$result['status'] = 400;
 			$result['message'] = '아이디 비번이 틀렸거나 없는 회원입니다.';
@@ -117,7 +115,7 @@ class Member extends MY_Controller
 	{
 		$result = [];
 
-		$id = $_POST['id'];
+		$id = $this->input->get_post('id');
 
 		$sql = "
 			SELECT * FROM member 
