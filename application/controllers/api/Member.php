@@ -48,10 +48,10 @@ class Member extends MY_Controller
 				('{$id}',password('{$password}'), '{$name}', now() ) ";
 
 		$this->load->database();
-		$result = $this->db->query($sql);
+		$response = $this->db->query($sql);
 		$this->db->close();
 
-		if ($result) {
+		if ($response) {
 			$result['code'] = 200;
 			$result['message'] = '가입이 완료되었습니다.';
 		} else {
