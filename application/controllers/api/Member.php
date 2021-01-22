@@ -41,7 +41,7 @@ class Member extends MY_Controller
 			return;
 		}
 
-		$sql = "INSERT INTO member (id,password,name,register_date) VALUES ('{$name}',password('{$password}'), '{$name}', now() ) ";
+		$sql = "INSERT INTO member (id,password,name,register_date) VALUES ('{$id}',password('{$password}'), '{$name}', now() ) ";
 
 		$this->load->database();
 		$result = $this->db->query($sql);
