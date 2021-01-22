@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 class MY_Controller extends CI_Controller {
 	function __construct() {
