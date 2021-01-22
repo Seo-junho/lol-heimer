@@ -79,10 +79,10 @@ class Member extends MY_Controller
 		";
 
 		$this->load->database();
-		$result = $this->db->query($sql)->result('object');
+		$response = $this->db->query($sql)->result('object');
 		$this->db->close();
 
-		if(!empty($result)) {
+		if(!empty($response)) {
 			$result['status'] = 200;
 			$result['message'] = '로그인 되었습니다';
 			$result['id'] = $result[0]->id;
