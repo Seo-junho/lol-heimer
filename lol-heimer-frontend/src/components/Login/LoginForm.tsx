@@ -3,25 +3,16 @@ import ErrorSpan from '@components/Error/ErrorSpan';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { API_MEMBER_SIGNUP_MEMBER, API_MEMBER_LOGIN_MEMBER } from './../../end-point/index';
-import { LOCALSTORAGE_USER_ID } from './../../constants';
 
 interface LoginFormProps {
-	userId: string;
 	setLoginInfo: Function;
 };
 
 const LoginForm: React.FC<LoginFormProps> = ({
-	userId,
 	setLoginInfo,
 }) => {
-	const history = useHistory();
-
-	if (userId) {
-		history.push('/');
-	}
-
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isSignup, setIsSignup] = useState<boolean>(false);
 	const {
@@ -75,10 +66,10 @@ const LoginForm: React.FC<LoginFormProps> = ({
 				} } = await axios.post(`${API_MEMBER_LOGIN_MEMBER}`, formData);
 
 				if (status === 200) {
-					setLoginInfo({
+					await setLoginInfo({
 						userId
 					});
-					history.push('/');
+					// history.push('/');
 				} else {
 					alert(message);
 				}
