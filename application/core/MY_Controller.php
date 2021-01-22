@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller {
 	{
 		$this->load->database();
 
-		$sql = "SELECT * FROM env_config WHERE status = 'A' ";
+		$sql = "SELECT * FROM env_config WHERE status = 'A' AND config_key = 'RIOT_API_KEY' ";
 
 		$result = $this->db->query($sql)->result('object')[0];
 
