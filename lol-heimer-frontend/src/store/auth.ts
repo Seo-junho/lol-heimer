@@ -1,22 +1,42 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LOCALSTORAGE_TOKEN } from '../constants';
+import { bindActionCreators, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LOCALSTORAGE_USER_ID } from '../constants';
 
-const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
+export const authMapStateToProps = ({
+	authInfo: {
+		userId,
+	}
+}: { authInfo: AuthType }, ownProps: {}) => {
+  return { userId };
+};
+
+export const authMapDispatchToProps = (dispatch: any) => {
+	return bindActionCreators({
+		setLoginInfo,
+	}, dispatch);
+};
+
+export interface AuthType {
+	userId: string;
+}
+
+const userId = localStorage.getItem(LOCALSTORAGE_USER_ID);
 
 const auth = createSlice({
 	name: 'auth',
 	initialState: {
-		token,
+		userId,
 	},
 	reducers: {
-		login: (state, action: PayloadAction) => {
+		setLoginInfo: (state, action: PayloadAction) => {
+			const { userId }: any = action.payload;
+			localStorage.setItem(LOCALSTORAGE_USER_ID, userId);
 			return action.payload;
 		}
 	}
 });
 
 export const {
-	login
+	setLoginInfo
 } = auth.actions;
 
 export default auth.reducer;

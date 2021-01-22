@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Layout.scss'
 import Loading from '@components/Loading';
-import { LoadingType } from './store/index';
+import { LoadingType } from './store/loading';
 import Header from '@components/Header';
 
 const mapStateToProps = ({ isLoading }: LoadingType, ownProps: {}) => {

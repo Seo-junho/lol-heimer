@@ -5,9 +5,22 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { API_MEMBER_SIGNUP_MEMBER, API_MEMBER_LOGIN_MEMBER } from './../../end-point/index';
+import { LOCALSTORAGE_USER_ID } from './../../constants';
 
-const LoginForm: React.FC = () => {
+interface LoginFormProps {
+	userId: string;
+	setLoginInfo: Function;
+};
+
+const LoginForm: React.FC<LoginFormProps> = ({
+	userId,
+	setLoginInfo,
+}) => {
 	const history = useHistory();
+
+	if (userId) {
+		history.push('/');
+	}
 
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isSignup, setIsSignup] = useState<boolean>(false);
@@ -48,7 +61,7 @@ const LoginForm: React.FC = () => {
 
 				alert(message);
 				if (status === 200) {
-					history.push('/');
+					setIsSignup(false);
 				}
 			} else {
 				// 로그인
@@ -56,16 +69,18 @@ const LoginForm: React.FC = () => {
 				formData.append('id', id);
 				formData.append('password', password);
 				const { data: {
-					data: {
-						id: sessionId,
-						status,
-						message,
-					}
+					id: userId,
+					status,
+					message,
 				} } = await axios.post(`${API_MEMBER_LOGIN_MEMBER}`, formData);
 
-				alert(message);
 				if (status === 200) {
+					setLoginInfo({
+						userId
+					});
 					history.push('/');
+				} else {
+					alert(message);
 				}
 			}
 			setIsLoading(false);

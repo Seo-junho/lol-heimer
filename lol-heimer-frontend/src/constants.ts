@@ -1,1 +1,1 @@
-export const LOCALSTORAGE_TOKEN = 'lol-heimer-token';
+export const LOCALSTORAGE_USER_ID = 'lol-heimer-user-id';

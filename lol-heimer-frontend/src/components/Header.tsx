@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
+import { connect } from 'react-redux';
+import { authMapStateToProps, AuthType } from '@store/auth';
 
-const Header: React.FC = () => {
+interface HeaderProps extends AuthType {};
+
+const Header: React.FC<HeaderProps> = ({
+	userId
+}) => {
+	console.log('userId', userId)
 	return (
 		<header>
 			<div className="nav-box flex flex-row justify-between items-center">
@@ -17,13 +24,17 @@ const Header: React.FC = () => {
 					</ul>
 				</nav>
 				<div>
-					<button className="px-2 py-1 btn-normal bg-orange-600 hover:bg-orange-500 text-white">
-						<Link to="/login">로그인</Link>
-					</button>
+					{ userId ? (
+						<span>{ userId }님 환영합니다.</span>
+					) : (
+						<button className="px-2 py-1 btn-normal bg-orange-600 hover:bg-orange-500 text-white">
+							<Link to="/login">로그인</Link>
+						</button>
+					)}
 				</div>
 			</div>
 		</header>
 	);
 }
 
-export default Header;
+export default connect(authMapStateToProps)(Header);
