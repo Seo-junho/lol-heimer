@@ -70,9 +70,23 @@ class Member extends MY_Controller
 	{
 		$result = [];
 
-		$id = $_POST['id'];
-		$password = $_POST['password'];
+		$id = $this->input->get_post('id');
+		$password = $this->input->get_post('password');
 
+		if ($id == '') {
+			$result['status'] = 400;
+			$result['message'] = '아이디를 입력 해 주세요.';
+			echo json_encode($result);
+			return;
+		}
+
+		if ($password == '') {
+			$result['status'] = 400;
+			$result['message'] = '패스워드를 입력 해 주세요.';
+			echo json_encode($result);
+			return;
+		}
+		
 		$sql = "
 			SELECT * FROM member 
 			WHERE id = '{$id}' AND password = password('{$password}') AND status = 'A'
