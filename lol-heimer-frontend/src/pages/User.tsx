@@ -59,7 +59,7 @@ const User: React.FC = () => {
 							status,
 						},
 					} = response;
-					if (status === '404') {
+					if (status === 404) {
 						history.push(`/error/nouser`);
 					}
 

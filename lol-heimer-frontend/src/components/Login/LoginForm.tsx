@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
-import { API_MEMBER_SIGNUP, API_MEMBER_LOGIN } from './../../end-point/index';
+import { API_MEMBER_SIGNUP_MEMBER, API_MEMBER_LOGIN_MEMBER } from './../../end-point/index';
 
 const LoginForm: React.FC = () => {
 	const history = useHistory();
@@ -27,6 +27,7 @@ const LoginForm: React.FC = () => {
 		}
 		setIsLoading(true);
 		const getValue = getValues();
+		const formData = new FormData();
 		try {
 			if (isSignup) {
 				// 회원가입
@@ -35,33 +36,35 @@ const LoginForm: React.FC = () => {
 					// Error
 					return;
 				}
+
+				formData.append('id', id);
+				formData.append('password', password);
+				formData.append('name', name);
+
 				const { data: {
-					data,
 					status,
 					message,
-				} } = await axios.post(`${API_MEMBER_SIGNUP}`, {
-					id,
-					password,
-					name
-				});
+				} } = await axios.post(`${API_MEMBER_SIGNUP_MEMBER}`, formData);
 
 				alert(message);
-				if (status === '200') {
+				if (status === 200) {
 					history.push('/');
 				}
 			} else {
 				// 로그인
 				const { id, password } = getValue;
+				formData.append('id', id);
+				formData.append('password', password);
 				const { data: {
 					data: {
 						id: sessionId,
 						status,
 						message,
 					}
-				} } = await axios.post(`${API_MEMBER_LOGIN}`, { id, password });
+				} } = await axios.post(`${API_MEMBER_LOGIN_MEMBER}`, formData);
 
 				alert(message);
-				if (status === '200') {
+				if (status === 200) {
 					history.push('/');
 				}
 			}
