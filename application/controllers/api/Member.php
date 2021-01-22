@@ -137,4 +137,31 @@ class Member extends MY_Controller
 		echo json_encode($result);
 		return;
 	}
+
+	/**
+	 * 회원 탈퇴
+	 * @param int $member_idx 게시판 글 idx
+	 */
+	public function leaveMember(int $member_idx)
+	{
+		$result = [];
+
+		$sql = "
+			UPDATE member SET status = 'D'
+			WHERE idx = {$member_idx} 
+		";
+
+		$response = $this->db->query($sql);
+
+		if ($response) {
+			$result['status'] = 200;
+			$result['message'] = '탈퇴 되었습니다';
+		} else {
+			$result['status'] = 400;
+			$result['message'] = '탈퇴가 실패 하였습니다.';
+		}
+
+		echo json_encode($result);
+		return;
+	}
 }
