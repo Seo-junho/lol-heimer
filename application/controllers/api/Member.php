@@ -16,9 +16,9 @@ class Member extends MY_Controller
 	{
 		$result = [];
 
-		$id = $_POST['id'];
-		$password = $_POST['password'];
-		$name = $_POST['name'];
+		$id = $this->input->get_post('id');
+		$password = $this->input->get_post('password');
+		$name = $this->input->get_post('name');
 
 		if ($id == '') {
 			$result['code'] = 400;
@@ -41,7 +41,11 @@ class Member extends MY_Controller
 			return;
 		}
 
-		$sql = "INSERT INTO member (id,password,name,register_date) VALUES ('{$id}',password('{$password}'), '{$name}', now() ) ";
+		$sql = "
+				INSERT INTO member 
+				(id,password,name,register_date) 
+				VALUES 
+				('{$id}',password('{$password}'), '{$name}', now() ) ";
 
 		$this->load->database();
 		$result = $this->db->query($sql);
