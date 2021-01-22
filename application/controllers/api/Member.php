@@ -21,21 +21,21 @@ class Member extends MY_Controller
 		$name = $this->input->get_post('name');
 
 		if ($id == '') {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '아이디를 입력 해 주세요.';
 			echo json_encode($result);
 			return;
 		}
 
 		if ($password == '') {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '패스워드를 입력 해 주세요.';
 			echo json_encode($result);
 			return;
 		}
 
 		if ($name == '') {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '이름을 입력 해 주세요.';
 			echo json_encode($result);
 			return;
@@ -52,10 +52,10 @@ class Member extends MY_Controller
 		$this->db->close();
 
 		if ($response) {
-			$result['code'] = 200;
+			$result['status'] = 200;
 			$result['message'] = '가입이 완료되었습니다.';
 		} else {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '회원 가입이 실패 하였습니다.';
 		}
 
@@ -83,12 +83,12 @@ class Member extends MY_Controller
 		$this->db->close();
 
 		if(!empty($result)) {
-			$result['code'] = 200;
+			$result['status'] = 200;
 			$result['message'] = '로그인 되었습니다';
 			$result['id'] = $result[0]->id;
 			$_SESSION['id'] = $result[0]->id;
 		} else {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '아이디 비번이 틀렸거나 없는 회원입니다.';
 		}
 
@@ -115,10 +115,10 @@ class Member extends MY_Controller
 		$this->db->close();
 
 		if(!empty($result)) {
-			$result['code'] = 400;
+			$result['status'] = 400;
 			$result['message'] = '이미 중복된 아이디 입니다.';
 		} else {
-			$result['code'] = 200;
+			$result['status'] = 200;
 			$result['message'] = '사용 가능한 아이디 입니다.';
 		}
 

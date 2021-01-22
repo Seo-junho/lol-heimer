@@ -16,14 +16,14 @@ class Search extends MY_Controller{
 	public function getUserInfo($userName = '')
 	{
 		if (empty($userName)) {
-			$this->return('400', '소환사명을 입력 해 주세요.', []);
+			$this->return(400, '소환사명을 입력 해 주세요.', []);
 			exit;
 		}
 
 		$user = $this->getUserId($userName);
 
 		if((isset($user->status) && $user->status->status_code == 404) || empty($user->id)){
-			$this->return('404', '소환사가 존재하지 않습니다.', []);
+			$this->return(404, '소환사가 존재하지 않습니다.', []);
 			exit;
 		}
 
@@ -54,7 +54,7 @@ class Search extends MY_Controller{
 	public function getMatchListDetail(string $game_id)
 	{
 		if ($game_id == '') {
-			$this->return('400', 'not found gameid', []);
+			$this->return(400, 'not found gameid', []);
 		}
 		$apiUrl = $this->base_url . '/match/v4/matches/' . $game_id .'?api_key=' . RIOT_API_KEY;
 
@@ -149,7 +149,7 @@ class Search extends MY_Controller{
 		$matchDetail['blue_team'] = $blue_team;
 		$matchDetail['red_team'] = $red_team;
 
-		$this->return('200', 'Success!', $matchDetail);
+		$this->return(200, 'Success!', $matchDetail);
 	}
 
 	/**
@@ -161,7 +161,7 @@ class Search extends MY_Controller{
 	public function getMatchListOld(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
 	{
 		if (empty($userName)) {
-			$this->return('400', 'not found username', []);
+			$this->return(400, 'not found username', []);
 		}
 
 		$AccountId = $this->getUserAccountId($userName);
@@ -254,7 +254,7 @@ class Search extends MY_Controller{
 			$matchDetail[$key]['item'][5] = getItem($match_participants[$my_participant_id]->stats->item5);
 			$matchDetail[$key]['item'][6] = getItem($match_participants[$my_participant_id]->stats->item6);
 		}
-		$this->return('200', 'Success!', $matchDetail);
+		$this->return(200, 'Success!', $matchDetail);
 	}
 
 	/**
@@ -266,7 +266,7 @@ class Search extends MY_Controller{
 	public function getMatchList(string $userName = '', int $beginIndex = 0, int $endIndex = 10)
 	{
 		if (empty($userName)) {
-			$this->return('400', 'not found username', []);
+			$this->return(400, 'not found username', []);
 		}
 
 		$AccountId = $this->getUserAccountId($userName);
@@ -370,7 +370,7 @@ class Search extends MY_Controller{
 				array_push($matchDetail[$key]['item'], $item);
 			}
 		}
-		$this->return('200', 'Success!', $matchDetail);
+		$this->return(200, 'Success!', $matchDetail);
 	}
 
 	/**
@@ -488,7 +488,7 @@ class Search extends MY_Controller{
 		return $result->accountId;
 	}
 
-	private function return($status = '200', $message = 'Success', $data = [])
+	private function return($status = 200, $message = 'Success', $data = [])
 	{
 		$response['status'] = $status;
 		$response['message'] = $message;
