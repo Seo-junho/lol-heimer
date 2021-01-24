@@ -42,7 +42,7 @@ class Member extends MY_Controller
 
 		$sql = "
 				INSERT INTO member 
-				(id,password,name,register_date) 
+				(id,password,name,register_date_time) 
 				VALUES 
 				('{$id}',password('{$password}'), '{$name}', now() ) ";
 
@@ -52,7 +52,7 @@ class Member extends MY_Controller
 
 		if ($response) {
 			$result['status'] = 200;
-			$result['message'] = '가입이 완료되었습니다.';
+			$result['message'] = '가입이 완료 되었습니다.';
 		} else {
 			$result['status'] = 400;
 			$result['message'] = '회원 가입이 실패 하였습니다.';
@@ -101,7 +101,7 @@ class Member extends MY_Controller
 			$result['id'] = $member[0]->id;
 		} else {
 			$result['status'] = 400;
-			$result['message'] = '아이디 비번이 틀렸거나 없는 회원입니다.';
+			$result['message'] = '아이디/비번이 틀렸거나 없는 회원입니다.';
 		}
 
 		echo json_encode($result);
@@ -140,14 +140,14 @@ class Member extends MY_Controller
 
 	/**
 	 * 회원 탈퇴
-	 * @param int $member_idx 게시판 글 idx
+	 * @param int $member_idx 회원 idx
 	 */
 	public function leaveMember(int $member_idx)
 	{
 		$result = [];
 
 		$sql = "
-			UPDATE member SET status = 'D'
+			UPDATE member SET status = 'D', leave_date_time = now()
 			WHERE idx = {$member_idx} 
 		";
 
